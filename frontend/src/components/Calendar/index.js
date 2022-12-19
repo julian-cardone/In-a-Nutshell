@@ -1,5 +1,6 @@
 import dateFns from "date-fns";
 import { useState } from "react";
+import Header from "./header";
 
 const Calendar = () =>{
 
@@ -9,7 +10,7 @@ const Calendar = () =>{
   return (
     <>
     <div className="calendar-container">
-
+      <Header />
     </div>
     </>
   )
