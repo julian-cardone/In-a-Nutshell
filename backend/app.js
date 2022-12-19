@@ -6,6 +6,10 @@ const { isProduction } = require('./config/keys')
 const csurf = require('csurf');
 const debug = require('debug');
 
+require('./models/User')
+require('./config/passport');
+const passport = require('passport');
+
 
 const usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
@@ -16,11 +20,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(passport.initialize());
 
 if (!isProduction) {
-  // Enable CORS only in development because React will be on the React
-  // development server (http://localhost:3000). (In production, the Express
-  // server will serve the React files statically.)
   app.use(cors());
 }
 
