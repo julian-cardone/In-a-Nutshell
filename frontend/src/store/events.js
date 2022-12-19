@@ -83,7 +83,7 @@ export const createEvent = data => async dispatch => {
 
   export const deleteEvent = (eventId) => async dispatch => {
     try {
-    const res = await csrfFetch(`/api/events/${eventId}`, {
+    const res = await jwtFetch(`/api/events/${eventId}`, {
         method: "DELETE"
       });
       dispatch(removeEvent(eventId));
@@ -95,17 +95,24 @@ export const createEvent = data => async dispatch => {
     }
 }
 
-// export const updateEvent = (reservation) => async (dispatch) => {
-//   const response = await fetch(`/api/reservations/${reservation.id}`, {
-//       method: 'PATCH',
-//       body: JSON.stringify(reservation),
-//       headers: {
-//           'Content-Type': 'application/json'
-//       }
-//   });
-//   const data = await response.json();
-//   dispatch(receiveReservation(data));
-// };
+export const updateEvent = (event) => async (dispatch) => {
+  try {
+    const res = await jwtFetch(`/api/events/${event.id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(event),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  });
+  const data = await res.json();
+  dispatch(receiveEvent(data));
+  } catch(err) {
+    const resBody = await err.json();
+    if (resBody.statusCode === 400) {
+      return dispatch(receiveErrors(resBody.errors))
+    }
+  }
+};
 
 const nullErrors = null;
 
@@ -129,6 +136,10 @@ const eventsReducer =(state = { all: {}, user: {}, new: undefined }, action) => 
       return { ...state, all: action.event, new: undefined}
     case RECEIVE_NEW_EVENT:
       return { ...state, new: action.event};
+      case REMOVE_EVENT: {
+        delete state[action.eventId];
+        return state;
+        }
     case RECEIVE_USER_LOGOUT:
       return { ...state, user: {}, new: undefined }
     default:
