@@ -2,7 +2,10 @@ import  { format, addMonths, subMonths } from "date-fns";
 
 const Header = ({ currentMonth, setCurrentMonth }) =>{
 
-  const formatForDate = "MM dd yyyy"
+  //guide for formatting:
+  // https://date-fns.org/docs/format
+
+  const formatForDate = "LLLL do yyyy"
 
   const previousMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));

@@ -1,0 +1,58 @@
+.calendar-container{
+    height: 100vh;
+    position: relative;
+    width: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-flex-row{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.back-button-div{
+    color: red;
+}
+
+.date-div{
+    font-weight: bold;
+}
+
+.forward-button-div{
+    color: green;
+}
+
+.days-container{
+    position: relative;
+    /* display: flex; */
+}
+
+.days-row{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.cells-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* gap: 50px; */
+}
+
+.cells-row-container{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
+.cell-box-container{
+    height: 50px;
+    width: 40px;
+}
