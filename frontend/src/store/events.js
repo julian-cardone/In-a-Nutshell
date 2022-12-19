@@ -4,8 +4,7 @@ import { RECEIVE_USER_LOGOUT  } from "./session";
 const RECEIVE_EVENT = "events/RECEIVE_EVENT"
 const RECEIVE_EVENTS = "events/RECEIVE_EVENTS"
 const RECEIVE_NEW_EVENT = "events/RECEIVE_NEW_EVENT"
-const UPDATE_EVENT = "events/UPDATE_EVENT"
-const DELETE_EVENT = "events/DELETE_EVENT"
+const REMOVE_EVENT = "events/REMOVE_EVENT"
 const RECEIVE_EVENT_ERRORS = "events/RECEIVE_EVENT_ERRORS"
 const CLEAR_EVENT_ERRORS = "events/CLEAR_EVENT_ERRORS"
 
@@ -29,6 +28,11 @@ const receiveErrors = errors => ({
     type: RECEIVE_EVENT_ERRORS,
     errors
   });
+
+const removeEvent = eventId => ({
+    type: REMOVE_EVENT,
+    eventId
+})
   
   export const clearEventErrors = errors => ({
       type: CLEAR_EVENT_ERRORS,
@@ -77,7 +81,31 @@ export const createEvent = data => async dispatch => {
     }
   };
 
+  export const deleteEvent = (eventId) => async dispatch => {
+    try {
+    const res = await csrfFetch(`/api/events/${eventId}`, {
+        method: "DELETE"
+      });
+      dispatch(removeEvent(eventId));
+    } catch(err) {
+      const resBody = await err.json();
+      if (resBody.statusCode === 400) {
+        return dispatch(receiveErrors(resBody.errors))
+      }
+    }
+}
 
+// export const updateEvent = (reservation) => async (dispatch) => {
+//   const response = await fetch(`/api/reservations/${reservation.id}`, {
+//       method: 'PATCH',
+//       body: JSON.stringify(reservation),
+//       headers: {
+//           'Content-Type': 'application/json'
+//       }
+//   });
+//   const data = await response.json();
+//   dispatch(receiveReservation(data));
+// };
 
 const nullErrors = null;
 
