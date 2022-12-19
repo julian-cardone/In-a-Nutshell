@@ -28,6 +28,15 @@ const receiveErrors = errors => ({
   });
 
   export const fetchEvents = () => async dispatch => {
-
-  }
+    try {
+        const res = await jwtFetch('/api/events')
+        const events = await res.json();
+        dispatch(receiveEvents(events))
+    } catch (err) {
+        const resBody = await err.json();
+        if (resBody.statusCode === 400) {
+            return dispatch(receiveErrors(resBody.errors));
+        }
+    }
+  };
 
