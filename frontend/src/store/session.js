@@ -23,6 +23,13 @@ const logoutUser = () => ({
   type: RECEIVE_USER_LOGOUT
 });
 
+
+export const getCurrentUser = () => async dispatch => {
+    const res = await jwtFetch('/api/users/current');
+    const user = await res.json();
+    return dispatch(receiveCurrentUser(user));
+  };
+
 // Dispatch clearSessionErrors to clear any session errors.
 export const clearSessionErrors = () => ({
   type: CLEAR_SESSION_ERRORS
