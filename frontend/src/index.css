@@ -1,4 +1,6 @@
 /* TODO Add site wide styles */
+@import "reset.css";
+
 .content-container {
     width: 100%;
 }
