@@ -136,10 +136,10 @@ const eventsReducer =(state = { all: {}, user: {}, new: undefined }, action) => 
       return { ...state, all: action.event, new: undefined}
     case RECEIVE_NEW_EVENT:
       return { ...state, new: action.event};
-      case REMOVE_EVENT: {
-        delete state[action.eventId];
-        return state;
-        }
+    case REMOVE_EVENT: {
+      delete state[action.eventId];
+      return state;
+      }
     case RECEIVE_USER_LOGOUT:
       return { ...state, user: {}, new: undefined }
     default:
