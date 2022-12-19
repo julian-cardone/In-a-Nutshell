@@ -28,7 +28,7 @@ const receiveErrors = errors => ({
     errors
   });
   
-  export const clearTweetErrors = errors => ({
+  export const clearEventErrors = errors => ({
       type: CLEAR_EVENT_ERRORS,
       errors
   });
@@ -74,3 +74,34 @@ export const createEvent = data => async dispatch => {
       }
     }
   };
+
+const nullErrors = null;
+
+export const eventsErrorReducer = (state = nullErrors, action) => {
+    switch (action.type) {
+      case RECEIVE_EVENT_ERRORS:
+        return action.errors;
+      case RECEIVE_EVENT:
+      case CLEAR_EVENT_ERRORS:
+        return nullErrors;
+      default:
+        return state;
+    }
+}
+
+const eventsReducer =(state = { all: {}, user: {}, new: undefined }, action) => {
+  switch (action.type) {
+    case RECEIVE_EVENTS:
+      return { ...state, all: action.events, new: undefined }
+    case RECEIVE_EVENT:
+      return { ...state, all: action.event, new: undefined}
+    case RECEIVE_NEW_EVENT:
+      return { ...state, new: action.event};
+    case RECEIVE_USER_LOGOUT:
+      return { ...state, user: {}, new: undefined }
+    default:
+      return state;
+  }
+};
+
+export default eventsReducer;
