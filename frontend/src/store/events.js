@@ -4,6 +4,8 @@ import { RECEIVE_USER_LOGOUT  } from "./session";
 const RECEIVE_EVENT = "events/RECEIVE_EVENT"
 const RECEIVE_EVENTS = "events/RECEIVE_EVENTS"
 const RECEIVE_NEW_EVENT = "events/RECEIVE_NEW_EVENT"
+const UPDATE_EVENT = "events/UPDATE_EVENT"
+const DELETE_EVENT = "events/DELETE_EVENT"
 const RECEIVE_EVENT_ERRORS = "events/RECEIVE_EVENT_ERRORS"
 const CLEAR_EVENT_ERRORS = "events/CLEAR_EVENT_ERRORS"
 
@@ -74,6 +76,8 @@ export const createEvent = data => async dispatch => {
       }
     }
   };
+
+
 
 const nullErrors = null;
 
