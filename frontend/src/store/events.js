@@ -40,8 +40,9 @@ const removeEvent = eventId => ({
   });
 
   export const fetchEvents = () => async dispatch => {
+    debugger;
     try {
-        const res = await jwtFetch('/api/events')
+        const res = await jwtFetch('/api/events/')
         const events = await res.json();
         dispatch(receiveEvents(events))
     } catch (err) {
