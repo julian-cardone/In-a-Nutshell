@@ -1,5 +1,4 @@
 import { addDays, format, startOfWeek } from "date-fns";
-import DaysListItem from "./DaysListItem";
 
 const Days = ({ currentMonth }) => {
   const formatForDay = "EEEE";
@@ -9,7 +8,11 @@ const Days = ({ currentMonth }) => {
   let days = [];
 
   for (let i = 0; i < 7; i++) {
-    days.push(format(addDays(startDate, i), formatForDay));
+    days.push(
+      <div className="day-name-box"key={i}>
+      {format(addDays(startDate, i), formatForDay)}
+      </div>
+      );
   }
 
   return (

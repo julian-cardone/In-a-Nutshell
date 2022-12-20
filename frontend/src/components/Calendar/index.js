@@ -2,6 +2,7 @@ import { useState } from "react";
 import Cells from "./Cells";
 import Days from "./Week";
 import Header from "./Header";
+import './calendar.css';
 
 const Calendar = () =>{
 
@@ -15,6 +16,7 @@ const Calendar = () =>{
     <div className="calendar-container">
       <Header currentMonth={currentMonth}setCurrentMonth={setCurrentMonth}/>
       {/* <Days currentMonth={currentMonth}setCurrentMonth={setCurrentMonth}/> */}
+      <Days currentMonth={currentMonth}/>
       <Cells currentMonth={currentMonth}setCurrentMonth={setCurrentMonth}selectedDate={selectedDate}setSelectedDate={setSelectedDate}/>
     </div>
     </>
