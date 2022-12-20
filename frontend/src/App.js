@@ -23,7 +23,6 @@ function App() {
   return (
     loaded && (
       <>
-        {/* <NavBar /> */}
         <Switch>
           <AuthRoute exact path="/" component={MainPage} />
           <AuthRoute exact path="/login" component={LoginForm} />
@@ -35,6 +34,7 @@ function App() {
             <Calendar />
           </Route>
         </Switch>
+        <NavBar />
       </>
     )
   );
