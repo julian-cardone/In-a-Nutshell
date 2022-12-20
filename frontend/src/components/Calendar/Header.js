@@ -1,6 +1,5 @@
 import  { format, addMonths, subMonths } from "date-fns";
 import { useState, useEffect } from "react";
-import MonthListItem from "./MonthListItem";
 
 const Header = ({ currentMonth, setCurrentMonth }) =>{
 
@@ -8,6 +7,11 @@ const Header = ({ currentMonth, setCurrentMonth }) =>{
   // https://date-fns.org/docs/format
 
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  // eachMonthOfInterval({
+  //   start: new Date(2014, 1, 6),
+  //   end: new Date(2014, 7, 10)
+  // })
 
   const formatForDate = "LLLL yyyy"
 
@@ -37,6 +41,12 @@ const Header = ({ currentMonth, setCurrentMonth }) =>{
   
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
+//end of dropdown logic
+
+//change date/year logic:
+const changeDate = (e) => {
+  console.log(e.target.value)
+}
 
   return (
     <>
@@ -54,11 +64,11 @@ const Header = ({ currentMonth, setCurrentMonth }) =>{
                 <div className="dropdown-root">
                   <div className="dropdown-container">
                     <ul className="ul-dropdown">
-                      <li>
-                      {months.map((month, idx)=>{
-                        <MonthListItem key={idx}month={month}/>
-                      })}
-                      </li>
+                      {months.map((month, idx)=>(
+                          <div className="list-container-dropdown"onClick={(e)=>changeDate(e)}>
+                            <li value={(idx%11)}>{month}</li>
+                          </div>
+                      ))}
                     </ul>
                   </div>
                 </div>)}
