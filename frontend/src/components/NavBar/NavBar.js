@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
 import './navbar.css';
@@ -6,9 +6,12 @@ import './navbar.css';
 function NavBar () {
   // const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
-  
+  const history = useHistory();
+
   const logoutUser = e => {
       e.preventDefault();
+
+      history.replace({ pathname: '/', state: { isActive: true }})
       dispatch(logout());
   }
 

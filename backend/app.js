@@ -8,6 +8,7 @@ const debug = require('debug');
 
 require('./models/User')
 require('./models/Event')
+require('./models/Task')
 require('./config/passport');
 
 const passport = require('passport');
@@ -15,6 +16,7 @@ const passport = require('passport');
 
 const usersRouter = require('./routes/api/users');
 const eventsRouter = require('./routes/api/events');
+const tasksRouter = require('./routes/api/tasks');
 const csrfRouter = require('./routes/api/csrf');
 
 const app = express();
@@ -65,6 +67,7 @@ app.use(
 
 app.use('/api/users', usersRouter);
 app.use('/api/events', eventsRouter);
+app.use('/api/tasks', tasksRouter);
 app.use('/api/csrf', csrfRouter);
 
 app.use((req, res, next) => {
