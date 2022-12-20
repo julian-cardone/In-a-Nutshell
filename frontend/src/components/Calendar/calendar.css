@@ -88,3 +88,7 @@
     position: relative;
     z-index: 1;
 }
+
+.dropdown-container{
+    position: relative;
+}
