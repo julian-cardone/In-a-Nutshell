@@ -22,6 +22,7 @@
     align-items: center;
     padding: 10px;
     border: 2px solid black;
+    max-height: 1.7vh;
 }
 
 .back-button-div{
@@ -85,10 +86,17 @@
 }
 
 .dropdown-root{
-    position: relative;
+    position: absolute;
     z-index: 1;
+    top: 4vh;
+    background-color: lightgray;
 }
 
 .dropdown-container{
     position: relative;
+}
+
+.ul-dropdown{
+    position: relative;
+    padding: 0.5vh;
 }

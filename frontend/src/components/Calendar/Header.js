@@ -1,10 +1,13 @@
 import  { format, addMonths, subMonths } from "date-fns";
 import { useState, useEffect } from "react";
+import MonthListItem from "./MonthListItem";
 
 const Header = ({ currentMonth, setCurrentMonth }) =>{
 
   //guide for formatting:
   // https://date-fns.org/docs/format
+
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   const formatForDate = "LLLL yyyy"
 
@@ -50,10 +53,12 @@ const Header = ({ currentMonth, setCurrentMonth }) =>{
                   {showMenu && (
                 <div className="dropdown-root">
                   <div className="dropdown-container">
-                    <ul className="profile-dropdown">
-                      <li>test</li>
-                      <li>placeholder</li>
-                      <li>cheeseburger</li>
+                    <ul className="ul-dropdown">
+                      <li>
+                      {months.map((month, idx)=>{
+                        <MonthListItem key={idx}month={month}/>
+                      })}
+                      </li>
                     </ul>
                   </div>
                 </div>)}
