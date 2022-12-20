@@ -7,11 +7,14 @@ const csurf = require('csurf');
 const debug = require('debug');
 
 require('./models/User')
+require('./models/Event')
 require('./config/passport');
+
 const passport = require('passport');
 
 
 const usersRouter = require('./routes/api/users');
+const eventsRouter = require('./routes/api/events');
 const csrfRouter = require('./routes/api/csrf');
 
 const app = express();
@@ -24,6 +27,28 @@ app.use(passport.initialize());
 
 if (!isProduction) {
   app.use(cors());
+}
+
+if (isProduction) {
+  const path = require('path');
+  // Serve the frontend's index.html file at the root route
+  app.get('/', (req, res) => {
+    res.cookie('CSRF-TOKEN', req.csrfToken());
+    res.sendFile(
+      path.resolve(__dirname, '../frontend', 'build', 'index.html')
+    );
+  });
+
+  // Serve the static assets in the frontend's build folder
+  app.use(express.static(path.resolve("../frontend/build")));
+
+  // Serve the frontend's index.html file at all other routes NOT starting with /api
+  app.get(/^(?!\/?api).*/, (req, res) => {
+    res.cookie('CSRF-TOKEN', req.csrfToken());
+    res.sendFile(
+      path.resolve(__dirname, '../frontend', 'build', 'index.html')
+    );
+  });
 }
 
 app.use(
@@ -39,6 +64,7 @@ app.use(
 
 
 app.use('/api/users', usersRouter);
+app.use('/api/events', eventsRouter);
 app.use('/api/csrf', csrfRouter);
 
 app.use((req, res, next) => {

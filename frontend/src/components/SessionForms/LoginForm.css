@@ -1,0 +1,21 @@
+
+.errors {
+
+}
+
+.form-fields {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.form-fields input {
+    width: 100%;
+    padding: 10px 1rem;
+    margin: 10px 0;
+    border: 0;
+    border-radius: 3px;
+}
+
+.form-fields input:focus {
+    outline: none;
+}
