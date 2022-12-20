@@ -23,25 +23,23 @@ function App() {
   const loggedIn = useSelector((state)=>(!!state.session.user))
 
   return (
-    loaded && (
+    <>
+    {!loggedIn && <Redirect to="/" />}
+    {loaded && (
       <>
         <Switch>
-          {/* <AuthRoute exact path="/" component={MainPage} /> */}
           <AuthRoute exact path="/" component={SplashPage}/>
-            {/* <SplashPage /> */}
-          {/* </AuthRoute> */}
           <AuthRoute exact path="/login" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignupForm} />
-          {/* <ProtectedRoute exact path="/home"component={Calendar}/> */}
           <Route exact path="/home">
               {loggedIn && <Calendar />}
               {loggedIn && <NavBar />}
           </Route>
-          {!loggedIn && <Redirect to="/"></Redirect>}
-          {/* <ProtectedRoute exact path="/home"component={NavBar}/> */}
+          {/* {!loggedIn && <Redirect to="/"></Redirect>} */}
         </Switch>
       </>
-    )
+    )}
+      </>
   );
 }
 
