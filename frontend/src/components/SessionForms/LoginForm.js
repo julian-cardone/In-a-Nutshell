@@ -8,7 +8,6 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const errors = useSelector((state) => {
-    debugger;
     return state.errors.session;
   });
   const dispatch = useDispatch();
@@ -29,35 +28,48 @@ function LoginForm() {
     dispatch(login({ email, password }));
   };
 
+  const demoLogin = (e) => {
+    e.preventDefault();
+    dispatch(login({ email: "demo-user@appacademy.io", password: "starwars" }));
+  };
+
   return (
-    <form className="form-fields" onSubmit={handleSubmit}>
-      <div className="errors">{errors?.email}</div>
-      {/* <label> */}
-      {/* <span>Email</span> */}
-      <input
-        type="text"
-        value={email}
-        onChange={update("email")}
-        placeholder="Email"
-      />
-      {/* </label> */}
-      <div className="errors">{errors?.password}</div>
-      {/* <label>
+    <>
+      <form className="form-fields" onSubmit={handleSubmit}>
+        <div className="errors">{errors?.email}</div>
+        {/* <label> */}
+        {/* <span>Email</span> */}
+        <input
+          className={`loginField`}
+          type="text"
+          value={email}
+          onChange={update("email")}
+          placeholder="Email"
+        />
+        {/* </label> */}
+        <div className="errors">{errors?.password}</div>
+        {/* <label>
         <span>Password</span> */}
-      <input
-        type="password"
-        value={password}
-        onChange={update("password")}
-        placeholder="Password"
-      />
-      {/* </label> */}
-      <input
-        className={`btnPrimary btn`}
-        type="submit"
-        value="Log In"
-        disabled={!email || !password}
-      />
-    </form>
+        <input
+          className={`loginField`}
+          type="password"
+          value={password}
+          onChange={update("password")}
+          placeholder="Password"
+        />
+        {/* </label> */}
+        <input
+          className={`btnPrimary btn demo`}
+          type="submit"
+          value="Log In"
+          disabled={!email || !password}
+        />
+        <br />
+        <button className={`btnPrimary btn demo`} onClick={demoLogin}>
+          Demo Login
+        </button>
+      </form>
+    </>
   );
 }
 
