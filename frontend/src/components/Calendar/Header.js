@@ -1,7 +1,10 @@
-import  { format, addMonths, subMonths, getMonth } from "date-fns";
+import  { format, addMonths, subMonths, getMonth, setYear } from "date-fns";
 import { useState, useEffect } from "react";
 import eachMonthOfInterval from "date-fns/eachMonthOfInterval";
 import getYear from "date-fns/getYear";
+import eachYearOfInterval from "date-fns/eachYearOfInterval";
+import subYears from "date-fns/subYears";
+import addYears from "date-fns/addYears";
 
 const Header = ({ currentMonth, setCurrentMonth }) =>{
 
@@ -15,7 +18,13 @@ const Header = ({ currentMonth, setCurrentMonth }) =>{
     end: new Date(getYear(currentMonth), 12, 1)
   })
 
-  const formatForDate = "LLLL yyyy"
+  const years = eachYearOfInterval({
+    start: new Date(getYear(subYears(currentMonth,5)), 1, 1),
+    end: new Date(getYear(addYears(currentMonth,5)), 12, 1)
+  })
+
+  // console.log(years);
+  // const formatForDate = "LLLL yyyy"
 
   const previousMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
@@ -24,7 +33,7 @@ const Header = ({ currentMonth, setCurrentMonth }) =>{
   const nextMonth = () => {
     setCurrentMonth(addMonths(currentMonth, 1));
   }
-//dropdown logic
+//dropdown logic - months
   const [showMenu, setShowMenu] = useState(false);
   
   const openMenu = () => {
@@ -43,7 +52,28 @@ const Header = ({ currentMonth, setCurrentMonth }) =>{
   
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
-//end of dropdown logic
+//end of dropdown logic for months
+
+//dropdown logic for year
+const [showMenuYear, setShowMenuYear] = useState(false);
+  
+const openMenuYear = () => {
+  if (showMenuYear) return;
+  setShowMenuYear(true);
+};
+
+useEffect(() => {
+  if (!showMenuYear) return;
+
+  const closeMenuYear = () => {
+    setShowMenuYear(false);
+  };
+
+  document.addEventListener('click', closeMenuYear);
+
+  return () => document.removeEventListener("click", closeMenuYear);
+}, [showMenuYear]);
+//end
 
 //change date/year logic:
 const changeDate = (e) => {
@@ -58,6 +88,10 @@ const changeDate = (e) => {
   }
 }
 
+const changeYear = (e) => {
+  setCurrentMonth(setYear(currentMonth, e.target.value))
+}
+
   return (
     <>
     <div className="header-flex-row">
@@ -68,8 +102,8 @@ const changeDate = (e) => {
         </div>
       </div>
 
-      <div className="date-div"onClick={openMenu}>
-        <span className="date-display">
+      <div className="date-div">
+        <span className="date-display"onClick={openMenu}>
                   {showMenu && (
                 <div className="dropdown-root">
                   <div className="dropdown-container">
@@ -82,7 +116,23 @@ const changeDate = (e) => {
                     </ul>
                   </div>
                 </div>)}
-          {format(currentMonth, formatForDate)}
+          {format(currentMonth, "LLLL")}
+        </span>
+
+        <span className="date-display-year"onClick={openMenuYear}>
+                  {showMenuYear && (
+                <div className="dropdown-root">
+                  <div className="dropdown-container">
+                    <ul className="ul-dropdown">
+                      {years.map((year)=>(
+                          <div className="list-container-dropdown"onClick={(e)=>changeYear(e)}>
+                            <li value={getYear(year)}>{getYear(year)}</li>
+                          </div>
+                      ))}
+                    </ul>
+                  </div>
+                </div>)}
+          {format(currentMonth, "yyyy")}
         </span>
       </div>
 

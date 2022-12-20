@@ -31,6 +31,8 @@
 
 .date-div{
     font-weight: bold;
+    display: flex;
+    gap: 1vh;
 }
 
 .forward-button-div{
