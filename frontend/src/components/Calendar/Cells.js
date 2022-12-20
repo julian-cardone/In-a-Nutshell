@@ -1,4 +1,4 @@
-import { endOfMonth, endOfWeek, startOfMonth, startOfWeek, format } from "date-fns";
+import { endOfMonth, endOfWeek, startOfMonth, startOfWeek, format, addDays, eachDayOfInterval, subMonths, subDays, isSameMonth } from "date-fns";
 
 const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) => {
 
@@ -6,21 +6,67 @@ const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) 
   const endOfMonthCur = endOfMonth(currentMonth);
   // const days = 
 
-  const formatOfDate = "D";
+  const daysInMonth= format(endOfMonthCur, "dd");
+  const numberOfRows = 5;
   const rows = [];
 
-  console.log(endOfMonthCur);
+  const lastMonth = subMonths(currentMonth, 1);
 
-  for (let i = 0; i < 5; i++){
+  const endOfLastMonth = endOfMonth(lastMonth);
 
+  const endOfLastMonthLowerInterval = subDays(endOfLastMonth, 5);
+
+  const range = eachDayOfInterval({
+    start: endOfLastMonthLowerInterval,
+    end: startOfMonthCur
+  });
+
+  const findFirstSunday = () =>{
+  for (let i = 0; i < range.length; i ++){
+    if (range[i].getDay() === 0){
+      const firstSundayDate = range[i]
+      return firstSundayDate;
+    }
+  }
+}
+
+let firstSunday = findFirstSunday();
+
+  for (let i = 1; i <= numberOfRows; i++){
+    let row = [];
+      for (let j = 1; j <= 7; j++){
+        if (isSameMonth(firstSunday, currentMonth)){
+          row.push(
+              <div className="cell-box-container">
+                <div className="date-in-cell-box">
+                  {format(firstSunday, "dd")}
+                </div>
+              </div>
+          )
+        } else {
+          row.push(
+            <div className="cell-box-container">
+              <div className="date-in-cell-box-gray">
+                {format(firstSunday, "dd")}
+              </div>
+            </div>
+          )
+        }
+          firstSunday = addDays(firstSunday, 1);
+      }
+      rows.push(
+        <div className="cells-row-container">
+          {row}
+        </div>
+        );
   }
 
   return (
     <>
     <div className="cells-container">
-      <div className="cells-row">
-          {}
-      </div>
+      {rows.map((row)=>(
+        row
+      ))}
     </div>
     </>
   )
