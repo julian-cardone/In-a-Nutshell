@@ -35,6 +35,12 @@ h1 {
 .btnPrimary {
     background-color: #6D8E59;
     color:white;
+    transition: all .33s ease-out;
+}
+
+.btnPrimary:hover {
+    background-color: #292E1E;
+    padding: 1em 4em;
 }
 
 a{
