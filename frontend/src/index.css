@@ -2,5 +2,44 @@
 @import "reset.css";
 
 .content-container {
+    height: 100%;
     width: 100%;
+    position: fixed;
+    background-color: #E8E4D9;
+}
+
+h1 {
+    font:600 2.1rem sans-serif;
+    padding-bottom: 0.8em;
+}
+
+.p1 {
+
+}
+
+.p2 {
+    font:400 16px sans-serif;
+}
+
+
+.btn {
+    border: 0;
+    padding: 1em 2em;
+    text-decoration: none;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    border-radius: 35px;
+}
+
+.btnPrimary {
+    background-color: #6D8E59;
+    color:white;
+}
+
+a{
+    color: inherit;
+}
+
+a:visited {
+    color: #b0f0a2;
 }
