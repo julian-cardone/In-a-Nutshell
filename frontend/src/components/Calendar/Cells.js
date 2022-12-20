@@ -21,6 +21,16 @@ const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) 
     end: startOfMonthCur
   });
 
+  // const thisMonth = 
+  // eachDayOfInterval({
+  //   start: startOfMonthCur,
+  //   end: endOfMonthCur
+  // });
+
+  // const inThisMonth = (month) => {
+  //   return currentMonth === month;
+  // }
+
   const findFirstSunday = () =>{
   for (let i = 0; i < range.length; i ++){
     if (range[i].getDay() === 0){
@@ -30,13 +40,16 @@ const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) 
   }
 }
 
+
 let firstSunday = findFirstSunday();
+console.log();
 
   for (let i = 1; i <= numberOfRows; i++){
     let row = [];
       for (let j = 1; j <= 7; j++){
           row.push(
-              <div className="cell-box-container"width={``}>
+              <div className="cell-box-container">
+                {/* {if } */}
                 <div className="date-in-cell-box">
                   {format(firstSunday, "dd")}
                 </div>

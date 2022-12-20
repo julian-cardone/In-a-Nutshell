@@ -1,11 +1,18 @@
+#root{
+    display: flex;
+    justify-content: space-between;
+}
+
 .calendar-container{
-    height: 100vh;
     position: relative;
-    width: 100vh;
+    width: 100%;
+    max-width: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
-    padding: 1em;
+    padding-top: 2em;
+    padding-left: 2em;
+    padding-bottom: 2em;
 }
 
 .header-flex-row{
@@ -33,6 +40,8 @@
     position: relative;
     /* display: flex; */
     border: 1px solid black;
+    /* height: 100%; */
+    /* max-height: 100%; */
 }
 
 .days-row{
@@ -48,15 +57,23 @@
     flex-direction: column;
     /* gap: 50px; */
     border: 1px solid black;
+    height: 100%;
 }
 
 .cells-row-container{
     position: relative;
     display: flex;
     justify-content: space-around;
+    /* height: 100%; */
+    min-height: 20%;
 }
 
 .cell-box-container{
-    height: 5em;
     border: 1px solid black;
+    width: 14.28571428571429%;
+}
+
+.date-in-cell-box{
+    max-width: min-content;
+    padding: 2px;
 }
