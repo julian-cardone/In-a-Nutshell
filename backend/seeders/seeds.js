@@ -39,6 +39,8 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
 
 
 const eventsArr = [];
+const bool = faker.random.boolean
+
 
 for(let i = 0; i < NUM_SEED_EVENTS; i++) {
   eventsArr.push(
@@ -47,7 +49,7 @@ for(let i = 0; i < NUM_SEED_EVENTS; i++) {
       description: faker.lorem.paragraph(3),
       startDate: "2050-10-21",
       completionDate: "2052-10-21",
-      status: faker.boolean
+      status: faker.datatype.boolean()
     })
   )
 }
@@ -59,7 +61,7 @@ for(let i = 0; i < NUM_SEED_TASKS; i++) {
     new Task ({
       title: `task #${i}`,
       description: faker.lorem.paragraph(3),
-      status: faker.boolean
+      status: faker.datatype.boolean()
     })
   )
 }
@@ -76,10 +78,11 @@ mongoose
   });
 
 const insertSeeds = () => {
-  console.log("Resetting db and seeding users and tweets...");
+  console.log("Resetting db and seeding users, events and tasks...");
 
   User.collection.drop()
                  .then(() => Event.collection.drop())
+                 .then(() => Task.collection.drop())
                  .then(() => User.insertMany(users))
                  .then(() => Event.insertMany(eventsArr))
                  .then(() => Task.insertMany(tasksArr))
