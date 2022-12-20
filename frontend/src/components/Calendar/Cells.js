@@ -10,7 +10,7 @@ const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) 
     e.preventDefault();
     // showModal === false ? setShowModal(true) : setShowModal(false);
     setShowModal(true);
-    console.log(e.target);
+    console.log(e.target.dataset.day);
   };
 
   const startOfMonthCur = startOfMonth(currentMonth);
@@ -48,7 +48,7 @@ let firstSunday = findFirstSunday();
       for (let j = 1; j <= 7; j++){
         if (isSameMonth(firstSunday, currentMonth)){
           row.push(
-              <div className="cell-box-container"onClick={(e) => handleModal(e)}>
+              <div data-day={firstSunday}className="cell-box-container"onClick={(e) => handleModal(e)}>
                 <div className="date-in-cell-box">
                   {format(firstSunday, "dd")}
                 </div>
