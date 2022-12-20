@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import logo from "../../assets/NSLogos/Logo.svg";
+import LoginForm from "../SessionForms/LoginForm";
 import "./SplashPage.css";
 
 // const handleSubmit = (e) => {
@@ -24,23 +25,7 @@ function SplashPage() {
             </p>
           </article>
           <article className={`page-form`}>
-            <form className={`form-fields`}>
-              <input
-                className={`field`}
-                type={`email`}
-                placeholder="Enter Email"
-              />
-              <br />
-              <input
-                className={`field`}
-                type={`password`}
-                placeholder="Enter Password"
-              />
-              <br />
-              <button className={`btnPrimary btn`} onClick={null}>
-                Sign In
-              </button>
-            </form>
+            <LoginForm></LoginForm>
             <p className={`p2`}>
               Need an account? <Link to="/signup">Sign up here</Link>
             </p>
@@ -57,3 +42,23 @@ function SplashPage() {
 }
 
 export default SplashPage;
+
+{
+  /* <form className={`form-fields`}>
+      <input
+        className={`field`}
+        type={`email`}
+        placeholder="Enter Email"
+      />
+      <br />
+      <input
+        className={`field`}
+        type={`password`}
+        placeholder="Enter Password"
+      />
+      <br />
+      <button className={`btnPrimary btn`} onClick={null}>
+        Sign In
+      </button>
+    </form> */
+}
