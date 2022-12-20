@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { login, clearSessionErrors } from "../../store/session";
-import "./LoginForm.css";
+import "./SessionForms.css";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const errors = useSelector((state) => state.errors.session);
+  const errors = useSelector((state) => {
+    debugger;
+    return state.errors.session;
+  });
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +31,7 @@ function LoginForm() {
 
   return (
     <form className="form-fields" onSubmit={handleSubmit}>
-      {/* <div className="errors">{errors?.email}</div> */}
+      <div className="errors">{errors?.email}</div>
       {/* <label> */}
       {/* <span>Email</span> */}
       <input
@@ -38,7 +41,7 @@ function LoginForm() {
         placeholder="Email"
       />
       {/* </label> */}
-      {/* <div className="errors">{errors?.password}</div> */}
+      <div className="errors">{errors?.password}</div>
       {/* <label>
         <span>Password</span> */}
       <input

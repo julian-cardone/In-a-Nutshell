@@ -44,3 +44,13 @@ a{
 a:visited {
     color: #b0f0a2;
 }
+
+.modalLink {
+    cursor: pointer;
+    text-decoration: underline;
+    color: inherit;
+}
+
+.modalLink:visited {
+    color: #b0f0a2;
+}

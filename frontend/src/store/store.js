@@ -1,16 +1,17 @@
 // store/store.js
 
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import sessionReducer from './session';
-import eventsReducer from './events';
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import sessionReducer from "./session";
+import eventsReducer from "./events";
 import modalReducer from "./modal";
-
+import errorsReducer from "./errors";
 
 const rootReducer = combineReducers({
   sessionReducer,
   eventsReducer,
-  modalReducer
+  errors: errorsReducer,
+  modalReducer,
 });
 
 let enhancer;

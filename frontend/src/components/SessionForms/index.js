@@ -2,23 +2,23 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import "./SessionForms.css";
 import SignupForm from "./SignupForm";
-// import LoginForm from "./LoginForm";
+import LoginForm from "./LoginForm";
 
-export { SignupForm };
+export { SignupForm, LoginForm };
 
-// export function LoginModal({ onClose, onSuccess }) {
-//   return (
-//     <Modal onClose={onClose}>
-//       <div className="session-modal">
-//         <h1>Log In</h1>
-//         <LoginForm onSuccess={onSuccess} />
-//       </div>
-//     </Modal>
-//   );
-// }
+export function LoginModal({ onClose, onSuccess }) {
+  return (
+    <Modal onClose={onClose}>
+      <div className="session-modal">
+        <h1>Log In</h1>
+        <LoginForm onSuccess={onSuccess} />
+      </div>
+    </Modal>
+  );
+}
 
 export function SessionModal({ onClose, onSuccess }) {
-  const [showSignup, setShowSignup] = useState(false);
+  const [showSignup, setShowSignup] = useState(true);
 
   return (
     <Modal onClose={onClose}>
