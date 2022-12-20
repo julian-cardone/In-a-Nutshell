@@ -1,6 +1,17 @@
 import { endOfMonth, endOfWeek, startOfMonth, startOfWeek, format, addDays, eachDayOfInterval, subMonths, subDays, isSameMonth } from "date-fns";
+import { useState } from "react";
+import { EventModal } from "./EventModal";
 
 const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) => {
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModal = (e) => {
+    e.preventDefault();
+    // showModal === false ? setShowModal(true) : setShowModal(false);
+    setShowModal(true);
+    console.log(e.target);
+  };
 
   const startOfMonthCur = startOfMonth(currentMonth);
   const endOfMonthCur = endOfMonth(currentMonth);
@@ -37,7 +48,7 @@ let firstSunday = findFirstSunday();
       for (let j = 1; j <= 7; j++){
         if (isSameMonth(firstSunday, currentMonth)){
           row.push(
-              <div className="cell-box-container">
+              <div className="cell-box-container"onClick={(e) => handleModal(e)}>
                 <div className="date-in-cell-box">
                   {format(firstSunday, "dd")}
                 </div>
@@ -68,6 +79,9 @@ let firstSunday = findFirstSunday();
         row
       ))}
     </div>
+    {showModal && (
+      <EventModal onClose={() => setShowModal(false)} />
+      )}
     </>
   )
 }
