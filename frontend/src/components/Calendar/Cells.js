@@ -1,4 +1,4 @@
-import { endOfMonth, endOfWeek, startOfMonth, startOfWeek, format, addDays, eachDayOfInterval, subMonths, subDays } from "date-fns";
+import { endOfMonth, endOfWeek, startOfMonth, startOfWeek, format, addDays, eachDayOfInterval, subMonths, subDays, isSameMonth } from "date-fns";
 
 const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) => {
 
@@ -21,16 +21,6 @@ const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) 
     end: startOfMonthCur
   });
 
-  // const thisMonth = 
-  // eachDayOfInterval({
-  //   start: startOfMonthCur,
-  //   end: endOfMonthCur
-  // });
-
-  // const inThisMonth = (month) => {
-  //   return currentMonth === month;
-  // }
-
   const findFirstSunday = () =>{
   for (let i = 0; i < range.length; i ++){
     if (range[i].getDay() === 0){
@@ -40,21 +30,28 @@ const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) 
   }
 }
 
-
 let firstSunday = findFirstSunday();
-console.log();
 
   for (let i = 1; i <= numberOfRows; i++){
     let row = [];
       for (let j = 1; j <= 7; j++){
+        if (isSameMonth(firstSunday, currentMonth)){
           row.push(
               <div className="cell-box-container">
-                {/* {if } */}
                 <div className="date-in-cell-box">
                   {format(firstSunday, "dd")}
                 </div>
               </div>
           )
+        } else {
+          row.push(
+            <div className="cell-box-container">
+              <div className="date-in-cell-box-gray">
+                {format(firstSunday, "dd")}
+              </div>
+            </div>
+          )
+        }
           firstSunday = addDays(firstSunday, 1);
       }
       rows.push(

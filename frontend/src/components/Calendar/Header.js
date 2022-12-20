@@ -1,11 +1,12 @@
 import  { format, addMonths, subMonths } from "date-fns";
+import { useState, useEffect } from "react";
 
 const Header = ({ currentMonth, setCurrentMonth }) =>{
 
   //guide for formatting:
   // https://date-fns.org/docs/format
 
-  const formatForDate = "LLLL do yyyy"
+  const formatForDate = "LLLL yyyy"
 
   const previousMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
@@ -14,6 +15,25 @@ const Header = ({ currentMonth, setCurrentMonth }) =>{
   const nextMonth = () => {
     setCurrentMonth(addMonths(currentMonth, 1));
   }
+//dropdown logic
+  const [showMenu, setShowMenu] = useState(false);
+  
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
+  
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+
+    document.addEventListener('click', closeMenu);
+  
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
   return (
     <>
@@ -25,8 +45,18 @@ const Header = ({ currentMonth, setCurrentMonth }) =>{
         </div>
       </div>
 
-      <div className="date-div">
+      <div className="date-div"onClick={openMenu}>
         <span className="date-display">
+                  {showMenu && (
+                <div className="dropdown-root">
+                  <div className="dropdown-container">
+                    <ul className="profile-dropdown">
+                      <li>test</li>
+                      <li>placeholder</li>
+                      <li>cheeseburger</li>
+                    </ul>
+                  </div>
+                </div>)}
           {format(currentMonth, formatForDate)}
         </span>
       </div>

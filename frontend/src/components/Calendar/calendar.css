@@ -77,3 +77,14 @@
     max-width: min-content;
     padding: 2px;
 }
+
+.date-in-cell-box-gray{
+    max-width: min-content;
+    padding: 2px;
+    color: lightgrey;
+}
+
+.dropdown-root{
+    position: relative;
+    z-index: 1;
+}
