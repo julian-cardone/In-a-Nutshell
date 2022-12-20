@@ -74,11 +74,17 @@
 .cell-box-container{
     border: 1px solid black;
     width: 14.28571428571429%;
+    min-width: 105px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .date-in-cell-box{
     max-width: min-content;
-    padding: 2px;
+    /* max-height: min-content; */
+    /* padding: 2px; */
+    padding-left: 4px;
 }
 
 .date-in-cell-box-gray{
@@ -103,12 +109,28 @@
     padding: 0.5vh;
 }
 
+.add-button-container{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .add-button{
     position: relative;
-    top: 14vh;
-    left: 12vh;
-    opacity: 0;
+    /* top: 88%; */
+    /* bottom: 75%; */
+    /* left: 50%; */
+    /* left: 58%; */
+    /* opacity: 0; */
     z-index: -1;
+    /* height: 13%; */
+    /* max-height: 13%; */
+    width: 39%;
+    max-width: 39%;
+    padding: 1px;
+    font-size: 0.7em;
+    top: 100%;
+    left: 39.5%;
 }
 
 .cell-box-container:hover .add-button{
