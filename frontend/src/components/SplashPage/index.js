@@ -25,7 +25,7 @@ function SplashPage() {
             </p>
           </article>
           <article className={`page-form`}>
-            <LoginForm></LoginForm>
+            <LoginForm />
             <p className={`p2`}>
               Need an account? <Link to="/signup">Sign up here</Link>
             </p>
