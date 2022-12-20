@@ -1,4 +1,4 @@
-const { response } = require("express");
+const { response, json } = require("express");
 const express = require("express");
 const router = express.Router();
 
@@ -6,6 +6,17 @@ const Event = require("../../models/Event");
 
 router.get("/test", function (req, res, next) {
   res.send("this is hitting the route");
+});
+
+router.get("/", async (req, res, next) => {
+  try {
+     const events = await Event.find({})
+    await res.json(events)
+   } catch (error) {
+    json.send("this shit diddnt work")
+   }
+
+
 });
 
 router.get("/:id", (req, res, next) => {
