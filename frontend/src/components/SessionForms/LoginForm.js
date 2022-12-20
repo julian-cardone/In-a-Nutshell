@@ -8,7 +8,7 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const errors = useSelector((state) => {
-    debugger;
+    // debugger;
     return state.errors.session;
   });
   const dispatch = useDispatch();

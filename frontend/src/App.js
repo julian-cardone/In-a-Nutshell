@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
 import { AuthRoute, ProtectedRoute } from "./components/Routes/Routes";
@@ -20,24 +20,30 @@ function App() {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
 
+  const loggedIn = useSelector((state)=>(!!state.session.user))
+
   return (
     loaded && (
       <>
         <Switch>
-          <AuthRoute exact path="/" component={MainPage} />
+          {/* <AuthRoute exact path="/" component={MainPage} /> */}
+          <AuthRoute exact path="/" component={SplashPage}/>
+            {/* <SplashPage /> */}
+          {/* </AuthRoute> */}
           <AuthRoute exact path="/login" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignupForm} />
-          <Route path="/splash">
-            <SplashPage />
-          </Route>
+          {/* <ProtectedRoute exact path="/home"component={Calendar}/> */}
           <Route exact path="/home">
-            <Calendar />
+              {loggedIn && <Calendar />}
+              {loggedIn && <NavBar />}
           </Route>
+          {/* <ProtectedRoute exact path="/home"component={NavBar}/> */}
         </Switch>
-        <NavBar />
       </>
     )
   );
 }
+
+// demo-user@appacademy.io
 
 export default App;

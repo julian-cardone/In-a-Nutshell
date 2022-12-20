@@ -8,7 +8,7 @@ import modalReducer from "./modal";
 import errorsReducer from "./errors";
 
 const rootReducer = combineReducers({
-  sessionReducer,
+  session: sessionReducer,
   eventsReducer,
   errors: errorsReducer,
   modalReducer,
