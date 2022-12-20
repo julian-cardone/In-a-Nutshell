@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
 }
-
+ 
 .calendar-container{
     position: relative;
     width: 100%;
