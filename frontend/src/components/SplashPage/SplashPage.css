@@ -1,0 +1,72 @@
+.splash-container {
+    min-width: 800px;
+    height: 85%;
+    /* border: 20px solid red;
+    border-radius: 59px; */
+    margin: 45px 79px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    /* background: lime; */
+}
+
+.splash-body {
+    min-height: 400px;
+    height: 90%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.page-header {
+    width:100%;
+    color:#6D8E59;
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    /* border: 1px solid black;
+    border-radius: 45px; */
+}
+
+.page-intro {
+    font-size: ;
+    margin-left: 6rem;
+    padding-top: 0px;
+    text-align: center;
+    /* border: 2px solid orange; */
+}
+
+.page-form {
+    background-color: #2F482A;
+    margin-right: 6rem;
+    padding: 88px 50px;
+    width: 35%;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    /* border: 8px solid black; */
+    border-radius: 35px;
+    overflow: hidden;
+}
+
+.form-fields {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.form-fields input {
+    width: 100%;
+    
+    padding: 10px 1rem;
+    margin: 10px 0;
+    border: 0;
+    border-radius: 3px;
+}
+
+.form-fields input:focus {
+    outline: none;
+}
