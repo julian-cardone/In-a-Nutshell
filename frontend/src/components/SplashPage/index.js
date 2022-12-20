@@ -2,15 +2,18 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import logo from "../../assets/NSLogos/Logo.svg";
+import { SessionModal } from "../SessionForms";
 import LoginForm from "../SessionForms/LoginForm";
 import "./SplashPage.css";
 
-// const handleSubmit = (e) => {
-//   e.preventDefault();
-//   dispatch(login({ email, password }));
-// };
-
 function SplashPage() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModal = (e) => {
+    e.preventDefault();
+    setShowModal(true);
+  };
+
   return (
     <main className={`content-container`}>
       <div className={`splash-container`}>
@@ -25,9 +28,15 @@ function SplashPage() {
             </p>
           </article>
           <article className={`page-form`}>
-            <LoginForm></LoginForm>
+            <LoginForm />
             <p className={`p2`}>
-              Need an account? <Link to="/signup">Sign up here</Link>
+              Need an account?{" "}
+              <span className={`modalLink`} onClick={handleModal}>
+                Sign up here
+              </span>
+              {showModal && (
+                <SessionModal onClose={() => setShowModal(false)} />
+              )}
             </p>
           </article>
         </section>
