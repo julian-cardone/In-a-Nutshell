@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import { AuthRoute, ProtectedRoute } from "./components/Routes/Routes";
 import NavBar from "./components/NavBar/NavBar";
@@ -37,6 +37,7 @@ function App() {
               {loggedIn && <Calendar />}
               {loggedIn && <NavBar />}
           </Route>
+          {!loggedIn && <Redirect to="/"></Redirect>}
           {/* <ProtectedRoute exact path="/home"component={NavBar}/> */}
         </Switch>
       </>
