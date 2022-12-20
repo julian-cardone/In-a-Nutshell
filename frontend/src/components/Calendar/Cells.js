@@ -52,6 +52,7 @@ let firstSunday = findFirstSunday();
                 <div className="date-in-cell-box">
                   {format(firstSunday, "dd")}
                 </div>
+                <button className="add-button"></button>
               </div>
           )
         } else {
