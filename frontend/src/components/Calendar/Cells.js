@@ -36,7 +36,7 @@ let firstSunday = findFirstSunday();
     let row = [];
       for (let j = 1; j <= 7; j++){
           row.push(
-              <div className="cell-box-container">
+              <div className="cell-box-container"width={``}>
                 <div className="date-in-cell-box">
                   {format(firstSunday, "dd")}
                 </div>
