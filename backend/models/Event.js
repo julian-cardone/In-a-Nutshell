@@ -21,6 +21,10 @@ const eventSchema = Schema({
     type: Boolean,
     required: true
   },
+  note: {
+    type: String,
+    required: false 
+  },
   author: {
     type: Schema.Types.ObjectId,
     ref: 'User'
