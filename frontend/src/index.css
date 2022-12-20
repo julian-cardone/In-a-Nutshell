@@ -29,6 +29,7 @@ h1 {
     font-family: sans-serif;
     text-transform: uppercase;
     border-radius: 35px;
+    cursor: pointer;
 }
 
 .btnPrimary {
