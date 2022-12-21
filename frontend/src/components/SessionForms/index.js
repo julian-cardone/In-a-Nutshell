@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal } from "../../context/Modal";
+import { Modal, SlowModal } from "../../context/Modal";
 import "./SessionForms.css";
 import SignupForm from "./SignupForm";
 import LoginForm from "./LoginForm";
@@ -21,7 +21,7 @@ export function SessionModal({ onClose, onSuccess }) {
   const [showSignup, setShowSignup] = useState(true);
 
   return (
-    <Modal onClose={onClose}>
+    <SlowModal onClose={onClose}>
       <div className="session-modal">
         <h1>{showSignup ? "Sign Up" : "Log In"}</h1>
         {showSignup ? (
@@ -33,6 +33,6 @@ export function SessionModal({ onClose, onSuccess }) {
           {showSignup ? "Log in" : "Sign up"} instead
         </button>
       </div>
-    </Modal>
+    </SlowModal>
   );
 }
