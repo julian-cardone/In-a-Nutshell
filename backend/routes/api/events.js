@@ -37,8 +37,7 @@ router.post("/new", (req, res) => {
   const newEvent = new Event({
     title: req.body.title,
     description: req.body.description,
-    startDate: req.body.startDate,
-    completionDate: req.body.completionDate,
+    eventDate: req.body.completionDate,
     status: req.body.status,
   });
 
@@ -76,8 +75,7 @@ router.put("/:id", (req, res) => {
     _id: req.params.id,
     title: req.body.title,
     description: req.body.description,
-    startDate: req.body.startDate,
-    completionDate: req.body.completionDate,
+    eventDate: req.body.completionDate,
     status: req.body.status,
   });
 

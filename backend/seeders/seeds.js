@@ -47,12 +47,33 @@ for(let i = 0; i < NUM_SEED_EVENTS; i++) {
     new Event ({
       title: `event #${i}`,
       description: faker.lorem.paragraph(3),
-      startDate: "2050-10-21",
-      completionDate: "2052-10-21",
+      eventDate: "2022-10-21",
       status: faker.datatype.boolean()
     })
   )
 }
+eventsArr.push(
+  new Event ({
+    title: `event #12`,
+    description: faker.lorem.paragraph(3),
+    eventDate: new Date(2022, 11, 23, 13, 00),
+    status: faker.datatype.boolean()
+  }
+  )
+)
+
+eventsArr.push(
+  new Event ({
+    title: `event #13`,
+    description: faker.lorem.paragraph(3),
+    eventDate: new Date(2022, 11, 23, 15, 00),
+    status: faker.datatype.boolean()
+  }
+  )
+)
+
+
+
 
 tasksArr = [];
 

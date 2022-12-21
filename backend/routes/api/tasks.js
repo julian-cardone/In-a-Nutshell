@@ -8,6 +8,15 @@ router.get("/test", function (req, res, next) {
   res.send("this is hitting the route");
 });
 
+router.get("/", async (req, res, next) => {
+  try {
+    const tasks = await Task.find({});
+    await res.json(tasks);
+  } catch (error) {
+    json.send("this shit diddnt work");
+  }
+});
+
 router.get("/:id", (req, res, next) => {
   const task = Task.findOne({ _id: req.params.id })
     .then(() => {

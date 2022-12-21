@@ -9,11 +9,7 @@ const eventSchema = Schema({
   description: {
     type: String
   },
-  startDate: {
-    type: Date,
-    required: true
-  },
-  completionDate: {
+  eventDate: {
     type: Date,
     required: true
   },
@@ -23,7 +19,7 @@ const eventSchema = Schema({
   },
   note: {
     type: String,
-    required: false 
+    required: false
   },
   author: {
     type: Schema.Types.ObjectId,
