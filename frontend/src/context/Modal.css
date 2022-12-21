@@ -15,11 +15,12 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(33, 55, 37, 0.5);
 }
 
 #modal-content {
+    width: min-content;
     position: absolute;
-    background-color: white;
+    background-color: rgba(33, 55, 37, 0.6)white;
     border-radius: 10px;
 }
