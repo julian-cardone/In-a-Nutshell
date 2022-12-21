@@ -10,7 +10,7 @@ const { faker } = require("@faker-js/faker");
 
 
 const NUM_SEED_USERS = 10;
-const NUM_SEED_EVENTS = 10;
+const NUM_SEED_EVENTS = 5;
 const NUM_SEED_TASKS = 10;
 
 const users = [];
@@ -47,14 +47,26 @@ for(let i = 0; i < NUM_SEED_EVENTS; i++) {
     new Event ({
       title: `event #${i}`,
       description: faker.lorem.paragraph(3),
-      eventDate: "2022-10-21",
+      eventDate: faker.date.between('2023-1-01', '2023-1-30'),
       status: faker.datatype.boolean()
     })
   )
 }
+
+for(let i = 6; i < 10; i++) {
+  eventsArr.push(
+    new Event ({
+      title: `event #${i}`,
+      description: faker.lorem.paragraph(3),
+      eventDate: faker.date.between('2022-12-01', '2022-12-30'),
+      status: faker.datatype.boolean()
+    })
+  )
+}
+
 eventsArr.push(
   new Event ({
-    title: `event #12`,
+    title: `event #11`,
     description: faker.lorem.paragraph(3),
     eventDate: new Date(2022, 11, 23, 13, 00),
     status: faker.datatype.boolean()
@@ -64,9 +76,9 @@ eventsArr.push(
 
 eventsArr.push(
   new Event ({
-    title: `event #13`,
+    title: `event #12`,
     description: faker.lorem.paragraph(3),
-    eventDate: new Date(2022, 11, 23, 15, 00),
+    eventDate: new Date(2022, 11, 23, 11, 00),
     status: faker.datatype.boolean()
   }
   )
