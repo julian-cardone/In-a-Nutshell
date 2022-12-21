@@ -13,7 +13,7 @@ router.get("/", async (req, res, next) => {
      const events = await Event.find({})
     await res.json(events)
    } catch (error) {
-    json.send("this shit diddnt work")
+    res.send("this shit diddnt work")
    }
 
 
@@ -33,26 +33,21 @@ router.get("/:id", (req, res, next) => {
     );
 });
 
-router.post("/new", (req, res) => {
-  const newEvent = new Event({
-    title: req.body.title,
-    description: req.body.description,
-    eventDate: req.body.completionDate,
-    status: req.body.status,
-  });
+router.post("/new", async(req, res, next) => {
+  const newEvent = await new Event({
+ title: req.body.title,
+ description: req.body.description,
+ eventDate: req.body.eventDate,
+ status: req.body.status,
+});
 
-  newEvent
-    .save()
-    .then(() => {
-      res.status(201).json({
-        message: "Post Saved!!!",
-      });
-    })
-    .catch((error) => {
-      res.status(400).json({
-        error: error,
-      });
-    });
+  try {
+    const savedEvent = await newEvent.save()
+    res.json(newEvent)
+  } catch (error) {
+   res.send(error)
+  }
+
 });
 
 router.delete("/:id", (req, res) => {
