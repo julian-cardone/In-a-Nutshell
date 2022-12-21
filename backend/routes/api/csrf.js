@@ -1,13 +1,13 @@
-var express = require("express");
+const express = require("express");
+const router = express.Router();
+
 const { isProduction } = require("../../config/keys");
-var router = express.Router();
 
 if (!isProduction) {
-  router.get("/restore", function (req, res) {
+  router.get("/restore", (req, res) => {
     const csrfToken = req.csrfToken();
-    res.status(200).json({
-      "CSRF-Token": csrfToken,
-    });
+    res.cookie("CSRF-TOKEN", csrfToken);
+    res.status(200).json({ "CSRF-Token": csrfToken });
   });
 }
 
