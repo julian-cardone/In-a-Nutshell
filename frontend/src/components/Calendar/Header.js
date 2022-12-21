@@ -14,7 +14,7 @@ const Header = ({ currentMonth, setCurrentMonth }) =>{
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   const monthNums = eachMonthOfInterval({
-    start: new Date(getYear(currentMonth), 1, 1),
+    start: new Date(getYear(currentMonth), 1, 1), //2022, 1, 1 is the format
     end: new Date(getYear(currentMonth), 12, 1)
   })
 
