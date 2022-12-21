@@ -10,12 +10,13 @@ const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) 
     e.preventDefault();
     // showModal === false ? setShowModal(true) : setShowModal(false);
     setShowModal(true);
-    console.log(e.target.dataset.day);
+    setEventDate(e.target.dataset.day);
   };
 
   const startOfMonthCur = startOfMonth(currentMonth);
   const endOfMonthCur = endOfMonth(currentMonth);
   // const days = 
+  const [eventDate, setEventDate] = useState();
 
   const daysInMonth= format(endOfMonthCur, "dd");
   const numberOfRows = 5;
@@ -48,23 +49,23 @@ let firstSunday = findFirstSunday();
       for (let j = 1; j <= 7; j++){
         if (isSameMonth(firstSunday, currentMonth)){
           row.push(
-              <div data-day={firstSunday}className="cell-box-container"onClick={(e) => handleModal(e)}>
+              <div className="cell-box-container">
                 <div className="date-in-cell-box">
                   {format(firstSunday, "dd")}
                 </div>
                 <div className="add-button-container">
-                <button className="add-button">Add Event</button>
+                <button data-day={firstSunday}onClick={(e) => handleModal(e)}className="add-button">Add Event</button>
                 </div>
               </div>
-          )
+          ) 
         } else {
           row.push(
-            <div data-day={firstSunday}className="cell-box-container"onClick={(e) => handleModal(e)}>
+            <div data-day={firstSunday}className="cell-box-container">
               <div className="date-in-cell-box-gray">
                 {format(firstSunday, "dd")}
               </div>
               <div className="add-button-container">
-                <button className="add-button">Add Event</button>
+                <button data-day={firstSunday}onClick={(e) => handleModal(e)}className="add-button">Add Event</button>
               </div>
             </div>
           )
@@ -86,7 +87,7 @@ let firstSunday = findFirstSunday();
       ))}
     </div>
     {showModal && (
-      <EventModal onClose={() => setShowModal(false)} />
+      <EventModal eventDate={eventDate}onClose={() => setShowModal(false)} />
       )}
     </>
   )
