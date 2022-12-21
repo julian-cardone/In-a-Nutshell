@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEvents } from "../../store/events";
 import isSameDay from "date-fns/isSameDay";
-import { getTime, getHours, getMinutes } from "date-fns";
+import { getTime, getHours, getMinutes, isBefore } from "date-fns";
 
 const Events = ({ day, events }) => {
 
@@ -56,6 +56,26 @@ function convert(eventDay){
       eventsArray.push(test);
     }
   }
+
+  //sort the array:
+
+  // console.log(((isBefore((eventsArray[0]), (eventsArray[1])))))
+
+  if (eventsArray.length > 1){
+    let cont = true;
+    while (cont){
+      cont = false;
+      
+      for (let i = 0; i < eventsArray.length-1; i++){
+        if (!(isBefore(new Date((eventsArray[i].eventDate)), (new Date(eventsArray[i+1].eventDate))))){
+          [eventsArray[i], eventsArray[i+1]] = [eventsArray[i+1], eventsArray[i]];
+          cont = true;
+      }
+    }
+  }
+}
+
+  // console.log(eventsArray);
 
   const dispatch = useDispatch();
 
