@@ -1,8 +1,11 @@
 import { endOfMonth, endOfWeek, startOfMonth, startOfWeek, format, addDays, eachDayOfInterval, subMonths, subDays, isSameMonth } from "date-fns";
 import { useState } from "react";
 import { EventModal } from "./EventModal";
+import Events from "./Events";
 
 const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) => {
+
+  
 
   const [showModal, setShowModal] = useState(false);
 
@@ -58,6 +61,7 @@ let firstSunday = findFirstSunday();
                 <div className="add-button-container">
                 <button data-day={firstSunday}onClick={(e) => handleModal(e)}className="add-button">Add Event</button>
                 </div>
+                <Events day={firstSunday}/>
               </div>
           ) 
         } else {
