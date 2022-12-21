@@ -1,8 +1,12 @@
 import { endOfMonth, endOfWeek, startOfMonth, startOfWeek, format, addDays, eachDayOfInterval, subMonths, subDays, isSameMonth } from "date-fns";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { EventModal } from "./EventModal";
+import Events from "./Events";
 
 const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) => {
+
+  const events = useSelector(state => Object.values(state.eventsReducer.all));
 
   const [showModal, setShowModal] = useState(false);
 
@@ -12,6 +16,8 @@ const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) 
     setShowModal(true);
     setEventDate(e.target.dataset.day);
   };
+
+  // console.log(new Date(2022, 11, 13, 18, 0));
 
   const startOfMonthCur = startOfMonth(currentMonth);
   const endOfMonthCur = endOfMonth(currentMonth);
@@ -53,6 +59,9 @@ let firstSunday = findFirstSunday();
                 <div className="date-in-cell-box">
                   {format(firstSunday, "dd")}
                 </div>
+                <div className="event-title-container">
+                <Events day={firstSunday}events={events}/>
+                </div>
                 <div className="add-button-container">
                 <button data-day={firstSunday}onClick={(e) => handleModal(e)}className="add-button">Add Event</button>
                 </div>
@@ -63,6 +72,9 @@ let firstSunday = findFirstSunday();
             <div data-day={firstSunday}className="cell-box-container">
               <div className="date-in-cell-box-gray">
                 {format(firstSunday, "dd")}
+              </div>
+              <div className="event-title-container">
+                <Events day={firstSunday}events={events}/>
               </div>
               <div className="add-button-container">
                 <button data-day={firstSunday}onClick={(e) => handleModal(e)}className="add-button">Add Event</button>

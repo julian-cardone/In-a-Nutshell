@@ -14,13 +14,14 @@ const Header = ({ currentMonth, setCurrentMonth }) =>{
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   const monthNums = eachMonthOfInterval({
-    start: new Date(getYear(currentMonth), 1, 1),
-    end: new Date(getYear(currentMonth), 12, 1)
+    start: new Date(getYear(currentMonth), 0, 1), //2022, 1, 1 is the format
+    end: new Date(getYear(currentMonth), 11, 1)
   })
 
+  // console.log(monthNums);
   const years = eachYearOfInterval({
-    start: new Date(getYear(subYears(currentMonth,5)), 1, 1),
-    end: new Date(getYear(addYears(currentMonth,5)), 12, 1)
+    start: new Date(getYear(subYears(currentMonth,5)), 0, 1),
+    end: new Date(getYear(addYears(currentMonth,5)), 11, 1)
   })
 
   // console.log(years);
@@ -84,7 +85,7 @@ const changeDate = (e) => {
     }
   }
   if (e.target.innerHTML === "December"){
-    setCurrentMonth(monthNums[10]);
+    setCurrentMonth(monthNums[11]);
   }
 }
 
@@ -110,7 +111,7 @@ const changeYear = (e) => {
                     <ul className="ul-dropdown">
                       {months.map((month, idx)=>(
                           <div className="list-container-dropdown"onClick={(e)=>changeDate(e)}>
-                            <li value={((idx)%11)}>{month}</li>
+                            <li value={((idx))}>{month}</li>
                           </div>
                       ))}
                     </ul>
