@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEvents } from "../../store/events";
 import isSameDay from "date-fns/isSameDay";
+import { getTime, getHours, getMinutes } from "date-fns";
 
 const Events = ({ day, events }) => {
 
@@ -62,11 +63,36 @@ function convert(eventDay){
     dispatch(fetchEvents())
   },[dispatch])
 
+  const displayTime = (day) => {
+    const date = new Date(day);
+
+    //minutes logic
+    let minutes = getMinutes(new Date(date))
+    if (minutes < 10){
+      minutes = minutes.toString().split("")
+      minutes.unshift("0");
+      minutes = minutes.join("");
+      // console.log(minutes);
+    }
+
+    //hours logic
+    let hours = getHours(new Date(date));
+    if (hours > 12){
+      hours = hours - 12;
+
+      return `${hours}:${minutes} PM`;
+    } else {
+      return `${hours}:${minutes} AM`;
+    } 
+
+  }
+
   return (
     <>
     {eventsArray.map((event)=>(
       <div className="h1-event-placeholder">
       <h1>{event.title}</h1>
+      <h2>{displayTime(event.eventDate)}</h2>
       </div>
     ))}
     </>
