@@ -10,6 +10,7 @@ import LoginForm from "./components/SessionForms/LoginForm";
 import SignupForm from "./components/SessionForms/SignupForm";
 import SplashPage from "./components/SplashPage";
 import EventsIndex from "./components/EventsIndex";
+import NewEventForm from "./components/NewEventForm";
 
 import { getCurrentUser } from "./store/session";
 import Calendar from "./components/Calendar";
@@ -32,6 +33,7 @@ function App() {
           <AuthRoute exact path="/login" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignupForm} />
           <Route exact path= "/events" component={EventsIndex} />
+          <Route exact path= "/events/new" component={NewEventForm} />
           <Route exact path="/home">
               {loggedIn && <Calendar />}
               {loggedIn && <NavBar />}
