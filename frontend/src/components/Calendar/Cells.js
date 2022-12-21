@@ -73,6 +73,9 @@ let firstSunday = findFirstSunday();
               <div className="date-in-cell-box-gray">
                 {format(firstSunday, "dd")}
               </div>
+              <div className="event-title-container">
+                <Events day={firstSunday}events={events}/>
+              </div>
               <div className="add-button-container">
                 <button data-day={firstSunday}onClick={(e) => handleModal(e)}className="add-button">Add Event</button>
               </div>
