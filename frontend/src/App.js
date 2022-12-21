@@ -9,6 +9,7 @@ import MainPage from "./components/MainPage/MainPage";
 import LoginForm from "./components/SessionForms/LoginForm";
 import SignupForm from "./components/SessionForms/SignupForm";
 import SplashPage from "./components/SplashPage";
+import EventsIndex from "./components/EventsIndex";
 
 import { getCurrentUser } from "./store/session";
 import Calendar from "./components/Calendar";
@@ -21,7 +22,6 @@ function App() {
   }, [dispatch]);
 
   const loggedIn = useSelector((state)=>(!!state.session.user))
-
   return (
     <>
     {!loggedIn && <Redirect to="/" />}
@@ -31,6 +31,7 @@ function App() {
           <AuthRoute exact path="/" component={SplashPage}/>
           <AuthRoute exact path="/login" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignupForm} />
+          <Route exact path= "/events" component={EventsIndex} />
           <Route exact path="/home">
               {loggedIn && <Calendar />}
               {loggedIn && <NavBar />}

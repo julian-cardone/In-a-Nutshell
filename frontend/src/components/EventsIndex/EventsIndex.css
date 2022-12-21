@@ -1,0 +1,31 @@
+.event-card {
+    background-color: #2F482A;
+    color: white;
+    margin: 15px;
+    border-radius: 6px;
+}
+
+.events-div {
+    display:block;
+}
+
+.event-title {
+    font-size: 24px;
+    margin: 10px;
+    color: #E8E4D9;
+    font-weight: 600;
+}
+
+.event-description {
+    margin: 10px;
+}
+
+.outer-events-div {
+    background-color: #6D8E59;
+}
+
+.title-for-events {
+    color: #E8E4D9;
+    font-weight: 600;
+    margin: 10px;
+}

@@ -41,7 +41,7 @@ const removeEvent = eventId => ({
 
   export const fetchEvents = () => async dispatch => {
     try {
-        const res = await jwtFetch('/api/events')
+        const res = await jwtFetch('/api/events/')
         const events = await res.json();
         dispatch(receiveEvents(events))
     } catch (err) {
