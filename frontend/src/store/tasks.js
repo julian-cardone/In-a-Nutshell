@@ -36,6 +36,62 @@ const removeTask = taskId => ({
       errors
   })
 
+  export const fetchTasks = () => async dispatch => {
+    try {
+        const res = await jwtFetch('/api/tasks/')
+        const tasks = await res.json();
+        dispatch(receiveTasks(tasks));
+    } catch (err) {
+        const resBody = await err.json();
+        if (resBody.statusCode === 400) {
+            return dispatch(receiveErrors(resBody.errors))
+        }
+    }
+  }
+
+  export const fetchTask = () => async dispatch => {
+    try {
+        const res = await jwtFetch('/api/task')
+        const task = await res.json();
+        dispatch(receiveTask(task))
+    } catch(err) {
+        const resBody = await err.json();
+        if (resBody.statusCode === 400) {
+            return dispatch(receiveErrors(resBody.errors))
+        }
+    }
+  }
+
+  export const createTask = data => async dispatch => {
+    try {
+      const res = await jwtFetch('/api/tasks/', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      });
+      const task = await res.json();
+      dispatch(receiveNewTask(task));
+    } catch(err) {
+      const resBody = await err.json();
+      if (resBody.statusCode === 400) {
+        return dispatch(receiveErrors(resBody.errors));
+      }
+    }
+  };
+
+  export const deleteTask = (taskId) => async dispatch => {
+    try {
+        await jwtFetch(`/api/tasks/${taskId}`, {
+        method: "DELETE"
+      });
+      dispatch(removeTask(taskId));
+    } catch(err) {
+      const resBody = await err.json();
+      if (resBody.statusCode === 400) {
+        return dispatch(receiveErrors(resBody.errors))
+      }
+    }
+}
+
 
 const nullErrors = null;
 
@@ -47,13 +103,15 @@ export const tasksErrorReducer = (state = nullErrors, action) => {
       case CLEAR_TASK_ERRORS:
         return nullErrors;
       default:
-        return state;
+        return state
     }
 }
 
 export const tasksReducer = (state = { all: {}, event: {}, new: undefined }, action ) => {
     switch (action.type) {
         case RECEIVE_TASK:
-            return { ..state, all: action.task, new: undefined }
+            return { ...state, all: action.task, new: undefined }
     }
 }
+
+export default tasksReducer;
