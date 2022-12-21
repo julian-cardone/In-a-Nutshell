@@ -74,11 +74,17 @@
 .cell-box-container{
     border: 1px solid black;
     width: 14.28571428571429%;
+    min-width: 105px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .date-in-cell-box{
     max-width: min-content;
-    padding: 2px;
+    /* max-height: min-content; */
+    /* padding: 2px; */
+    padding-left: 4px;
 }
 
 .date-in-cell-box-gray{
@@ -102,3 +108,44 @@
     position: relative;
     padding: 0.5vh;
 }
+
+.add-button-container{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-button{
+    position: relative;
+    /* top: 88%; */
+    /* bottom: 75%; */
+    /* left: 50%; */
+    /* left: 58%; */
+    opacity: 0;
+    z-index: -1;
+    /* height: 13%; */
+    /* max-height: 13%; */
+    width: 39%;
+    max-width: 39%;
+    padding: 1px;
+    font-size: 0.7em;
+    /* top: 104%; */
+    /* left: 39.5%; */
+    margin: 2px;
+
+    transition-duration: 0.7s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: opacity;
+}
+
+.cell-box-container:hover .add-button{
+    position: relative;
+    opacity: 1;
+    z-index: 1;
+}
+
+/* .event-modal{
+    position: relative;
+    z-index: 1;
+} */

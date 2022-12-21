@@ -4,7 +4,7 @@
     flex-direction: column;
     /* float: right; */
     height: 100vh;
-    width: 45vh;
+    width: 60vh;
     border: 1px solid black;
     justify-self: right;
 }
