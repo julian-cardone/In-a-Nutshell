@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import { sessionErrorsReducer } from './session';
-import { eventsErrorsReducer } from './events';
-import { tasksErrorsReducer } from './tasks';
+import { eventsErrorReducer } from './events';
+import { tasksErrorReducer } from './tasks';
 
 
 export default combineReducers({
   session: sessionErrorsReducer,
-  events: eventsErrorsReducer,
-  tasks: tasksErrorsReducer
+  events: eventsErrorReducer,
+  tasks: tasksErrorReducer
 });
