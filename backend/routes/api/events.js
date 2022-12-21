@@ -10,13 +10,11 @@ router.get("/test", function (req, res, next) {
 
 router.get("/", async (req, res, next) => {
   try {
-     const events = await Event.find({})
-    await res.json(events)
-   } catch (error) {
-    json.send("this shit diddnt work")
-   }
-
-
+    const events = await Event.find({});
+    await res.json(events);
+  } catch (error) {
+    res.json("this shit diddnt work");
+  }
 });
 
 router.get("/:id", (req, res, next) => {

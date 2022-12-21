@@ -25,12 +25,7 @@ const eventSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  tasks: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Task'
-    }
-  ]
+  tasks: []
 }, {
   timestamps: true
 });

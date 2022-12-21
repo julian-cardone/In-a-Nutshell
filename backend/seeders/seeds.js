@@ -52,6 +52,7 @@ for(let i = 0; i < NUM_SEED_EVENTS; i++) {
     })
   )
 }
+
 eventsArr.push(
   new Event ({
     title: `event #12`,
@@ -67,7 +68,8 @@ eventsArr.push(
     title: `event #13`,
     description: faker.lorem.paragraph(3),
     eventDate: new Date(2022, 11, 23, 15, 00),
-    status: faker.datatype.boolean()
+    status: faker.datatype.boolean(),
+    tasks: ["63a35e453501fb46a7b781ee", "63a35e453501fb46a7b781ef", "63a35e453501fb46a7b781f0"]
   }
   )
 )
