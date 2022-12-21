@@ -1,4 +1,5 @@
 import jwtFetch from "./jwt";
+import { RECEIVE_USER_LOGOUT } from './session';
 
 const RECEIVE_TASKS = 'tasks/RECEIVE_TASKS'
 const RECEIVE_TASK = 'tasks/RECEIVE_TASK'
@@ -92,6 +93,25 @@ const removeTask = taskId => ({
     }
 }
 
+export const updateTask = (task) => async (dispatch) => {
+    try {
+      const res = await jwtFetch(`/api/tasks/${task.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify(task),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const data = await res.json();
+    dispatch(receiveTask(data));
+    } catch(err) {
+      const resBody = await err.json();
+      if (resBody.statusCode === 400) {
+        return dispatch(receiveErrors(resBody.errors))
+      }
+    }
+  };
+
 
 const nullErrors = null;
 
@@ -110,7 +130,19 @@ export const tasksErrorReducer = (state = nullErrors, action) => {
 export const tasksReducer = (state = { all: {}, event: {}, new: undefined }, action ) => {
     switch (action.type) {
         case RECEIVE_TASK:
-            return { ...state, all: action.task, new: undefined }
+            return { ...state, all: action.task, new: undefined };
+        case RECEIVE_TASKS:
+            return { ...state, all: action.tasks, new: undefined };
+        case RECEIVE_NEW_TASK:
+            return { ...state, new: action.task };
+        case REMOVE_TASK: {
+            delete state[action.taskId];
+            return state;
+        }
+        case RECEIVE_USER_LOGOUT:
+            return { ...state, event: {}, new: undefined}
+            default:
+                return state;
     }
 }
 
