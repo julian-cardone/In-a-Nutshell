@@ -121,7 +121,7 @@
     /* bottom: 75%; */
     /* left: 50%; */
     /* left: 58%; */
-    /* opacity: 0; */
+    opacity: 0;
     z-index: -1;
     /* height: 13%; */
     /* max-height: 13%; */
@@ -129,8 +129,15 @@
     max-width: 39%;
     padding: 1px;
     font-size: 0.7em;
-    top: 100%;
-    left: 39.5%;
+    /* top: 104%; */
+    /* left: 39.5%; */
+    margin: 2px;
+
+    transition-duration: 0.7s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: opacity;
+
 }
 
 .cell-box-container:hover .add-button{

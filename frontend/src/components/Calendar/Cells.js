@@ -59,9 +59,12 @@ let firstSunday = findFirstSunday();
           )
         } else {
           row.push(
-            <div className="cell-box-container">
+            <div data-day={firstSunday}className="cell-box-container"onClick={(e) => handleModal(e)}>
               <div className="date-in-cell-box-gray">
                 {format(firstSunday, "dd")}
+              </div>
+              <div className="add-button-container">
+                <button className="add-button">Add Event</button>
               </div>
             </div>
           )
