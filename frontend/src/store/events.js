@@ -33,7 +33,7 @@ const removeEvent = eventId => ({
     type: REMOVE_EVENT,
     eventId
 })
-  
+
   export const clearEventErrors = errors => ({
       type: CLEAR_EVENT_ERRORS,
       errors
@@ -52,9 +52,9 @@ const removeEvent = eventId => ({
     }
   };
 
-  export const fetchEvent = () => async dispatch => {
+  export const fetchEvent = (eventId) => async dispatch => {
     try {
-        const res = await jwtFetch('/api/event')
+        const res = await jwtFetch(`/api/events/${eventId}`)
         const event = await res.json();
         dispatch(receiveEvent(event))
     } catch (err) {
