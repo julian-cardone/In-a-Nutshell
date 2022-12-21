@@ -6,12 +6,14 @@ import sessionReducer from "./session";
 import eventsReducer from "./events";
 import modalReducer from "./modal";
 import errorsReducer from "./errors";
+import tasksReducer from "./tasks";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   eventsReducer,
   errors: errorsReducer,
   modalReducer,
+  tasksReducer
 });
 
 let enhancer;

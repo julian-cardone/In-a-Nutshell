@@ -2,19 +2,18 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearEventErrors, createEvent } from '../../store/events';
 import "./NewEventForm.css"
+import NewEventFormBox from './NewEventForm';
 
 function NewEventForm () {
-  const [event, setEvent] = useState('')
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('')
   const [eventDate, setEventDate] = useState( new Date())
   const [status, setStatus] = useState(false)
   const dispatch = useDispatch();
-//   const newEvent = useSelector(state => state.events.new);
-//   const errors = useSelector(state => state.errors.events);
+  const errors = useSelector(state => state.errors.events);
 
   useEffect(() => {
-    // return () => dispatch(clearEventErrors());
+    return () => dispatch(clearEventErrors());
   }, [dispatch]);
 
   const handleSubmit = e => {
@@ -26,13 +25,13 @@ function NewEventForm () {
         status: status
     })
     dispatch(createEvent({ event })); 
-    setEvent('');
   };
 
-  const titleUpdate = e => setTitle(e.currentTarget.value);
-  const descriptionUpdate = e => setDescription(e.currentTarget.value);
-  const eventDateUpdate = e => setEventDate(e.currentTarget.value);
-  const statusUpdate = e => setTitle(e.currentTarget.value);
+  const titleUpdate = e => setTitle(e.target.value);
+  const descriptionUpdate = e => setDescription(e.target.value);
+  const eventDateUpdate = e => setEventDate(e.target.value);
+  const statusUpdate = e => setStatus(e.target.value);
+  debugger;
 
   return (
     <>
@@ -61,10 +60,10 @@ function NewEventForm () {
         onChange= {statusUpdate}
         placeholder="false"
         />
-        {/* <div className="errors">{errors && errors.event}</div> */}
+        <div className="errors">{errors && errors.event}</div>
         <input type="submit" value="Submit" />
       </form>
-      {/* <TweetBox text={newTweet?.event} /> */}
+      <NewEventFormBox title={title} description={description} eventDate={eventDate} status={status} />
     </>
   )
 }

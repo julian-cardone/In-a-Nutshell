@@ -69,6 +69,7 @@ export const createEvent = data => async dispatch => {
     try {
       const res = await jwtFetch('/api/events/', {
         method: 'POST',
+        headers: { "content-type" : "application/json"},
         body: JSON.stringify(data)
       });
       const event = await res.json();
