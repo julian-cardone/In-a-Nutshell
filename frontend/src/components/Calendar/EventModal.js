@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
-import NewEventForm from "../NewEventForm";
 import { format } from "date-fns";
+import NewEventForm from "../NewEventForm";
 
 // export { SignupForm, LoginForm };
 
