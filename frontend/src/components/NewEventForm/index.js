@@ -80,14 +80,14 @@ function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
         value={eventDate}
         onChange= {update("eventDate")}
         />
-        <div className="errors">{errors?.status}</div>
+        {/* <div className="errors">{errors?.status}</div>
         Completed?
         <input 
         type="checkbox"
         value={status}
         onChange= {update("status")}
         placeholder="false"
-        />
+        /> */}
         <div className="errors">{errors && errors.event}</div>
         <input type="submit" value="Submit" disabled={
             !title||
