@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 import { EventModal } from "./EventModal";
 import Events from "./Events";
 
-const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) => {
+const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate, events }) => {
 
-  const events = useSelector(state => Object.values(state.eventsReducer.all));
+  // const events = useSelector(state => Object.values(state.eventsReducer.all));
 
   const [showModal, setShowModal] = useState(false);
 
