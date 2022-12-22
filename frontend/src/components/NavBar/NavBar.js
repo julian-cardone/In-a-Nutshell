@@ -2,6 +2,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import "./navbar.css";
+
 import { useEffect } from "react";
 import { fetchEvent } from "../../store/events";
 import { tasks } from "./tasks";
@@ -23,6 +24,7 @@ function NavBar() {
   return (
     <>
       {/* <h1>In A Nutshell</h1> */}
+
       {/* { getLinks() } */}
       <div className="nav">
         <div className="links-nav">

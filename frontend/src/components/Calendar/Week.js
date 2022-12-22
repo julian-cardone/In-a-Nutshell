@@ -9,18 +9,16 @@ const Days = ({ currentMonth }) => {
 
   for (let i = 0; i < 7; i++) {
     days.push(
-      <div className="day-name-box"key={i}>
-      {format(addDays(startDate, i), formatForDay)}
+      <div className="day-name-box" key={i}>
+        {format(addDays(startDate, i), formatForDay)}
       </div>
-      );
+    );
   }
 
   return (
     <>
       <div className="days-container">
-        <div className="days-row">
-          {days}
-        </div>
+        <div className="days-row h3">{days}</div>
       </div>
     </>
   );
