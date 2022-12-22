@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import "./navbar.css";
 import { useContext, useEffect, useState } from "react";
-import { fetchEvent } from "../../store/events";
+import { deleteEvent, fetchEvent } from "../../store/events";
 import { tasks } from "./tasks";
-import * as taskActions from "../../store/tasks"
+import * as taskActions from "../../store/tasks";
 import { EventContext } from "../../App";
 
 function NavBar() {
@@ -15,15 +15,16 @@ function NavBar() {
   const [title, setTitle] = useState("");
 
   const task = useSelector((state) => {
-    return state.tasks
-  })
+    return state.tasks;
+  });
 
   const eventInfo = useContext(EventContext);
-  const eTitle = eventInfo.eventInfo[0] || "Fuck"
+  const eTitle = eventInfo.eventInfo[0] || "N/A";
+  const eArray = eventInfo.eventInfo[0] || [];
 
   useEffect(() => {
-    dispatch(taskActions.createTask())
-  })
+    dispatch(taskActions.createTask());
+  });
 
   const logoutUser = (e) => {
     e.preventDefault();
@@ -32,6 +33,9 @@ function NavBar() {
     dispatch(logout());
   };
 
+  const handleDelete = () => {
+    dispatch(deleteEvent(eventInfo.eventInfo[0]._id));
+  };
 
   return (
     <>
@@ -43,11 +47,14 @@ function NavBar() {
           <Link to={"/profile"}>Profile</Link>
           <Link to={"/events/new"}>Make an Event</Link>
           <h2>{eTitle.title}</h2>
+          {eTitle !== "N/A" && (
+            <button onClick={handleDelete}>Delete Event</button>
+          )}
         </div>
         <button onClick={logoutUser}>Logout</button>
         <div className="task-header">
-          <h2 style={{marginLeft: "30px"}}>Tasks</h2>
-          <h2 style={{marginRight: "20px"}}>Status</h2>
+          <h2 style={{ marginLeft: "30px" }}>Tasks</h2>
+          <h2 style={{ marginRight: "20px" }}>Status</h2>
         </div>
         <div className="tasks">
           <ul style={{ marginTop: "10px" }}>
@@ -106,11 +113,9 @@ function NavBar() {
           </h2>
         </div>
         <div style={{ paddingLeft: "30px" }}>
-          <textarea
-            style={{ height: "200px", width: "300px" }}
-          ></textarea>
+          <textarea style={{ height: "200px", width: "300px" }}></textarea>
         </div>
-            <button type="submit">Add Note</button>
+        <button type="submit">Add Note</button>
       </div>
     </>
   );
