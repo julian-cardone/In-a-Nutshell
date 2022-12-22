@@ -2,15 +2,26 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import "./navbar.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchEvent } from "../../store/events";
 import { tasks } from "./tasks";
-import * as acornSvg from "../../assets/acorn-svgrepo-com.svg";
+import * as taskActions from "../../store/tasks"
 
 function NavBar() {
   // const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
+  const [title, setTitle] = useState("");
+
+  const task = useSelector((state) => {
+    debugger
+    return state.tasks
+  })
+
+
+  useEffect(() => {
+    dispatch(taskActions.createTask())
+  })
 
   const logoutUser = (e) => {
     e.preventDefault();
@@ -19,38 +30,9 @@ function NavBar() {
     dispatch(logout());
   };
 
-  // useEffect(() => {
-  //   dispatch(fetchEvent())
-  // })
-
-  // useSelector((state) => {
-  //   debugger
-  //   return state.eventsReducer})
-
-  const getLinks = () => {
-    if (true) {
-      return (
-        <div className="links-nav">
-          <Link to={"/events"}>All Events</Link>
-          <Link to={"/profile"}>Profile</Link>
-          <Link to={"/events/new"}>Make an Event</Link>
-          <button onClick={logoutUser}>Logout</button>
-        </div>
-      );
-    } else {
-      return (
-        <div className="links-auth">
-          <Link to={"/signup"}>Signup</Link>
-          <Link to={"/login"}>Login</Link>
-        </div>
-      );
-    }
-  };
 
   return (
     <>
-      {/* <h1>In A Nutshell</h1> */}
-      {/* { getLinks() } */}
       <div className="nav">
         <div className="links-nav">
           <Link to={"/events"}>All Events</Link>
@@ -123,7 +105,7 @@ function NavBar() {
             style={{ height: "200px", width: "300px" }}
           ></textarea>
         </div>
-
+            <button type="submit">Add Note</button>
       </div>
     </>
   );
