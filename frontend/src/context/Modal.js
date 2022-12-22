@@ -46,12 +46,20 @@ export function Modal({ onClose, children }) {
 export function SlowModal({ onClose, children }) {
   const modalNode = useContext(ModalContext);
 
+  // const sessionModal = document.getElementById("sessionModal");
+
+  // useEffect(() => {
+  //   {
+  //     console.log(sessionModal);
+  //   }
+  // }, [sessionModal]);
+
   const slowOnClose = () => {
-    console.log("Start close...");
+    const sessionModal = document.getElementById("sessionModal");
+    sessionModal.classList.add(`closing`);
     setTimeout(() => {
-      console.log("Animating");
       onClose();
-    }, 500);
+    }, 400);
   };
 
   if (!modalNode) return null;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Modal, SlowModal } from "../../context/Modal";
 import "./SessionForms.css";
 import SignupForm from "./SignupForm";
@@ -22,7 +22,7 @@ export function SessionModal({ onClose, onSuccess }) {
 
   return (
     <SlowModal onClose={onClose}>
-      <div className="session-modal">
+      <div id="sessionModal" className={`session-modal`}>
         <h1>{showSignup ? "Sign Up" : "Log In"}</h1>
         {showSignup ? (
           <SignupForm onSuccess={onSuccess} />
