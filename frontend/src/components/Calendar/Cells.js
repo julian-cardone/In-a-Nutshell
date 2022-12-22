@@ -99,7 +99,7 @@ let firstSunday = findFirstSunday();
       ))}
     </div>
     {showModal && (
-      <EventModal eventDate={eventDate}onClose={() => setShowModal(false)} />
+      <EventModal eventDate={eventDate}showModal={showModal}setShowModal={setShowModal}onClose={() => setShowModal(false)} />
       )}
     </>
   )
