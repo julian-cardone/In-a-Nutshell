@@ -2,10 +2,11 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import "./navbar.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchEvent } from "../../store/events";
 import { tasks } from "./tasks";
 import * as taskActions from "../../store/tasks"
+import { EventContext } from "../../App";
 
 function NavBar() {
   // const loggedIn = useSelector(state => !!state.session.user);
@@ -14,10 +15,11 @@ function NavBar() {
   const [title, setTitle] = useState("");
 
   const task = useSelector((state) => {
-    debugger
     return state.tasks
   })
 
+  const eventInfo = useContext(EventContext);
+  const eTitle = eventInfo.eventInfo[0] || "Fuck"
 
   useEffect(() => {
     dispatch(taskActions.createTask())
@@ -40,6 +42,7 @@ function NavBar() {
           <Link to={"/events"}>All Events</Link>
           <Link to={"/profile"}>Profile</Link>
           <Link to={"/events/new"}>Make an Event</Link>
+          <h2>{eTitle.title}</h2>
         </div>
         <button onClick={logoutUser}>Logout</button>
         <div className="task-header">
