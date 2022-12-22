@@ -78,8 +78,9 @@ eventsArr.push(
   new Event ({
     title: `event #12`,
     description: faker.lorem.paragraph(3),
-    eventDate: new Date(2022, 11, 23, 11, 00),
-    status: faker.datatype.boolean()
+    eventDate: new Date(2022, 11, 23, 15, 00),
+    status: faker.datatype.boolean(),
+    tasks: ["63a35e453501fb46a7b781ee", "63a35e453501fb46a7b781ef", "63a35e453501fb46a7b781f0"]
   }
   )
 )

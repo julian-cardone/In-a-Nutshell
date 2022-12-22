@@ -1,0 +1,7 @@
+.event-form {
+    display: flex;
+}
+
+input[type=text] {
+    display: flex;
+}

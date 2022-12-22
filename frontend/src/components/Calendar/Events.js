@@ -77,12 +77,6 @@ function convert(eventDay){
 
   // console.log(eventsArray);
 
-  const dispatch = useDispatch();
-
-  useEffect(()=>{
-    dispatch(fetchEvents())
-  },[dispatch])
-
   const displayTime = (day) => {
     const date = new Date(day);
 

@@ -17,76 +17,56 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", (req, res, next) => {
-  const task = Task.findOne({ _id: req.params.id })
-    .then(() => {
-      res.status(200).json({
-        message: "Found the Task",
-      });
-    })
-    .catch(
-      res.status(400).json({
-        error: error,
-      })
-    );
+
+router.get("/:id", async (req, res, next) => {
+  try {
+    const task = await Task.findOne({ _id: req.params.id })
+    res.send(task)
+  } catch(err) {
+    next(err)
+  }
 });
 
-router.post("/new", (req, res) => {
+router.post('/new', async(req, res, next) => {
   const newTask = new Task({
-    title: req.body.title,
-    description: req.body.description,
-    status: req.body.status,
-  });
+        title: req.body.title,
+        description: req.body.description,
+        status: req.body.status,
+      });
 
-  newTask
-    .save()
-    .then(() => {
-      res.status(201).json({
-        message: "Task Saved!!!",
-      });
-    })
-    .catch((error) => {
-      res.status(400).json({
-        error: error,
-      });
-    });
+  try {
+    const savedTask = await newTask.save()
+    res.json(savedTask)
+  } catch (error) {
+   res.send(error)
+  }
 });
 
-router.delete("/:id", (req, res) => {
-  Task.deleteOne({ _id: req.params.id })
-    .then(() => {
-      res.status(200).json({
-        message: "Task Deleted",
-      });
-    })
-    .catch((error) => {
-      res.status(400).json({
-        error: error,
-        message: "Somethings amiss",
-      });
-    });
-});
 
-router.put("/:id", (req, res) => {
-  const udpatedTask = new Task({
+router.delete("/:id", async (req, res, next) => {
+  try{
+    await Task.findByIdAndDelete({_id: req.params.id})
+  } catch(err) {
+    res.send("NOPE")
+    return next(err)
+  }
+})
+
+
+router.put("/:id", async (req, res, next) => {
+  const updatedTask = await new Task({
     _id: req.params.id,
     title: req.body.title,
     description: req.body.description,
     status: req.body.status,
   });
 
-  Task.updateOne({ _id: req.params.id }, udpatedTask)
-    .then(() => {
-      res.status(201).json({
-        message: "Tasks do be updating",
-      });
-    })
-    .catch((error) => {
-      res.status(400).json({
-        error: error,
-        message: "Somethings amiss",
-      });
-    });
+  try {
+    await Task.updateOne({ _id: req.params.id }, updatedTask);
+  } catch (err) {
+    next(err);
+  }
 });
+
 
 module.exports = router;

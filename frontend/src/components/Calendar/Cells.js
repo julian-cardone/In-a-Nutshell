@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 import { EventModal } from "./EventModal";
 import Events from "./Events";
 
-const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) => {
+const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate, events }) => {
 
-  const events = useSelector(state => Object.values(state.eventsReducer.all));
+  // const events = useSelector(state => Object.values(state.eventsReducer.all));
 
   const [showModal, setShowModal] = useState(false);
 
@@ -15,6 +15,7 @@ const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate }) 
     // showModal === false ? setShowModal(true) : setShowModal(false);
     setShowModal(true);
     setEventDate(e.target.dataset.day);
+    console.log(eventDate);
   };
 
   // console.log(new Date(2022, 11, 13, 18, 0));
@@ -99,7 +100,7 @@ let firstSunday = findFirstSunday();
       ))}
     </div>
     {showModal && (
-      <EventModal eventDate={eventDate}onClose={() => setShowModal(false)} />
+      <EventModal eventDate={eventDate}showModal={showModal}setShowModal={setShowModal}onClose={() => setShowModal(false)} />
       )}
     </>
   )

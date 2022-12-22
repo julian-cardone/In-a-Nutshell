@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Cells from "./Cells";
 import Days from "./Week";
 import Header from "./Header";
 import squirrel from "../../assets/squirrel-origami-paper-svgrepo-com.svg";
 import "./calendar.css";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchEvents } from "../../store/events";
 
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  // console.log(new Date());
+  const events = useSelector(state => Object.values(state.events.all));
+
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(fetchEvents())
+  },[dispatch, events])
+
+  // console.log(events);
 
   return (
     <>
@@ -22,6 +32,7 @@ const Calendar = () => {
           setCurrentMonth={setCurrentMonth}
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
+          events={events}
         />
       </div>
     </>
