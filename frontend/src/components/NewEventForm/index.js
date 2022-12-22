@@ -11,6 +11,7 @@ function NewEventForm () {
   const [status, setStatus] = useState(false)
   const dispatch = useDispatch();
   const errors = useSelector(state => state.errors.events);
+  const newEvent = useSelector(state => state.eventsReducer.new)
 
   useEffect(() => {
     return () => dispatch(clearEventErrors());
@@ -18,52 +19,80 @@ function NewEventForm () {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const event = ({
-        title: title,
-        description: description,
-        eventDate: eventDate,
-        status: status
-    })
+    const event = {
+        title,
+        description,
+        eventDate,
+        status
+    }
     dispatch(createEvent({ event })); 
   };
 
-  const titleUpdate = e => setTitle(e.target.value);
-  const descriptionUpdate = e => setDescription(e.target.value);
-  const eventDateUpdate = e => setEventDate(e.target.value);
-  const statusUpdate = e => setStatus(e.target.value);
-  debugger;
+//   const titleUpdate = e => setTitle(e.currentTarget.value);
+//   const descriptionUpdate = e => setDescription(e.currentTarget.value);
+//   const eventDateUpdate = e => setEventDate(e.currentTarget.value);
+//   const statusUpdate ==> { return (e) => setStatus(e.currentTarget.value);};
+  const update = (field) => {
+    let setState;
+
+    switch (field) {
+        case "title":
+            setState = setTitle;
+            break;
+        case "description":
+            setState = setDescription;
+            break;
+        case "eventDate":
+            setState = setEventDate;
+            break;
+        case "status":
+            setState = setStatus;
+            break;
+        // default:
+        //     throw Error("Unknown field")
+    }
+
+    return (e) => setState(e.currentTarget.value)
+  }
 
   return (
     <>
       <form className="event-form" onSubmit={handleSubmit}>
+      <div className="errors">{errors?.title}</div>
         <input 
           type="text"
           value={title}
-          onChange={titleUpdate}
+          onChange={update("title")}
           placeholder="Title"
         />
+        <div className="errors">{errors?.description}</div>
         <input 
         type="text" 
         value={description}
-        onChange={descriptionUpdate}
+        onChange={update("description")}
         placeholder="Description"
         />
+        <div className="errors">{errors?.eventDate}</div>
         <input 
         type="datetime"
         value={eventDate}
-        onChange= {eventDateUpdate}
+        onChange= {update("eventDate")}
         />
+        <div className="errors">{errors?.status}</div>
         Completed?
         <input 
         type="checkbox"
         value={status}
-        onChange= {statusUpdate}
+        onChange= {update("status")}
         placeholder="false"
         />
         <div className="errors">{errors && errors.event}</div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit"  disabled={
+            !title||
+            !description ||
+            !eventDate||
+            !status }/>
       </form>
-      <NewEventFormBox title={title} description={description} eventDate={eventDate} status={status} />
     </>
   )
 }
