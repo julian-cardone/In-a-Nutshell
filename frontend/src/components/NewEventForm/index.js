@@ -62,7 +62,8 @@ function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
 
   return (
     <>
-      <form className="event-form" onSubmit={handleSubmit}>
+    <div className='form-wrapper'>
+    <form className="event-form" onSubmit={handleSubmit}>
       <div className="errors">{errors?.title}</div>
         <input 
           type="text"
@@ -87,10 +88,12 @@ function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
             <option>{minute}</option>
           ))}
         </select>
-        <select>
-          <otpion value="AM">AM</otpion>
-          <otpion value="PM">PM</otpion>
-        </select>
+        <label>AM
+        <input name="rad"type="radio"value="AM"></input>
+        </label>
+        <label>PM
+        <input name="rad"type="radio"value="PM"></input>
+        </label>
         {/* <div className="errors">{errors?.eventDate}</div>
         <input 
         type="datetime"
@@ -111,6 +114,7 @@ function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
             !description ||
             !eventDate}/>
       </form>
+      </div>
     </>
   )
 }
