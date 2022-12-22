@@ -24,11 +24,17 @@ function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
     const event = {
         title,
         description,
-        eventDate,
-        status
+        eventDate
     }
     dispatch(createEvent({ event })); 
   };
+
+  const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const minutes = [];
+
+  for (let i = 1; i < 60; i++){
+    minutes.push(i);
+  }
 
 //   const titleUpdate = e => setTitle(e.currentTarget.value);
 //   const descriptionUpdate = e => setDescription(e.currentTarget.value);
@@ -47,11 +53,8 @@ function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
         case "eventDate":
             setState = setEventDate;
             break;
-        case "status":
-            setState = setStatus;
-            break;
-        // default:
-        //     throw Error("Unknown field")
+        default:
+            throw Error("Unknown field")
     }
 
     return (e) => setState(e.currentTarget.value)
@@ -74,12 +77,26 @@ function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
         onChange={update("description")}
         placeholder="Description"
         />
-        <div className="errors">{errors?.eventDate}</div>
+        <select>
+          {hours.map((hour)=>(
+            <option>{hour}</option>
+          ))}
+        </select>
+        <select>
+          {minutes.map((minute)=>(
+            <option>{minute}</option>
+          ))}
+        </select>
+        <select>
+          <otpion value="AM">AM</otpion>
+          <otpion value="PM">PM</otpion>
+        </select>
+        {/* <div className="errors">{errors?.eventDate}</div>
         <input 
         type="datetime"
         value={eventDate}
         onChange= {update("eventDate")}
-        />
+        /> */}
         {/* <div className="errors">{errors?.status}</div>
         Completed?
         <input 
@@ -92,8 +109,7 @@ function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
         <input type="submit" value="Submit" disabled={
             !title||
             !description ||
-            !eventDate||
-            !status }/>
+            !eventDate}/>
       </form>
     </>
   )
