@@ -34,13 +34,14 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post('/new', async(req, res, next) => {
-  const newEvent = await new Event({
- title: req.body.title,
- description: req.body.description,
- eventDate: req.body.eventDate,
- status: req.body.status,
+  const newEvent = new Event({
+ title: req.body.event.title,
+ description: req.body.event.description,
+ eventDate: req.body.event.eventDate,
+ status: req.body.event.status,
 });
   try {
+    console.log(newEvent)
     const savedEvent = await newEvent.save()
     res.json(newEvent)
   } catch (error) {

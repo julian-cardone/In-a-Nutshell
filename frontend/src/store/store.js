@@ -10,10 +10,10 @@ import tasksReducer from "./tasks";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  eventsReducer,
+  events: eventsReducer,
   errors: errorsReducer,
   modalReducer,
-  tasksReducer
+  tasks: tasksReducer
 });
 
 let enhancer;

@@ -11,7 +11,7 @@ function NewEventForm () {
   const [status, setStatus] = useState(false)
   const dispatch = useDispatch();
   const errors = useSelector(state => state.errors.events);
-  const newEvent = useSelector(state => state.eventsReducer.new)
+  const newEvent = useSelector(state => state.events.new)
 
   useEffect(() => {
     return () => dispatch(clearEventErrors());
