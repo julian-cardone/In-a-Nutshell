@@ -47,43 +47,6 @@ router.post('/new', async(req, res, next) => {
   }
 });
 
-// router.post("/new", (req, res) => {
-//   console.log(req.body)
-//   const newEvent = new Event({
-//     title: req.body.title,
-//     description: req.body.description,
-//     eventDate: req.body.completionDate,
-//     status: req.body.status,
-//   });
-
-//   newEvent
-//     .save()
-//     .then(() => {
-//       res.status(201).json({
-//         message: "Post Saved!!!",
-//       });
-//     })
-//     .catch((error) => {
-//       res.status(400).json({
-//         error: error,
-//       });
-//     });
-// });
-
-// router.delete("/:id", (req, res) => {
-//   Event.deleteOne({ _id: req.params.id })
-//     .then(() => {
-//       res.status(200).json({
-//         message: "Message Deleted",
-//       });
-//     })
-//     .catch((error) => {
-//       res.status(400).json({
-//         error: error,
-//         message: "Somethings amiss",
-//       });
-//     });
-// });
 
 router.delete("/:id", async (req, res, next) => {
   console.log(req.params)
@@ -96,8 +59,8 @@ router.delete("/:id", async (req, res, next) => {
 })
 
 
-router.put("/:id", (req, res) => {
-  const udpatedEvent = new Event({
+router.put("/:id", async (req, res, next) => {
+  const udpatedEvent = await new Event({
     _id: req.params.id,
     title: req.body.title,
     description: req.body.description,
@@ -105,18 +68,13 @@ router.put("/:id", (req, res) => {
     status: req.body.status,
   });
 
-  Event.updateOne({ _id: req.params.id }, udpatedEvent)
-    .then(() => {
-      res.status(201).json({
-        message: "Events do be updating",
-      });
-    })
-    .catch((error) => {
-      res.status(400).json({
-        error: error,
-        message: "Somethings amiss",
-      });
-    });
+  try {
+    await Event.updateOne({ _id: req.params.id }, udpatedEvent)
+  } catch(err) {
+    next(err)
+  }
+
+
 });
 
 module.exports = router;
