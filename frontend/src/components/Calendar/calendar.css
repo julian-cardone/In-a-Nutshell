@@ -1,18 +1,44 @@
 #root{
     display: flex;
     justify-content: space-between;
+    background: #E8E4D9;
+}
+
+.menu {
+    cursor: context-menu;
+}
+
+.point {
+    cursor: pointer;
 }
  
 .calendar-container{
     position: relative;
     width: 100%;
     max-width: 100%;
-    margin: 0;
+    height: 100%;
+    max-height: 100vh;
+    margin: 24px 8px 24px 24px;
     display: flex;
     flex-direction: column;
-    padding-top: 2em;
-    padding-left: 2em;
-    padding-bottom: 2em;
+    padding: 2rem;
+    contain: content;
+    /* background: #eee center / contain no-repeat url("../../assets/squirrel-origami-paper-svgrepo-com.svg");
+    background-color: #698e59; */
+    /* border-radius: 6rem; */
+}
+
+.calendar-container::before{
+    content: "";
+    position: absolute;
+    background: center / contain no-repeat url("../../assets/squirrel-origami-paper-svgrepo-com.svg");
+    background-color: #698e59;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: .7;
+    border-radius: 3rem;
 }
 
 .header-flex-row{
@@ -21,13 +47,18 @@
     justify-content: space-around;
     align-items: center;
     padding: 10px;
-    border: 2px solid black;
-    max-height: 1.7vh;
+    border: 1px solid black;
+    border-radius: 5px;
+    /* max-height: 1.7vh; */
 }
 
 .back-button-div{
+    font-size: 24px;
     color: red;
+    padding: 0 24px;
+    border-radius: 5px;
 }
+
 
 .date-div{
     font-weight: bold;
@@ -36,7 +67,10 @@
 }
 
 .forward-button-div{
+    font-size: 24px;
+    padding: 0 24px;
     color: green;
+    border-radius: 5px;
 }
 
 .days-container{
@@ -61,6 +95,7 @@
     /* gap: 50px; */
     border: 1px solid black;
     height: 100%;
+    max-height: 100%;
 }
 
 .cells-row-container{
@@ -78,6 +113,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: auto;
+    height: 15.7vh;
+    /* background: rgb(, green, blue); */
 }
 
 .date-in-cell-box{
@@ -102,11 +140,16 @@
 
 .dropdown-container{
     position: relative;
+    cursor: pointer;
 }
 
 .ul-dropdown{
     position: relative;
     padding: 0.5vh;
+}
+
+.ul-dropdown li:hover {
+    background-color: #B0F0A2;
 }
 
 .add-button-container{

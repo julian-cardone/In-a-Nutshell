@@ -1,0 +1,26 @@
+.form-wrapper{
+    display: flex;
+    /* flex-direction: column; */
+}
+
+.event-form {
+    display: flex;
+    z-index: 100;
+}
+
+input[type=text] {
+    display: flex;
+}
+
+.event-modal{
+    display: flex;
+    position: relative;
+    /* background-color: brown; */
+    padding: 2vh;
+    flex-direction: column;
+}
+
+.acorn-svg{
+    position: relative;
+    /* z-index: -1 */
+}

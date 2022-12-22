@@ -33,6 +33,8 @@ function NavBar() {
 
   return (
     <>
+      {/* <h1>In A Nutshell</h1> */}
+      {/* { getLinks() } */}
       <div className="nav">
         <div className="links-nav">
           <Link to={"/events"}>All Events</Link>

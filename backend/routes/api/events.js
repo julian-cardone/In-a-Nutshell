@@ -17,59 +17,43 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", (req, res, next) => {
-  const event = Event.findOne({ _id: req.params.id })
-    .then(() => {
-      res.status(200).json({
-        message: "Found the Event",
-      });
-    })
-    .catch(
-      res.status(400).json({
-        error: error,
-      })
-    );
+router.get("/:id", async (req, res, next) => {
+  try {
+    const event = await Event.findOne({ _id: req.params.id })
+    res.send(event)
+  } catch(err) {
+    next(err)
+  }
 });
 
-router.post("/new", (req, res) => {
+router.post("/new", async (req, res, next) => {
   const newEvent = new Event({
-    title: req.body.title,
-    description: req.body.description,
-    eventDate: req.body.completionDate,
-    status: req.body.status,
+    title: req.body.event.title,
+    description: req.body.event.description,
+    eventDate: req.body.event.eventDate,
+    status: req.body.event.status,
   });
-
-  newEvent
-    .save()
-    .then(() => {
-      res.status(201).json({
-        message: "Post Saved!!!",
-      });
-    })
-    .catch((error) => {
-      res.status(400).json({
-        error: error,
-      });
-    });
+  try {
+    console.log(newEvent);
+    const savedEvent = await newEvent.save();
+    res.json(newEvent);
+  } catch (error) {
+    res.send(error);
+  }
 });
 
-router.delete("/:id", (req, res) => {
-  Event.deleteOne({ _id: req.params.id })
-    .then(() => {
-      res.status(200).json({
-        message: "Message Deleted",
-      });
-    })
-    .catch((error) => {
-      res.status(400).json({
-        error: error,
-        message: "Somethings amiss",
-      });
-    });
+router.delete("/:id", async (req, res, next) => {
+  console.log(req.params);
+  try {
+    await Event.findByIdAndDelete({ _id: req.params.id });
+  } catch (err) {
+    res.send("NOPE");
+    return next(err);
+  }
 });
 
-router.put("/:id", (req, res) => {
-  const udpatedEvent = new Event({
+router.put("/:id", async (req, res, next) => {
+  const udpatedEvent = await new Event({
     _id: req.params.id,
     title: req.body.title,
     description: req.body.description,
@@ -77,18 +61,11 @@ router.put("/:id", (req, res) => {
     status: req.body.status,
   });
 
-  Event.updateOne({ _id: req.params.id }, udpatedEvent)
-    .then(() => {
-      res.status(201).json({
-        message: "Events do be updating",
-      });
-    })
-    .catch((error) => {
-      res.status(400).json({
-        error: error,
-        message: "Somethings amiss",
-      });
-    });
+  try {
+    await Event.updateOne({ _id: req.params.id }, udpatedEvent);
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;

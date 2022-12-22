@@ -66,9 +66,12 @@ const removeEvent = eventId => ({
 }
 
 export const createEvent = data => async dispatch => {
+    // debugger;
     try {
-      const res = await jwtFetch('/api/events/', {
+      
+      const res = await jwtFetch('/api/events/new', {
         method: 'POST',
+        headers: { "Content-Type" : "application/json"},
         body: JSON.stringify(data)
       });
       const event = await res.json();
@@ -98,7 +101,7 @@ export const createEvent = data => async dispatch => {
 export const updateEvent = (event) => async (dispatch) => {
   try {
     const res = await jwtFetch(`/api/events/${event.id}`, {
-      method: 'PATCH',
+      method: 'PUT',
       body: JSON.stringify(event),
       headers: {
           'Content-Type': 'application/json'
@@ -129,19 +132,20 @@ export const eventsErrorReducer = (state = nullErrors, action) => {
 }
 
 const eventsReducer =(state = { all: {}, user: {}, new: undefined }, action) => {
+  const newState = { ...state }
   switch (action.type) {
     case RECEIVE_EVENTS:
-      return { ...state, all: action.events, new: undefined }
+      return { ...newState, all: action.events, new: undefined }
     case RECEIVE_EVENT:
-      return { ...state, all: action.event, new: undefined}
+      return { ...newState, all: action.event, new: undefined}
     case RECEIVE_NEW_EVENT:
-      return { ...state, new: action.event};
+      return { ...newState, new: action.event};
     case REMOVE_EVENT: {
-      delete state[action.eventId];
-      return state;
+      delete newState[action.eventId];
+      return newState;
       }
     case RECEIVE_USER_LOGOUT:
-      return { ...state, user: {}, new: undefined }
+      return { ...newState, user: {}, new: undefined }
     default:
       return state;
   }

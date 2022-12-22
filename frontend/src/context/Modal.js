@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import { useParams } from "react-router-dom";
 import "./Modal.css";
 
 const ModalContext = React.createContext();
@@ -22,11 +23,50 @@ export function ModalProvider({ children }) {
 
 export function Modal({ onClose, children }) {
   const modalNode = useContext(ModalContext);
+
+  const slowOnClose = () => {
+    console.log("Start close...");
+    setTimeout(() => {
+      console.log("Animating");
+      onClose();
+    }, 500);
+  };
+
   if (!modalNode) return null;
 
   return ReactDOM.createPortal(
     <div id="modal">
       <div id="modal-background" onClick={onClose} />
+      <div id="modal-content">{children}</div>
+    </div>,
+    modalNode
+  );
+}
+
+export function SlowModal({ onClose, children }) {
+  const modalNode = useContext(ModalContext);
+
+  // const sessionModal = document.getElementById("sessionModal");
+
+  // useEffect(() => {
+  //   {
+  //     console.log(sessionModal);
+  //   }
+  // }, [sessionModal]);
+
+  const slowOnClose = () => {
+    const sessionModal = document.getElementById("sessionModal");
+    sessionModal.classList.add(`closing`);
+    setTimeout(() => {
+      onClose();
+    }, 400);
+  };
+
+  if (!modalNode) return null;
+
+  return ReactDOM.createPortal(
+    <div id="modal">
+      <div id="modal-background" onClick={slowOnClose} />
       <div id="modal-content">{children}</div>
     </div>,
     modalNode
