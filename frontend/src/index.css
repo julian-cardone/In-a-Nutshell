@@ -9,18 +9,42 @@
 }
 
 h1 {
-    font:600 2.1rem 'Lexend Deca', sans-serif;;
+    font:600 2.1rem 'Lexend Deca', sans-serif;
     padding-bottom: 0.8em;
 }
 
-.p1 {
+h2 { 
+    font: 600 1.7rem 'Lexend Deca', sans-serif;
+}
 
+.h3 { 
+    font: 500 1.2rem 'Lexend Deca', sans-serif;
+}
+
+.p1 {
+    font: 400 13rem 'Lexend Deca', sans-serif;
 }
 
 .p2 {
-    font:400 16px 'Lexend Deca', sans-serif;;
+    font:400 16px 'Lexend Deca', sans-serif;
 }
 
+.ssp1 {
+    font: 400 13px 'Bitter', serif;
+}
+
+.ssh1 { 
+    font: 600 2.1rem 'Bitter', serif;
+    padding-bottom: 0.8em;
+}
+
+.ssh2 {
+    font: 600 1.7rem 'Bitter', serif;
+}
+
+.ssh3 {
+    font: 500 1.3rem 'Bitter', serif;
+}
 
 .btn {
     border: 0;
@@ -43,7 +67,7 @@ h1 {
     padding: 1em 4em;
 }
 
-a{
+a {
     color: inherit;
 }
 
@@ -59,4 +83,8 @@ a:visited {
 
 .modalLink:visited {
     color: #b0f0a2;
+}
+
+.calBtn:hover {
+    background-color: #DDA15E;
 }
