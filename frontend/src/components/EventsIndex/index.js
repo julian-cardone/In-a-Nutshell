@@ -7,7 +7,7 @@ import './EventsIndex.css';
 
 
 function EventsIndex() {
-    const events = useSelector(state => Object.values(state.eventsReducer.all));
+    const events = useSelector(state => Object.values(state.events.all));
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchEvents());

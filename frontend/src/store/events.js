@@ -66,9 +66,12 @@ const removeEvent = eventId => ({
 }
 
 export const createEvent = data => async dispatch => {
+    // debugger;
     try {
-      const res = await jwtFetch('/api/events/', {
+      
+      const res = await jwtFetch('/api/events/new', {
         method: 'POST',
+        headers: { "Content-Type" : "application/json"},
         body: JSON.stringify(data)
       });
       const event = await res.json();
