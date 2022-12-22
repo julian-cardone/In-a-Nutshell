@@ -40,7 +40,7 @@ function NewEventForm({ eventDateProp, showModal, setShowModal }) {
   ];
   const minutes = [];
 
-  for (let i = 1; i < 60; i++) {
+  for (let i = 0; i < 60; i++) {
     if (i < 10) {
       minutes.push(`0${i}`);
     } else {
