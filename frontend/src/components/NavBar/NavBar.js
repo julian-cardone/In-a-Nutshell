@@ -57,14 +57,24 @@ function NavBar() {
           <Link to={"/profile"}>Profile</Link>
           <Link to={"/events/new"}>Make an Event</Link>
         </div>
+        <button onClick={logoutUser}>Logout</button>
+        <div className="task-header">
+          <h2 style={{marginLeft: "30px"}}>Tasks</h2>
+          <h2 style={{marginRight: "20px"}}>Status</h2>
+        </div>
         <div className="tasks">
-          <ul style={{ marginTop: "20px" }}>
+          <ul style={{ marginTop: "10px" }}>
             {tasks.map((task) => {
               return (
                 <li>
                   <div>
-                    <div style={{display: "flex", justifyContent: "space-between"}}>
-                      <div style={{display: "flex", flexDirection: "row"}}>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <div style={{ display: "flex", flexDirection: "row" }}>
                         <div>
                           <svg
                             width="25px"
@@ -90,8 +100,10 @@ function NavBar() {
                       </div>
                       <div>
                         <div className="status-buttons">
-                          <input type="radio"></input>
-                          <input type="radio"></input>
+                          <input
+                            type="checkbox"
+                            style={{ marginRight: "35px" }}
+                          ></input>
                         </div>
                       </div>
                     </div>
@@ -101,7 +113,17 @@ function NavBar() {
             })}
           </ul>
         </div>
-        <button onClick={logoutUser}>Logout</button>
+        <div className="note-pad">
+          <h2 style={{ display: "flex", justifyContent: "center" }}>
+            Make a Note!
+          </h2>
+        </div>
+        <div style={{ paddingLeft: "30px" }}>
+          <textarea
+            style={{ height: "200px", width: "300px" }}
+          ></textarea>
+        </div>
+
       </div>
     </>
   );

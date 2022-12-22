@@ -28,4 +28,15 @@
     font: 400 16px 'Lexend Deca', sans-serif;
 }
 
+.note-pad {
+    font: 400 20px 'Lexend Deca', sans-serif;
+    /* text-decoration: underline; */
+}
 
+.task-header{
+    display: flex;
+    flex-direction: row;
+    text-decoration: underline;
+    justify-content: space-between;
+    font-size: 20px;
+}
