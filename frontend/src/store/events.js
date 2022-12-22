@@ -84,20 +84,22 @@ export const createEvent = data => async dispatch => {
     }
   };
 
-  export const deleteEvent = (eventId) => async dispatch => {
-    try {
-    const res = await jwtFetch(`/api/events/${eventId}`, {
-        method: "DELETE"
-      });
-      dispatch(removeEvent(eventId));
-      return res;
-    } catch(err) {
-      const resBody = await err.json();
-      if (resBody.statusCode === 400) {
-        return dispatch(receiveErrors(resBody.errors))
-      }
+
+
+export const deleteEvent = (eventId) => async dispatch => {
+  try {
+  await jwtFetch(`/api/events/${eventId}`, {
+      method: "DELETE"
+    });
+    dispatch(removeEvent(eventId));
+  } catch(err) {
+    const resBody = await err.json();
+    if (resBody.statusCode === 400) {
+      return dispatch(receiveErrors(resBody.errors))
     }
+  }
 }
+
 
 export const updateEvent = (event) => async (dispatch) => {
   try {
