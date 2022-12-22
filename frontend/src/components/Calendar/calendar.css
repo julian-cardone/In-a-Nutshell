@@ -1,18 +1,33 @@
 #root{
     display: flex;
     justify-content: space-between;
+    background: #E8E4D9;
 }
  
 .calendar-container{
     position: relative;
     width: 100%;
     max-width: 100%;
-    margin: 0;
+    margin: 24px;
     display: flex;
     flex-direction: column;
-    padding-top: 2em;
-    padding-left: 2em;
-    padding-bottom: 2em;
+    padding: 2rem;
+    /* background: #eee center / contain no-repeat url("../../assets/squirrel-origami-paper-svgrepo-com.svg");
+    background-color: #698e59; */
+    /* border-radius: 6rem; */
+}
+
+.calendar-container::before{
+    content: "";
+    position: absolute;
+    background: center / contain no-repeat url("../../assets/squirrel-origami-paper-svgrepo-com.svg");
+    background-color: #698e59;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: .5;
+    border-radius: 3rem;
 }
 
 .header-flex-row{
@@ -78,6 +93,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    /* background: rgb(, green, blue); */
 }
 
 .date-in-cell-box{

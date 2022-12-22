@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import logo from "../../assets/NSLogos/Logo.svg";
@@ -8,6 +8,13 @@ import "./SplashPage.css";
 
 function SplashPage() {
   const [showModal, setShowModal] = useState(false);
+
+  // const sessionModal = document.getElementById("sessionModal");
+
+  // useEffect(() => {
+  //   if (sessionModal) sessionModal.classList.add(`closing`);
+  //   console.log(sessionModal);
+  // }, [showModal, sessionModal]);
 
   const handleModal = (e) => {
     e.preventDefault();
