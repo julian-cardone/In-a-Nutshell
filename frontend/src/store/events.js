@@ -86,10 +86,11 @@ export const createEvent = data => async dispatch => {
 
   export const deleteEvent = (eventId) => async dispatch => {
     try {
-    await jwtFetch(`/api/events/${eventId}`, {
+    const res = await jwtFetch(`/api/events/${eventId}`, {
         method: "DELETE"
       });
       dispatch(removeEvent(eventId));
+      return res;
     } catch(err) {
       const resBody = await err.json();
       if (resBody.statusCode === 400) {
