@@ -15,6 +15,7 @@ const Cells = ({ currentMonth, setCurrentMonth, seletedDate, setSelectedDate, ev
     // showModal === false ? setShowModal(true) : setShowModal(false);
     setShowModal(true);
     setEventDate(e.target.dataset.day);
+    console.log(eventDate);
   };
 
   // console.log(new Date(2022, 11, 13, 18, 0));

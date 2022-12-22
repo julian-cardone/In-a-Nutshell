@@ -9,7 +9,7 @@ export function EventModal({ onClose, eventDate, showModal, setShowModal }) {
   return (
     <Modal onClose={onClose}>
       <div className="event-modal">
-        <h1>Create an Event for {format(new Date(eventDate), "cccc")}, {format(new Date(eventDate), "MMMM Mo")}</h1>
+        <h1>Create an Event for {format(new Date(eventDate), "eeee")}, {format(new Date(eventDate), "MMMM do")}</h1>
         <NewEventForm eventDateProp={eventDate}showModal={showModal}setShowModal={setShowModal}/>
       </div>
     </Modal>
