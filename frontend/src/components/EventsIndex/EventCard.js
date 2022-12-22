@@ -5,12 +5,11 @@ import { useEffect } from 'react';
 
 function EventCard({event}) {
     const dispatch = useDispatch();
-    useEffect(() => {
 
-    } )
     const removeEvent = (e) => {
-        dispatch(deleteEvent(event._id))
+        dispatch(deleteEvent(event._id));
     }
+    
     return (
         <>
         <div className="event-card">
