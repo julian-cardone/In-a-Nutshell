@@ -10,13 +10,11 @@ router.get("/test", function (req, res, next) {
 
 router.get("/", async (req, res, next) => {
   try {
-     const events = await Event.find({})
-    await res.json(events)
-   } catch (error) {
-    json.send("this shit diddnt work")
-   }
-
-
+    const events = await Event.find({});
+    await res.json(events);
+  } catch (error) {
+    res.json("this shit diddnt work");
+  }
 });
 
 router.get("/:id", (req, res, next) => {
@@ -72,20 +70,31 @@ router.post('/new', async(req, res, next) => {
 //     });
 // });
 
-router.delete("/:id", (req, res) => {
-  Event.deleteOne({ _id: req.params.id })
-    .then(() => {
-      res.status(200).json({
-        message: "Message Deleted",
-      });
-    })
-    .catch((error) => {
-      res.status(400).json({
-        error: error,
-        message: "Somethings amiss",
-      });
-    });
-});
+// router.delete("/:id", (req, res) => {
+//   Event.deleteOne({ _id: req.params.id })
+//     .then(() => {
+//       res.status(200).json({
+//         message: "Message Deleted",
+//       });
+//     })
+//     .catch((error) => {
+//       res.status(400).json({
+//         error: error,
+//         message: "Somethings amiss",
+//       });
+//     });
+// });
+
+router.delete("/:id", async (req, res, next) => {
+  console.log(req.params)
+  try{
+    await Event.findByIdAndDelete({_id: req.params.id})
+  } catch(err) {
+    res.send("NOPE")
+    return next(err)
+  }
+})
+
 
 router.put("/:id", (req, res) => {
   const udpatedEvent = new Event({

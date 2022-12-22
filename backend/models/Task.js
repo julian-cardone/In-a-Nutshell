@@ -6,6 +6,10 @@ const taskSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
+  eventId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Event'
+  },
   title: {
     type: String,
     required: true
