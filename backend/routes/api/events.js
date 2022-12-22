@@ -17,47 +17,40 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", (req, res, next) => {
-  const event = Event.findOne({ _id: req.params.id })
-    .then(() => {
-      res.status(200).json({
-        message: "Found the Event",
-      });
-    })
-    .catch(
-      res.status(400).json({
-        error: error,
-      })
-    );
-});
-
-router.post('/new', async(req, res, next) => {
-  const newEvent = new Event({
- title: req.body.event.title,
- description: req.body.event.description,
- eventDate: req.body.event.eventDate,
- status: req.body.event.status,
-});
+router.get("/:id", async (req, res, next) => {
   try {
-    console.log(newEvent)
-    const savedEvent = await newEvent.save()
-    res.json(newEvent)
-  } catch (error) {
-   res.send(error)
+    const event = await Event.findOne({ _id: req.params.id })
+    res.send(event)
+  } catch(err) {
+    next(err)
   }
 });
 
+router.post("/new", async (req, res, next) => {
+  const newEvent = new Event({
+    title: req.body.event.title,
+    description: req.body.event.description,
+    eventDate: req.body.event.eventDate,
+    status: req.body.event.status,
+  });
+  try {
+    console.log(newEvent);
+    const savedEvent = await newEvent.save();
+    res.json(newEvent);
+  } catch (error) {
+    res.send(error);
+  }
+});
 
 router.delete("/:id", async (req, res, next) => {
-  console.log(req.params)
-  try{
-    await Event.findByIdAndDelete({_id: req.params.id})
-  } catch(err) {
-    res.send("NOPE")
-    return next(err)
+  console.log(req.params);
+  try {
+    await Event.findByIdAndDelete({ _id: req.params.id });
+  } catch (err) {
+    res.send("NOPE");
+    return next(err);
   }
-})
-
+});
 
 router.put("/:id", async (req, res, next) => {
   const udpatedEvent = await new Event({
@@ -69,12 +62,10 @@ router.put("/:id", async (req, res, next) => {
   });
 
   try {
-    await Event.updateOne({ _id: req.params.id }, udpatedEvent)
-  } catch(err) {
-    next(err)
+    await Event.updateOne({ _id: req.params.id }, udpatedEvent);
+  } catch (err) {
+    next(err);
   }
-
-
 });
 
 module.exports = router;
