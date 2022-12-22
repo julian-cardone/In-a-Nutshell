@@ -4,7 +4,7 @@ import { clearEventErrors, createEvent } from '../../store/events';
 import "./NewEventForm.css"
 import NewEventFormBox from './NewEventForm';
 
-function NewEventForm () {
+function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('')
   const [eventDate, setEventDate] = useState( new Date())
@@ -14,11 +14,13 @@ function NewEventForm () {
   const newEvent = useSelector(state => state.events.new)
 
   useEffect(() => {
+    setEventDate(eventDateProp);
     return () => dispatch(clearEventErrors());
-  }, [dispatch]);
+  }, [dispatch, eventDateProp]);
 
   const handleSubmit = e => {
     e.preventDefault();
+    setShowModal(false);
     const event = {
         title,
         description,
@@ -87,7 +89,7 @@ function NewEventForm () {
         placeholder="false"
         />
         <div className="errors">{errors && errors.event}</div>
-        <input type="submit" value="Submit"  disabled={
+        <input type="submit" value="Submit" disabled={
             !title||
             !description ||
             !eventDate||
