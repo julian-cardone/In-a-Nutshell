@@ -76,7 +76,9 @@
 .days-container{
     position: relative;
     /* display: flex; */
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    background: rgba(255, 166, 0, 0.775);
     /* height: 100%; */
     /* max-height: 100%; */
 }
@@ -94,6 +96,7 @@
     flex-direction: column;
     /* gap: 50px; */
     border: 1px solid black;
+    border-radius: 1%;
     height: 100%;
     max-height: 100%;
 }
@@ -107,6 +110,7 @@
 }
 
 .cell-box-container{
+    border-radius: 5px;
     border: 1px solid black;
     width: 14.28571428571429%;
     min-width: 105px;
@@ -160,6 +164,9 @@
 
 .add-button{
     position: relative;
+    background-color: rgba(47,
+        72,
+        42, .3);
     /* top: 88%; */
     /* bottom: 75%; */
     /* left: 50%; */
@@ -170,13 +177,21 @@
     /* max-height: 13%; */
     width: 39%;
     max-width: 39%;
-    padding: 1px;
-    font-size: 0.7em;
+    /* padding: 1px; */
+    font-size: 1em;
     /* top: 104%; */
     /* left: 39.5%; */
-    margin: 2px;
+    /* margin: 2px; */
+    border: 0;
+    /* padding: 1em 2em; */
+    text-decoration: none;
+    /* font-size: 15px; */
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
 
-    transition-duration: 0.7s;
+
+    transition-duration: 0.3s;
     transition-timing-function: ease;
     transition-delay: 0s;
     transition-property: opacity;
