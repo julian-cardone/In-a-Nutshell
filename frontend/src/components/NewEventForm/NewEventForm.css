@@ -15,7 +15,7 @@ input[type=text] {
 .event-modal{
     display: flex;
     position: relative;
-    /* background-color: brown; */
+    background-color: brown;
     padding: 2vh;
     flex-direction: column;
 }

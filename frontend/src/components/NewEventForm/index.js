@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearEventErrors, createEvent } from '../../store/events';
 import "./NewEventForm.css"
 import NewEventFormBox from './NewEventForm';
+import { getDay, getMonth, setHours, setMinutes } from 'date-fns';
 
 function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
   const [title, setTitle] = useState('');
@@ -13,6 +14,9 @@ function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
   const errors = useSelector(state => state.errors.events);
   const newEvent = useSelector(state => state.events.new)
 
+  // const [hour, setTheHour] = useState(null);
+  // const [minute, setTheMinute] = useState();
+
   useEffect(() => {
     setEventDate(eventDateProp);
     return () => dispatch(clearEventErrors());
@@ -22,18 +26,23 @@ function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
     e.preventDefault();
     setShowModal(false);
     const event = {
-        title,
-        description,
-        eventDate
+      title,
+      description,
+      eventDate
     }
+    debugger
     dispatch(createEvent({ event })); 
   };
 
-  const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
   const minutes = [];
 
   for (let i = 1; i < 60; i++){
-    minutes.push(i);
+    if (i < 10){
+      minutes.push(`0${i}`)
+    } else {
+      minutes.push(i);
+    }
   }
 
 //   const titleUpdate = e => setTitle(e.currentTarget.value);
@@ -60,6 +69,30 @@ function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
     return (e) => setState(e.currentTarget.value)
   }
 
+// function handleHours(e){
+//   let cHour = e.targer.value;
+//   setTheHour(cHour);
+//   }
+
+//   function handleMinutes(e){
+//     let cMinute = e.target.value;
+//     setTheMinute(cMinute)
+//   }
+
+  function handleHoursTwo(e){
+    console.log(e.target.value)
+    // setTheHour(e.target.value);
+    // console.log(hour);
+    setEventDate(setHours(new Date(eventDate), e.target.value));
+  }
+
+  function handleMinutesTwo(e){
+    console.log(e.target.value)
+    // setTheHour(e.target.value);
+    // console.log(hour);
+    setEventDate(setMinutes(new Date(eventDate), e.target.value));
+  }
+
   return (
     <>
     <div className='form-wrapper'>
@@ -78,36 +111,25 @@ function NewEventForm ({ eventDateProp, showModal, setShowModal }) {
         onChange={update("description")}
         placeholder="Description"
         />
-        <select>
+
+        <select onChange={(e) => handleHoursTwo(e)}>
           {hours.map((hour)=>(
-            <option>{hour}</option>
+            <option className='hour-option'value={hour}>{hour}</option>
           ))}
         </select>
-        <select>
+        <select onChange={(e) => handleMinutesTwo(e)}>
           {minutes.map((minute)=>(
-            <option>{minute}</option>
+            <option className='minute-option'value={minute}>{minute}</option>
           ))}
         </select>
-        <label>AM
+
+        {/* <label>AM
         <input name="rad"type="radio"value="AM"></input>
         </label>
         <label>PM
         <input name="rad"type="radio"value="PM"></input>
-        </label>
-        {/* <div className="errors">{errors?.eventDate}</div>
-        <input 
-        type="datetime"
-        value={eventDate}
-        onChange= {update("eventDate")}
-        /> */}
-        {/* <div className="errors">{errors?.status}</div>
-        Completed?
-        <input 
-        type="checkbox"
-        value={status}
-        onChange= {update("status")}
-        placeholder="false"
-        /> */}
+        </label> */}
+
         <div className="errors">{errors && errors.event}</div>
         <input type="submit" value="Submit" disabled={
             !title||
