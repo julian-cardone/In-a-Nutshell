@@ -15,7 +15,7 @@ const eventSchema = Schema({
   },
   status: {
     type: Boolean,
-    required: true
+    required: false
   },
   note: {
     type: String,
