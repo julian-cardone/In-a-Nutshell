@@ -8,6 +8,10 @@
     background-color: #E8E4D9;
 }
 
+p {
+    font-family: 'Bitter', serif;
+}
+
 h1 {
     font:600 2.1rem 'Lexend Deca', sans-serif;
     padding-bottom: 0.8em;
@@ -22,15 +26,23 @@ h2 {
 }
 
 .p1 {
-    font: 400 13rem 'Lexend Deca', sans-serif;
+    font: 400 13px 'Lexend Deca', sans-serif;
 }
 
 .p2 {
     font:400 16px 'Lexend Deca', sans-serif;
 }
 
+.p3 {
+    font: 600 12px 'Lexend Deca', sans-serif;
+}
+
 .ssp1 {
     font: 400 13px 'Bitter', serif;
+}
+
+.ssp2 {
+    font: 400 16px 'Bitter', serif;
 }
 
 .ssh1 { 
@@ -45,6 +57,7 @@ h2 {
 .ssh3 {
     font: 500 1.3rem 'Bitter', serif;
 }
+
 
 .btn {
     border: 0;
