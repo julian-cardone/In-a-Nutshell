@@ -17,7 +17,7 @@ const Calendar = () => {
 
   useEffect(()=>{
     dispatch(fetchEvents())
-  },[dispatch, events])
+  },[dispatch])
 
   // console.log(events);
 
