@@ -19,33 +19,6 @@ function NavBar() {
     dispatch(logout());
   };
 
-  // useEffect(() => {
-  //   dispatch(fetchEvent())
-  // })
-
-  // useSelector((state) => {
-  //   debugger
-  //   return state.eventsReducer})
-
-  const getLinks = () => {
-    if (true) {
-      return (
-        <div className="links-nav">
-          <Link to={"/events"}>All Events</Link>
-          <Link to={"/profile"}>Profile</Link>
-          <Link to={"/events/new"}>Make an Event</Link>
-          <button onClick={logoutUser}>Logout</button>
-        </div>
-      );
-    } else {
-      return (
-        <div className="links-auth">
-          <Link to={"/signup"}>Signup</Link>
-          <Link to={"/login"}>Login</Link>
-        </div>
-      );
-    }
-  };
 
   return (
     <>
@@ -123,7 +96,7 @@ function NavBar() {
             style={{ height: "200px", width: "300px" }}
           ></textarea>
         </div>
-
+            <button type="submit">Add Note</button>
       </div>
     </>
   );

@@ -53,20 +53,31 @@ router.post("/new", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
-  Event.deleteOne({ _id: req.params.id })
-    .then(() => {
-      res.status(200).json({
-        message: "Message Deleted",
-      });
-    })
-    .catch((error) => {
-      res.status(400).json({
-        error: error,
-        message: "Somethings amiss",
-      });
-    });
-});
+// router.delete("/:id", (req, res) => {
+//   Event.deleteOne({ _id: req.params.id })
+//     .then(() => {
+//       res.status(200).json({
+//         message: "Message Deleted",
+//       });
+//     })
+//     .catch((error) => {
+//       res.status(400).json({
+//         error: error,
+//         message: "Somethings amiss",
+//       });
+//     });
+// });
+
+router.delete("/:id", async (req, res, next) => {
+  console.log(req.params)
+  try{
+    await Event.findByIdAndDelete({_id: req.params.id})
+  } catch(err) {
+    res.send("NOPE")
+    return next(err)
+  }
+})
+
 
 router.put("/:id", (req, res) => {
   const udpatedEvent = new Event({
