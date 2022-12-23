@@ -6,7 +6,7 @@ import UpdateForm from "./UpdateForm";
 
 // export { SignupForm, LoginForm };
 
-function UpdateModal({ onClose, event, showModal, setShowModal }) {
+function UpdateModal({ onClose, event, showModal, setShowModal, setEventsInd }) {
   return (
     <Modal onClose={onClose}>
       <div className="event-modal">
@@ -16,6 +16,7 @@ function UpdateModal({ onClose, event, showModal, setShowModal }) {
           event={event}
           showModal={showModal}
           setShowModal={setShowModal}
+          setEventsInd={setEventsInd}
         />
       </div>
     </Modal>
