@@ -68,7 +68,7 @@ const removeEvent = eventId => ({
 export const createEvent = data => async dispatch => {
     // debugger;
     try {
-      
+
       const res = await jwtFetch('/api/events/new', {
         method: 'POST',
         headers: { "Content-Type" : "application/json"},
@@ -99,6 +99,7 @@ export const createEvent = data => async dispatch => {
 }
 
 export const updateEvent = (event) => async (dispatch) => {
+  debugger 
   try {
     const res = await jwtFetch(`/api/events/${event.id}`, {
       method: 'PUT',

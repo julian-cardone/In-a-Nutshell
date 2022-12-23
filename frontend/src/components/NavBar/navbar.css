@@ -70,13 +70,19 @@
     color:black;
 }
 
-.deleteButton {
-    color: red;
+.changeButton {
     border: none;
     background-color: inherit;
 }
 
-.deleteButton:hover{
+.deleteButton {
+    color: red;
+}
+.updateButton{
+    color: blue
+}
+
+.changeButton:hover{
     text-decoration: underline;
     font-weight: 700;
     cursor: pointer;

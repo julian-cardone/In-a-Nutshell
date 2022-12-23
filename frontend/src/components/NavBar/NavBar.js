@@ -8,11 +8,13 @@ import { tasks } from "./tasks";
 import * as taskActions from "../../store/tasks";
 import { EventContext } from "../../App";
 import { format } from "date-fns";
+import UpdateModal from "../UpdateModal/UpdateModal";
 
-function NavBar({setEventsInd}) {
+function NavBar({ setEventsInd }) {
   // const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
   // const [title, setTitle] = useState("");
 
   const task = useSelector((state) => {
@@ -39,11 +41,16 @@ function NavBar({setEventsInd}) {
     setEventsInd("");
   };
 
+  const handleModal = (e) => {
+    e.preventDefault();
+    setShowModal(true);
+  };
+
   return (
     <>
       {/* <h1>In A Nutshell</h1> */}
       {/* { getLinks() } */}
-      <div className="nav" style={{position: 'relative'}}>
+      <div className="nav" style={{ position: "relative" }}>
         <div style={{ display: "flex", flexDirection: "row" }}>
           <h2 className="eventHeader">{eTitle.title}</h2>
           {/* <h2>{format(new Date(eTitle.eventDate), "eeee")},{" "}
@@ -53,10 +60,13 @@ function NavBar({setEventsInd}) {
           {eTitle !== "N/A" && <h3>Description</h3>}
           <p>{eTitle.description}</p>
           {eTitle !== "N/A" && (
-            <button onClick={handleDelete} className="deleteButton">
+            <button onClick={handleDelete} className="changeButton deleteButton">
               Delete Event
             </button>
           )}
+            { eTitle !== "N/A" &&<span className="changeButton updateButton" onClick={handleModal}>
+                Update Event
+              </span>}
         </div>
         <div className="task-header">
           <h2 style={{ marginLeft: "30px" }}>Tasks</h2>
@@ -113,6 +123,8 @@ function NavBar({setEventsInd}) {
             })}
           </ul>
         </div>
+
+        {showModal && <UpdateModal event={eTitle} onClose={() => setShowModal(false)} />}
         <div className="btnContainer">
           <div className="links-nav">
             <Link to={"/events"} className="eventsLink">
