@@ -11,6 +11,16 @@
 .point {
     cursor: pointer;
 }
+
+.quikHover {
+    transition: all .2s ease-in-out;
+}
+
+.quikHover:hover {
+    background-color: rgba(183, 199, 14, .5);
+    border-radius: 10px;
+
+}
  
 .calendar-container{
     position: relative;
@@ -31,13 +41,13 @@
 .calendar-container::before{
     content: "";
     position: absolute;
-    /* background: center / contain no-repeat url("https: //svgsilh.com/svg/2719078.svg"); */
+    background: center / contain no-repeat url("../../assets/squirrel-origami-paper-svgrepo-com.svg");
     background-color: #698e59;
     top: 0px;
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: .7;
+    opacity: .6;
     border-radius: 3rem;
     height: 101%;
 }
