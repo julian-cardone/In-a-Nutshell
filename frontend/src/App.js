@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 
@@ -15,34 +15,40 @@ import NewEventForm from "./components/NewEventForm";
 import { getCurrentUser } from "./store/session";
 import Calendar from "./components/Calendar";
 
+export const EventContext = createContext(null);
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
+  const [currentEvent, setCurrentEvent] = useState(null);
 
-  const loggedIn = useSelector((state)=>(!!state.session.user))
+
+  const loggedIn = useSelector((state) => !!state.session.user);
   return (
     <>
-    {!loggedIn && <Redirect to="/" />}
-    {loaded && (
-      <>
-        <Switch>
-          <AuthRoute exact path="/" component={SplashPage}/>
-          <AuthRoute exact path="/login" component={LoginForm} />
-          <AuthRoute exact path="/signup" component={SignupForm} />
-          <Route exact path= "/events" component={EventsIndex} />
-          <Route exact path= "/events/new" component={NewEventForm} />
-          <Route exact path="/home">
-              {loggedIn && <Calendar />}
-              {loggedIn && <NavBar />}
-          </Route>
-          {/* {!loggedIn && <Redirect to="/"></Redirect>} */}
-        </Switch>
-      </>
-    )}
-      </>
+      {!loggedIn && <Redirect to="/" />}
+      {loaded && (
+        <>
+          <Switch>
+            <AuthRoute exact path="/" component={SplashPage} />
+            <AuthRoute exact path="/login" component={LoginForm} />
+            <AuthRoute exact path="/signup" component={SignupForm} />
+            <EventContext.Provider value={{eventInfo: [currentEvent, setCurrentEvent]}}>
+              <Route exact path="/events" component={EventsIndex} />
+              <Route exact path="/events/new" component={NewEventForm} />
+              <Route exact path="/home">
+                {loggedIn && <Calendar />}
+                {loggedIn && <NavBar />}
+              </Route>
+            </EventContext.Provider>
+            {/* {!loggedIn && <Redirect to="/"></Redirect>} */}
+          </Switch>
+        </>
+      )}
+    </>
   );
 }
 

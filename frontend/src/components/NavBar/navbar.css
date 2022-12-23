@@ -41,3 +41,8 @@
     justify-content: space-between;
     font-size: 20px;
 }
+
+.navButton{
+    width: 75%;
+    margin-left: 45px;
+}
