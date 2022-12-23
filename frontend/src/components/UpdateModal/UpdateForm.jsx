@@ -23,14 +23,15 @@ function UpdateForm({ event, showModal, setShowModal }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setShowModal(false);
     const changedEvent = {
+      id: event._id,
       title,
       description,
       eventDate,
     };
     // debugger;
-    dispatch(updateEvent({ changedEvent }));
+    dispatch(updateEvent(changedEvent));
+    setShowModal(false);
   };
 
   const hours = [
