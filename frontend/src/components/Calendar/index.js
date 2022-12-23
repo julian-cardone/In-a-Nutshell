@@ -11,13 +11,13 @@ const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const events = useSelector(state => Object.values(state.events.all));
+  const events = useSelector((state) => Object.values(state.events.all));
 
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch(fetchEvents())
-  },[dispatch])
+  useEffect(() => {
+    dispatch(fetchEvents());
+  }, [dispatch]);
 
   // console.log(events);
 
