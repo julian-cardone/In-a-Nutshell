@@ -12,7 +12,7 @@ function NavBar() {
   // const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
-  const [title, setTitle] = useState("");
+  // const [title, setTitle] = useState("");
 
   const task = useSelector((state) => {
     return state.tasks;
@@ -22,9 +22,9 @@ function NavBar() {
   const eTitle = eventInfo.eventInfo[0] || "N/A";
   const eArray = eventInfo.eventInfo[0] || [];
 
-  useEffect(() => {
-    dispatch(taskActions.createTask());
-  });
+  // useEffect(() => {
+  //   dispatch(taskActions.createTask());
+  // });
 
   const logoutUser = (e) => {
     e.preventDefault();
@@ -47,10 +47,10 @@ function NavBar() {
           <Link to={"/profile"}>Profile</Link>
           <Link to={"/events/new"}>Make an Event</Link>
         </div>
-        <button onClick={logoutUser}>Logout</button>
+        <button onClick={logoutUser} className="btn btnPrimary navButton" >Logout</button>
           <h2>{eTitle.title}</h2>
           {eTitle !== "N/A" && (
-            <button onClick={handleDelete}>Delete Event</button>
+            <button onClick={handleDelete} className="btn btnPrimary navButton">Delete Event</button>
           )}
         <div className="task-header">
           <h2 style={{ marginLeft: "30px" }}>Tasks</h2>
@@ -89,7 +89,7 @@ function NavBar() {
                           </svg>
                         </div>
                         <div id="task-title">
-                          <h2>{task.title}</h2>
+                          <h3>{task.title}</h3>
                         </div>
                       </div>
                       <div>
@@ -115,7 +115,7 @@ function NavBar() {
         <div style={{ paddingLeft: "30px" }}>
           <textarea style={{ height: "200px", width: "300px" }}></textarea>
         </div>
-        <button type="submit">Add Note</button>
+        <button type="submit" className="btn btnPrimary navButton" >Add Note</button>
       </div>
     </>
   );
