@@ -146,6 +146,7 @@ function NavBar({ setEventsInd }) {
             <Link to={"/events"} className="eventsLink">
               All Events
             </Link>
+            <Link to={"/devteam"} className="devteamLink">DevTeam</Link>
             {/* <Link to={"/events/new"}>Make an Event</Link> */}
           </div>
           <button onClick={logoutUser} className="btn navButton">

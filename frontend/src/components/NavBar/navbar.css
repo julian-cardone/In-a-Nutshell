@@ -104,3 +104,21 @@
     display: flex;
     flex-direction: column;
 }
+
+.devteamLink {
+    text-decoration: none;
+    color: black;
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translate(-20%, -250%);
+}
+
+.devteamLink:hover {
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.devteamLink:visited {
+    color:black;
+}
