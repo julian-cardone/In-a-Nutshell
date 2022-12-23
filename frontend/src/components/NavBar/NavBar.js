@@ -36,8 +36,10 @@ function NavBar({setEventsInd}) {
 
   const handleDelete = () => {
     dispatch(deleteEvent(eventInfo.eventInfo[0]._id));
-    setEventsInd("");
+    setEventsInd(null);
+    eventInfo.eventInfo[1](null);
   };
+  setEventsInd("");
 
   return (
     <>
