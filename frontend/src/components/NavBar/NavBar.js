@@ -31,6 +31,7 @@ function NavBar() {
           <Link to={"/events"}>All Events</Link>
           <Link to={"/profile"}>Profile</Link>
           <Link to={"/events/new"}>Make an Event</Link>
+          <Link to={"/devteam"}>DevTeam</Link>
         </div>
         <button onClick={logoutUser}>Logout</button>
         <div className="task-header">

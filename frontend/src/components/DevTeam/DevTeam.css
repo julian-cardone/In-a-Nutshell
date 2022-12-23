@@ -1,0 +1,14 @@
+.meet-the-team {
+    display: flex;
+}
+
+.meet-the-team-names {
+    display: flex;
+    margin-top: 80px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.meet-the-team-each-name {
+    margin-left: 100px;
+}
