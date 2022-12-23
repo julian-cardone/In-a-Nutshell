@@ -46,12 +46,12 @@ function NavBar() {
           <Link to={"/events"}>All Events</Link>
           <Link to={"/profile"}>Profile</Link>
           <Link to={"/events/new"}>Make an Event</Link>
+        </div>
+        <button onClick={logoutUser}>Logout</button>
           <h2>{eTitle.title}</h2>
           {eTitle !== "N/A" && (
             <button onClick={handleDelete}>Delete Event</button>
           )}
-        </div>
-        <button onClick={logoutUser}>Logout</button>
         <div className="task-header">
           <h2 style={{ marginLeft: "30px" }}>Tasks</h2>
           <h2 style={{ marginRight: "20px" }}>Status</h2>
