@@ -10,6 +10,7 @@ import { fetchEvents } from "../../store/events";
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [eventsInd, setEventsInd] = useState();
 
   const events = useSelector(state => Object.values(state.events.all));
 
@@ -17,7 +18,7 @@ const Calendar = () => {
 
   useEffect(()=>{
     dispatch(fetchEvents())
-  },[dispatch])
+  },[dispatch, eventsInd])
 
   // console.log(events);
 
@@ -33,6 +34,7 @@ const Calendar = () => {
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
           events={events}
+          setEventsInd={setEventsInd}
         />
       </div>
     </>
