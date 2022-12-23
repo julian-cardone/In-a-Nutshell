@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearEventErrors, updateEvent } from "../../store/events";
 import "./UpdateModal.css";
 import { getDay, getMonth, setHours, setMinutes } from "date-fns";
+import { EventContext } from "../../App";
 
-function UpdateForm({ event, showModal, setShowModal }) {
+
+
+function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
   const [title, setTitle] = useState(event.title);
   const [description, setDescription] = useState(event.description);
   const [eventDate, setEventDate] = useState(event.eventDate);
@@ -13,6 +16,7 @@ function UpdateForm({ event, showModal, setShowModal }) {
   const errors = useSelector((state) => state.errors.events);
   const newEvent = useSelector((state) => state.events.new);
 
+  const eventInfo = useContext(EventContext);
   // const [hour, setTheHour] = useState(null);
   // const [minute, setTheMinute] = useState();
 
@@ -29,10 +33,12 @@ function UpdateForm({ event, showModal, setShowModal }) {
       description,
       eventDate,
     };
-    // debugger;
+    setEventsInd("literally anything")
     dispatch(updateEvent(changedEvent));
     setShowModal(false);
+    eventInfo.eventInfo[1]()
   };
+  setEventsInd("literally anything else")
 
   const hours = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,

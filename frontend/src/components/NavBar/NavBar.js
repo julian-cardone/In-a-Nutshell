@@ -134,6 +134,7 @@ function NavBar({ setEventsInd }) {
         {showModal && (
           <UpdateModal
             event={eTitle}
+            setEventsInd={setEventsInd}
             showModal={showModal}
             setShowModal={setShowModal}
             onClose={() => setShowModal(false)}
