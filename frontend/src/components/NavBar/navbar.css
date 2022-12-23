@@ -109,9 +109,10 @@
     text-decoration: none;
     color: black;
     position: absolute;
-    top: -20%;
+    top: 30%;
     left: 50%;
     transform: translate(-20%, -250%);
+    text-align: center;
 }
 
 .devteamLink:hover {
