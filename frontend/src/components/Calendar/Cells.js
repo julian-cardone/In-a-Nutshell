@@ -124,6 +124,7 @@ const Cells = ({
           showModal={showModal}
           setShowModal={setShowModal}
           onClose={() => setShowModal(false)}
+          setEventsInd={setEventsInd}
         />
       )}
     </>

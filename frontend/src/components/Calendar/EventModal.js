@@ -5,7 +5,7 @@ import NewEventForm from "../NewEventForm";
 
 // export { SignupForm, LoginForm };
 
-export function EventModal({ onClose, eventDate, showModal, setShowModal }) {
+export function EventModal({ onClose, eventDate, showModal, setShowModal, setEventsInd }) {
   return (
     <Modal onClose={onClose}>
       <div className="event-modal">
@@ -17,6 +17,7 @@ export function EventModal({ onClose, eventDate, showModal, setShowModal }) {
           eventDateProp={eventDate}
           showModal={showModal}
           setShowModal={setShowModal}
+          setEventsInd={setEventsInd}
         />
       </div>
     </Modal>

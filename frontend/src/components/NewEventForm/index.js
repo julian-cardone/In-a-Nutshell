@@ -6,7 +6,7 @@ import NewEventFormBox from "./NewEventForm";
 import { getDay, getMonth, setHours, setMinutes } from "date-fns";
 import { fetchEvents } from "../../store/events";
 
-function NewEventForm({ eventDateProp, showModal, setShowModal }) {
+function NewEventForm({ eventDateProp, showModal, setShowModal, setEventsInd }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [eventDate, setEventDate] = useState(new Date());
@@ -25,6 +25,7 @@ function NewEventForm({ eventDateProp, showModal, setShowModal }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setEventsInd(e);
     setShowModal(false);
     const event = {
       title,
