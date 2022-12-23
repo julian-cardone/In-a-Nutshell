@@ -62,13 +62,18 @@ function NavBar({ setEventsInd }) {
           {eTitle !== "N/A" && <h3>Description</h3>}
           <p>{eTitle.description}</p>
           {eTitle !== "N/A" && (
-            <button onClick={handleDelete} className="changeButton deleteButton">
+            <button
+              onClick={handleDelete}
+              className="changeButton deleteButton"
+            >
               Delete Event
             </button>
           )}
-            { eTitle !== "N/A" &&<span className="changeButton updateButton" onClick={handleModal}>
-                Update Event
-              </span>}
+          {eTitle !== "N/A" && (
+            <span className="changeButton updateButton" onClick={handleModal}>
+              Update Event
+            </span>
+          )}
         </div>
         <div className="task-header">
           <h2 style={{ marginLeft: "30px" }}>Tasks</h2>
@@ -126,7 +131,14 @@ function NavBar({ setEventsInd }) {
           </ul>
         </div>
 
-        {showModal && <UpdateModal event={eTitle} onClose={() => setShowModal(false)} />}
+        {showModal && (
+          <UpdateModal
+            event={eTitle}
+            showModal={showModal}
+            setShowModal={setShowModal}
+            onClose={() => setShowModal(false)}
+          />
+        )}
         <div className="btnContainer">
           <div className="links-nav">
             <Link to={"/events"} className="eventsLink">
