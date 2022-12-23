@@ -55,28 +55,31 @@ const Events = ({ day, events }) => {
   //sort the array:
 
   // console.log(((isBefore((eventsArray[0]), (eventsArray[1])))))
+  // console.log(eventsArray);
 
-  if (eventsArray.length > 1) {
-    let cont = true;
-    while (cont) {
-      cont = false;
+  // let cont = true;
 
-      for (let i = 0; i < eventsArray.length - 1; i++) {
-        if (
-          !isBefore(
-            new Date(eventsArray[i].eventDate),
-            new Date(eventsArray[i + 1].eventDate)
-          )
-        ) {
-          [eventsArray[i], eventsArray[i + 1]] = [
-            eventsArray[i + 1],
-            eventsArray[i],
-          ];
-          cont = true;
-        }
-      }
-    }
-  }
+  // if (eventsArray.length > 1) {
+  //   while (cont) {
+  //     cont = false;
+
+  //     for (let i = 0; i < eventsArray.length - 1; i++) {
+  //       if (
+  //         !isBefore(
+  //           new Date(eventsArray[i].eventDate),
+  //           new Date(eventsArray[i + 1].eventDate)
+  //         )
+  //       ) {
+  //         [eventsArray[i], eventsArray[i + 1]] = [
+  //           eventsArray[i + 1],
+  //           eventsArray[i],
+  //         ];
+  //         cont = true;
+  //         debugger
+  //       }
+  //     }
+  //   }
+  // }
 
   // console.log(eventsArray);
 
