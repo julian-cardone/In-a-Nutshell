@@ -6,14 +6,15 @@ import { useState } from 'react';
 function EventCard({event}) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const removeEvent = () => {
-        dispatch(deleteEvent(event._id))
-    }
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('')
     const [eventDate, setEventDate] = useState( new Date())
     const [status, setStatus] = useState(false)
     const errors = useSelector(state => state.errors.events);
+
+    const removeEvent = () => {
+        dispatch(deleteEvent(event._id));
+    }
 
     const update = (field) => {
         let setState;

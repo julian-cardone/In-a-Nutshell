@@ -43,9 +43,10 @@ router.post("/new", async (req, res, next) => {
 });
 
 router.delete("/:id", async (req, res, next) => {
-  console.log(req.params);
   try {
-    await Event.findByIdAndDelete({ _id: req.params.id });
+    // await Event.findByIdAndDelete({ _id: req.params.id });
+    const deletedEvent = await Event.findByIdAndDelete(req.params.id);
+  res.send(deletedEvent);
   } catch (err) {
     res.send("NOPE");
     return next(err);
