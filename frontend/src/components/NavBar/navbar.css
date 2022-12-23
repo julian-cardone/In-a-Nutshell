@@ -5,16 +5,15 @@
     /* float: right; */
     height: 98vh;
     width: 60vh;
-    border: 1px solid red;
     justify-self: right;
     /* margin: 36px 24px 48px 0; */
 }
 
 .links-nav{
     /* position: relative; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    /* display: flex;
+    flex-direction: column; */
+    /* align-items: center; */
 }
 
 .task-box {
@@ -45,4 +44,57 @@
 .navButton{
     width: 75%;
     margin-left: 45px;
+    background-color: #6D8E59;
+    color:white;
+}
+
+.navButton:hover {
+    background-color: #292E1E;
+}
+
+.eventsLink {
+    text-decoration: none;
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%, -250%);
+}
+
+.eventsLink:hover {
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.eventsLink:visited {
+    color:black;
+}
+
+.deleteButton {
+    color: red;
+    border: none;
+    background-color: inherit;
+}
+
+.deleteButton:hover{
+    text-decoration: underline;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.eventHeader {
+    margin-top: 55px;
+    margin-bottom: 25px;
+}
+
+.eventDescription {
+    margin-bottom: 50px;
+}
+
+.btnContainer {
+    position: absolute;
+    bottom: 0;
+    margin-left: 90px;
+    display: flex;
+    flex-direction: column;
 }

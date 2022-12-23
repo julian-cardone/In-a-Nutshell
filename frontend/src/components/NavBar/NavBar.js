@@ -7,6 +7,7 @@ import { deleteEvent, fetchEvent } from "../../store/events";
 import { tasks } from "./tasks";
 import * as taskActions from "../../store/tasks";
 import { EventContext } from "../../App";
+import { format } from "date-fns";
 
 function NavBar() {
   // const loggedIn = useSelector(state => !!state.session.user);
@@ -41,17 +42,21 @@ function NavBar() {
     <>
       {/* <h1>In A Nutshell</h1> */}
       {/* { getLinks() } */}
-      <div className="nav">
-        <div className="links-nav">
-          <Link to={"/events"}>All Events</Link>
-          <Link to={"/profile"}>Profile</Link>
-          <Link to={"/events/new"}>Make an Event</Link>
+      <div className="nav" style={{position: 'relative'}}>
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <h2 className="eventHeader">{eTitle.title}</h2>
+          {/* <h2>{format(new Date(eTitle.eventDate), "eeee")},{" "}
+          {format(new Date(eTitle.eventDate), "MMMM do")}</h2> */}
         </div>
-        <button onClick={logoutUser} className="btn btnPrimary navButton" >Logout</button>
-          <h2>{eTitle.title}</h2>
+        <div className="eventDescription">
+          {eTitle !== "N/A" && <h3>Description</h3>}
+          <p>{eTitle.description}</p>
           {eTitle !== "N/A" && (
-            <button onClick={handleDelete} className="btn btnPrimary navButton">Delete Event</button>
+            <button onClick={handleDelete} className="deleteButton">
+              Delete Event
+            </button>
           )}
+        </div>
         <div className="task-header">
           <h2 style={{ marginLeft: "30px" }}>Tasks</h2>
           <h2 style={{ marginRight: "20px" }}>Status</h2>
@@ -107,15 +112,17 @@ function NavBar() {
             })}
           </ul>
         </div>
-        <div className="note-pad">
-          <h2 style={{ display: "flex", justifyContent: "center" }}>
-            Make a Note!
-          </h2>
+        <div className="btnContainer">
+          <div className="links-nav">
+            <Link to={"/events"} className="eventsLink">
+              All Events
+            </Link>
+            {/* <Link to={"/events/new"}>Make an Event</Link> */}
+          </div>
+          <button onClick={logoutUser} className="btn navButton">
+            Logout
+          </button>
         </div>
-        <div style={{ paddingLeft: "30px" }}>
-          <textarea style={{ height: "200px", width: "300px" }}></textarea>
-        </div>
-        <button type="submit" className="btn btnPrimary navButton" >Add Note</button>
       </div>
     </>
   );
