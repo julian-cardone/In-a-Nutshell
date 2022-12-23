@@ -7,17 +7,18 @@ import "./calendar.css";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchEvents } from "../../store/events";
 
-const Calendar = () => {
+const Calendar = ({ setEventsInd }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
+  // const [eventsInd, setEventsInd] = useState();
 
   const events = useSelector(state => Object.values(state.events.all));
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch(fetchEvents())
-  },[dispatch])
+  // useEffect(()=>{
+  //   dispatch(fetchEvents())
+  // },[dispatch, eventsInd])
 
   // console.log(events);
 
@@ -33,6 +34,7 @@ const Calendar = () => {
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
           events={events}
+          setEventsInd={setEventsInd}
         />
       </div>
     </>

@@ -2,16 +2,32 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import "./navbar.css";
-
-import { useEffect } from "react";
-import { fetchEvent } from "../../store/events";
+import { useContext, useEffect, useState } from "react";
+import { deleteEvent, fetchEvent } from "../../store/events";
 import { tasks } from "./tasks";
-import * as acornSvg from "../../assets/acorn-svgrepo-com.svg";
+import * as taskActions from "../../store/tasks";
+import { EventContext } from "../../App";
+import { format } from "date-fns";
+import UpdateModal from "../UpdateModal/UpdateModal";
 
-function NavBar() {
+function NavBar({ setEventsInd }) {
   // const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
+  // const [title, setTitle] = useState("");
+
+  const task = useSelector((state) => {
+    return state.tasks;
+  });
+
+  const eventInfo = useContext(EventContext);
+  const eTitle = eventInfo.eventInfo[0] || "N/A";
+  const eArray = eventInfo.eventInfo[0] || [];
+
+  // useEffect(() => {
+  //   dispatch(taskActions.createTask());
+  // });
 
   const logoutUser = (e) => {
     e.preventDefault();
@@ -20,23 +36,49 @@ function NavBar() {
     dispatch(logout());
   };
 
+  const handleDelete = () => {
+    dispatch(deleteEvent(eventInfo.eventInfo[0]._id));
+    setEventsInd(null);
+    eventInfo.eventInfo[1](null);
+  };
+  setEventsInd("");
+
+  const handleModal = (e) => {
+    e.preventDefault();
+    setShowModal(true);
+  };
 
   return (
     <>
       {/* <h1>In A Nutshell</h1> */}
-
       {/* { getLinks() } */}
-      <div className="nav">
-        <div className="links-nav">
-          <Link to={"/events"}>All Events</Link>
-          <Link to={"/profile"}>Profile</Link>
-          <Link to={"/events/new"}>Make an Event</Link>
-          <Link to={"/devteam"}>DevTeam</Link>
+
+      <div className="nav" style={{ position: "relative" }}>
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <h2 className="eventHeader">{eTitle.title}</h2>
+          {/* <h2>{format(new Date(eTitle.eventDate), "eeee")},{" "}
+          {format(new Date(eTitle.eventDate), "MMMM do")}</h2> */}
         </div>
-        <button onClick={logoutUser}>Logout</button>
+        <div className="eventDescription">
+          {eTitle !== "N/A" && <h3>Description</h3>}
+          <p>{eTitle.description}</p>
+          {eTitle !== "N/A" && (
+            <button
+              onClick={handleDelete}
+              className="changeButton deleteButton"
+            >
+              Delete Event
+            </button>
+          )}
+          {eTitle !== "N/A" && (
+            <span className="changeButton updateButton" onClick={handleModal}>
+              Update Event
+            </span>
+          )}
+        </div>
         <div className="task-header">
-          <h2 style={{marginLeft: "30px"}}>Tasks</h2>
-          <h2 style={{marginRight: "20px"}}>Status</h2>
+          <h2 style={{ marginLeft: "30px" }}>Tasks</h2>
+          <h2 style={{ marginRight: "20px" }}>Status</h2>
         </div>
         <div className="tasks">
           <ul style={{ marginTop: "10px" }}>
@@ -71,7 +113,7 @@ function NavBar() {
                           </svg>
                         </div>
                         <div id="task-title">
-                          <h2>{task.title}</h2>
+                          <h3>{task.title}</h3>
                         </div>
                       </div>
                       <div>
@@ -89,17 +131,27 @@ function NavBar() {
             })}
           </ul>
         </div>
-        <div className="note-pad">
-          <h2 style={{ display: "flex", justifyContent: "center" }}>
-            Make a Note!
-          </h2>
+
+        {showModal && (
+          <UpdateModal
+            event={eTitle}
+            setEventsInd={setEventsInd}
+            showModal={showModal}
+            setShowModal={setShowModal}
+            onClose={() => setShowModal(false)}
+          />
+        )}
+        <div className="btnContainer">
+          <div className="links-nav">
+            <Link to={"/events"} className="eventsLink">
+              All Events
+            </Link>
+            {/* <Link to={"/events/new"}>Make an Event</Link> */}
+          </div>
+          <button onClick={logoutUser} className="btn navButton">
+            Logout
+          </button>
         </div>
-        <div style={{ paddingLeft: "30px" }}>
-          <textarea
-            style={{ height: "200px", width: "300px" }}
-          ></textarea>
-        </div>
-            <button type="submit">Add Note</button>
       </div>
     </>
   );
