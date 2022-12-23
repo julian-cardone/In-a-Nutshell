@@ -9,7 +9,7 @@ import * as taskActions from "../../store/tasks";
 import { EventContext } from "../../App";
 import { format } from "date-fns";
 
-function NavBar() {
+function NavBar({setEventsInd}) {
   // const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -36,6 +36,7 @@ function NavBar() {
 
   const handleDelete = () => {
     dispatch(deleteEvent(eventInfo.eventInfo[0]._id));
+    setEventsInd("");
   };
 
   return (

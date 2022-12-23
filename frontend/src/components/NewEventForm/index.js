@@ -4,15 +4,16 @@ import { clearEventErrors, createEvent } from "../../store/events";
 import "./NewEventForm.css";
 import NewEventFormBox from "./NewEventForm";
 import { getDay, getMonth, setHours, setMinutes } from "date-fns";
+import { fetchEvents } from "../../store/events";
 
-function NewEventForm({ eventDateProp, showModal, setShowModal }) {
+function NewEventForm({ eventDateProp, showModal, setShowModal, setEventsInd }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [eventDate, setEventDate] = useState(new Date());
   const [status, setStatus] = useState(false);
-  const dispatch = useDispatch();
   const errors = useSelector((state) => state.errors.events);
   const newEvent = useSelector((state) => state.events.new);
+  const dispatch = useDispatch();
 
   // const [hour, setTheHour] = useState(null);
   // const [minute, setTheMinute] = useState();
@@ -24,6 +25,7 @@ function NewEventForm({ eventDateProp, showModal, setShowModal }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setEventsInd(e);
     setShowModal(false);
     const event = {
       title,
@@ -33,6 +35,10 @@ function NewEventForm({ eventDateProp, showModal, setShowModal }) {
     debugger;
     dispatch(createEvent({ event }));
   };
+
+  // useEffect(()=>{
+  //   dispatch(fetchEvents())
+  // },[dispatch, handleSubmit])
 
   const hours = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,

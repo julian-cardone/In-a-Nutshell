@@ -11,8 +11,6 @@ const Events = ({ day, events }) => {
 
   const eventInfo = useContext(EventContext)
 
-
-
   function isSameDayAdv(day, eventDay) {
     //eventDay: 2022-10-21T00:00:00.000Z
 

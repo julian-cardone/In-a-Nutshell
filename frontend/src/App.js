@@ -14,6 +14,7 @@ import NewEventForm from "./components/NewEventForm";
 
 import { getCurrentUser } from "./store/session";
 import Calendar from "./components/Calendar";
+import { fetchEvents } from "./store/events";
 
 export const EventContext = createContext(null);
 
@@ -25,6 +26,11 @@ function App() {
   }, [dispatch]);
   const [currentEvent, setCurrentEvent] = useState(null);
 
+  const [eventsInd, setEventsInd] = useState();
+
+  useEffect(()=>{
+    dispatch(fetchEvents())
+  },[dispatch, eventsInd])
 
   const loggedIn = useSelector((state) => !!state.session.user);
   return (
@@ -40,8 +46,8 @@ function App() {
               <Route exact path="/events" component={EventsIndex} />
               <Route exact path="/events/new" component={NewEventForm} />
               <Route exact path="/home">
-                {loggedIn && <Calendar />}
-                {loggedIn && <NavBar />}
+                {loggedIn && <Calendar setEventsInd={setEventsInd}/>}
+                {loggedIn && <NavBar setEventsInd={setEventsInd}/>}
               </Route>
             </EventContext.Provider>
             {/* {!loggedIn && <Redirect to="/"></Redirect>} */}
