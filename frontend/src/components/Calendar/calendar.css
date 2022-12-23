@@ -18,7 +18,7 @@
     max-width: 100%;
     height: 100%;
     max-height: 100vh;
-    margin: 24px 8px 24px 24px;
+    margin: 8px 8px 24px 8px;
     display: flex;
     flex-direction: column;
     padding: 2rem;
@@ -31,7 +31,7 @@
 .calendar-container::before{
     content: "";
     position: absolute;
-    background: center / contain no-repeat url("https: //svgsilh.com/svg/2719078.svg");
+    /* background: center / contain no-repeat url("https: //svgsilh.com/svg/2719078.svg"); */
     background-color: #698e59;
     top: 0px;
     right: 0px;
@@ -39,6 +39,7 @@
     left: 0px;
     opacity: .7;
     border-radius: 3rem;
+    height: 101%;
 }
 
 .header-flex-row{
