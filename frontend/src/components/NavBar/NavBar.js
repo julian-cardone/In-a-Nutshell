@@ -52,6 +52,7 @@ function NavBar({ setEventsInd }) {
     <>
       {/* <h1>In A Nutshell</h1> */}
       {/* { getLinks() } */}
+
       <div className="nav" style={{ position: "relative" }}>
         <div style={{ display: "flex", flexDirection: "row" }}>
           <h2 className="eventHeader">{eTitle.title}</h2>

@@ -11,6 +11,7 @@ import SignupForm from "./components/SessionForms/SignupForm";
 import SplashPage from "./components/SplashPage";
 import EventsIndex from "./components/EventsIndex";
 import NewEventForm from "./components/NewEventForm";
+import DevTeam from "./components/DevTeam";
 
 import { getCurrentUser } from "./store/session";
 import Calendar from "./components/Calendar";
@@ -35,6 +36,7 @@ function App() {
   const loggedIn = useSelector((state) => !!state.session.user);
   return (
     <>
+
       {!loggedIn && <Redirect to="/" />}
       {loaded && (
         <>
@@ -49,6 +51,7 @@ function App() {
                 {loggedIn && <Calendar setEventsInd={setEventsInd}/>}
                 {loggedIn && <NavBar setEventsInd={setEventsInd}/>}
               </Route>
+              <Route exact path= "/devteam" component={DevTeam}></Route>
             </EventContext.Provider>
             {/* {!loggedIn && <Redirect to="/"></Redirect>} */}
           </Switch>
