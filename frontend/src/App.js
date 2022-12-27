@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 
@@ -11,9 +11,13 @@ import SignupForm from "./components/SessionForms/SignupForm";
 import SplashPage from "./components/SplashPage";
 import EventsIndex from "./components/EventsIndex";
 import NewEventForm from "./components/NewEventForm";
+import DevTeam from "./components/DevTeam";
 
 import { getCurrentUser } from "./store/session";
 import Calendar from "./components/Calendar";
+import { fetchEvents } from "./store/events";
+
+export const EventContext = createContext(null);
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -21,28 +25,39 @@ function App() {
   useEffect(() => {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
+  const [currentEvent, setCurrentEvent] = useState(null);
 
-  const loggedIn = useSelector((state)=>(!!state.session.user))
+  const [eventsInd, setEventsInd] = useState();
+
+  useEffect(()=>{
+    dispatch(fetchEvents())
+  },[dispatch, eventsInd])
+
+  const loggedIn = useSelector((state) => !!state.session.user);
   return (
     <>
-    {!loggedIn && <Redirect to="/" />}
-    {loaded && (
-      <>
-        <Switch>
-          <AuthRoute exact path="/" component={SplashPage}/>
-          <AuthRoute exact path="/login" component={LoginForm} />
-          <AuthRoute exact path="/signup" component={SignupForm} />
-          <Route exact path= "/events" component={EventsIndex} />
-          <Route exact path= "/events/new" component={NewEventForm} />
-          <Route exact path="/home">
-              {loggedIn && <Calendar />}
-              {loggedIn && <NavBar />}
-          </Route>
-          {/* {!loggedIn && <Redirect to="/"></Redirect>} */}
-        </Switch>
-      </>
-    )}
-      </>
+
+      {!loggedIn && <Redirect to="/" />}
+      {loaded && (
+        <>
+          <Switch>
+            <AuthRoute exact path="/" component={SplashPage} />
+            <AuthRoute exact path="/login" component={LoginForm} />
+            <AuthRoute exact path="/signup" component={SignupForm} />
+            <EventContext.Provider value={{eventInfo: [currentEvent, setCurrentEvent]}}>
+              <Route exact path="/events" component={EventsIndex} />
+              <Route exact path="/events/new" component={NewEventForm} />
+              <Route exact path="/home">
+                {loggedIn && <Calendar setEventsInd={setEventsInd}/>}
+                {loggedIn && <NavBar setEventsInd={setEventsInd}/>}
+              </Route>
+              <Route exact path= "/devteam" component={DevTeam}></Route>
+            </EventContext.Provider>
+            {/* {!loggedIn && <Redirect to="/"></Redirect>} */}
+          </Switch>
+        </>
+      )}
+    </>
   );
 }
 

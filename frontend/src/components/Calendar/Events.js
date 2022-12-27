@@ -1,12 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEvents } from "../../store/events";
 import isSameDay from "date-fns/isSameDay";
 import { getTime, getHours, getMinutes, isBefore } from "date-fns";
+import { EventContext } from "../../App";
 
 const Events = ({ day, events }) => {
   //this script converts the backend format of the date to match the frontend format and turns it into a
   //date object. it then runs a comparison to see that the days are the same
+
+  const eventInfo = useContext(EventContext);
 
   function isSameDayAdv(day, eventDay) {
     //eventDay: 2022-10-21T00:00:00.000Z
@@ -55,6 +58,8 @@ const Events = ({ day, events }) => {
   //sort the array:
 
   // console.log(((isBefore((eventsArray[0]), (eventsArray[1])))))
+  // console.log(eventsArray);
+
 
   if (eventsArray.length > 1) {
     let cont = true;
@@ -73,6 +78,7 @@ const Events = ({ day, events }) => {
             eventsArray[i],
           ];
           cont = true;
+          // debugger
         }
       }
     }
@@ -103,10 +109,20 @@ const Events = ({ day, events }) => {
     }
   };
 
+
+  const setCurrentEvent = eventInfo.eventInfo[1];
+
+  const handleClick = (e, event) => {
+    setCurrentEvent(event);
+  };
+
   return (
     <>
       {eventsArray.map((event) => (
-        <div className="h1-event-placeholder ssp1">
+        <div
+          className="h1-event-placeholder ssp1 point quikHover"
+          onClick={(e) => handleClick(e, event)}
+        >
           <span className="cal-event-time p3">
             {displayTime(event.eventDate)}
           </span>{" "}

@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import { format } from "date-fns";
-import NewEventForm from "../NewEventForm";
+import "./UpdateModal.css";
+import UpdateForm from "./UpdateForm";
 
 // export { SignupForm, LoginForm };
 
-export function EventModal({ onClose, eventDate, showModal, setShowModal, setEventsInd }) {
+function UpdateModal({ onClose, event, showModal, setShowModal, setEventsInd }) {
   return (
     <Modal onClose={onClose}>
       <div className="event-modal">
-        <h1>
-          {format(new Date(eventDate), "eeee")},{" "}
-          {format(new Date(eventDate), "MMMM do")}
-        </h1>
-        <NewEventForm
-          eventDateProp={eventDate}
+        <h1>Update</h1>
+        <h1>{event.title}</h1>
+        <UpdateForm
+          event={event}
           showModal={showModal}
           setShowModal={setShowModal}
           setEventsInd={setEventsInd}
@@ -23,3 +22,5 @@ export function EventModal({ onClose, eventDate, showModal, setShowModal, setEve
     </Modal>
   );
 }
+
+export default UpdateModal;
