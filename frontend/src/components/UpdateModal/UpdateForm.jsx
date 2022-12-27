@@ -1,44 +1,44 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearEventErrors, createEvent } from "../../store/events";
-import "./NewEventForm.css";
-import NewEventFormBox from "./NewEventForm";
+import { clearEventErrors, updateEvent } from "../../store/events";
+import "./UpdateModal.css";
 import { getDay, getMonth, setHours, setMinutes } from "date-fns";
-import { fetchEvents } from "../../store/events";
+import { EventContext } from "../../App";
 
-function NewEventForm({ eventDateProp, showModal, setShowModal, setEventsInd }) {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [eventDate, setEventDate] = useState(new Date());
+
+
+function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
+  const [title, setTitle] = useState(event.title);
+  const [description, setDescription] = useState(event.description);
+  const [eventDate, setEventDate] = useState(event.eventDate);
   const [status, setStatus] = useState(false);
+  const dispatch = useDispatch();
   const errors = useSelector((state) => state.errors.events);
   const newEvent = useSelector((state) => state.events.new);
-  const dispatch = useDispatch();
 
+  const eventInfo = useContext(EventContext);
   // const [hour, setTheHour] = useState(null);
   // const [minute, setTheMinute] = useState();
 
   useEffect(() => {
-    setEventDate(eventDateProp);
+    setEventDate(event.eventDate);
     return () => dispatch(clearEventErrors());
-  }, [dispatch, eventDateProp]);
+  }, [dispatch, event.eventDate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setEventsInd(e);
-    setShowModal(false);
-    const event = {
+    const changedEvent = {
+      id: event._id,
       title,
       description,
       eventDate,
     };
-    debugger;
-    dispatch(createEvent({ event }));
+    setEventsInd("literally anything")
+    dispatch(updateEvent(changedEvent));
+    setShowModal(false);
+    eventInfo.eventInfo[1]()
   };
-
-  // useEffect(()=>{
-  //   dispatch(fetchEvents())
-  // },[dispatch, handleSubmit])
+  setEventsInd("literally anything else")
 
   const hours = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -164,4 +164,4 @@ function NewEventForm({ eventDateProp, showModal, setShowModal, setEventsInd }) 
   );
 }
 
-export default NewEventForm;
+export default UpdateForm;

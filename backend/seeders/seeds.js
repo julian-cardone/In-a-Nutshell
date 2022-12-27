@@ -48,7 +48,9 @@ for(let i = 0; i < NUM_SEED_EVENTS; i++) {
       title: `event #${i}`,
       description: faker.lorem.paragraph(3),
       eventDate: faker.date.between('2023-1-01', '2023-1-30'),
-      status: faker.datatype.boolean()
+      status: faker.datatype.boolean(),
+      tasks: ["63a48f3cbcd317a2cffc2042", "63a48f3cbcd317a2cffc2043",
+      "63a48f3cbcd317a2cffc2044" ]
     })
   )
 }
@@ -59,7 +61,9 @@ for(let i = 6; i < 10; i++) {
       title: `event #${i}`,
       description: faker.lorem.paragraph(3),
       eventDate: faker.date.between('2022-12-01', '2022-12-30'),
-      status: faker.datatype.boolean()
+      status: faker.datatype.boolean(),
+      tasks: ["63a48f3cbcd317a2cffc2042", "63a48f3cbcd317a2cffc2043",
+      "63a48f3cbcd317a2cffc2044" ]
     })
   )
 }
@@ -69,7 +73,9 @@ eventsArr.push(
     title: `event #11`,
     description: faker.lorem.paragraph(3),
     eventDate: new Date(2022, 11, 23, 13, 00),
-    status: faker.datatype.boolean()
+    status: faker.datatype.boolean(),
+    tasks: ["63a48f3cbcd317a2cffc2042", "63a48f3cbcd317a2cffc2043",
+      "63a48f3cbcd317a2cffc2044" ]
   }
   )
 )
