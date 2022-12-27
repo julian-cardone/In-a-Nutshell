@@ -22,7 +22,7 @@ export function SessionModal({ onClose, onSuccess }) {
 
   return (
     <SlowModal onClose={onClose}>
-      <div id="sessionModal" className={`session-modal`}>
+      <div id="sessionModal" className={`session-modal opening`}>
         <h1>{showSignup ? "Sign Up" : "Log In"}</h1>
         {showSignup ? (
           <SignupForm onSuccess={onSuccess} />

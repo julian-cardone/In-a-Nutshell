@@ -56,10 +56,11 @@ export function SlowModal({ onClose, children }) {
 
   const slowOnClose = () => {
     const sessionModal = document.getElementById("sessionModal");
+    sessionModal.classList.remove(`opening`);
     sessionModal.classList.add(`closing`);
     setTimeout(() => {
       onClose();
-    }, 400);
+    }, 500);
   };
 
   if (!modalNode) return null;
