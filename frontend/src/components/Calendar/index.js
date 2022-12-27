@@ -12,7 +12,7 @@ const Calendar = ({ setEventsInd }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   // const [eventsInd, setEventsInd] = useState();
 
-  const events = useSelector(state => Object.values(state.events.all));
+  const events = useSelector((state) => Object.values(state.events.all));
 
   // const dispatch = useDispatch();
 
