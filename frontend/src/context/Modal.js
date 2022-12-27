@@ -56,17 +56,24 @@ export function SlowModal({ onClose, children }) {
 
   const slowOnClose = () => {
     const sessionModal = document.getElementById("sessionModal");
+    const modalBG = document.getElementById("modal-background");
+    sessionModal.classList.remove(`opening`);
     sessionModal.classList.add(`closing`);
+    modalBG.classList.remove(`fade-in-out`);
     setTimeout(() => {
       onClose();
-    }, 400);
+    }, 500);
   };
 
   if (!modalNode) return null;
 
   return ReactDOM.createPortal(
     <div id="modal">
-      <div id="modal-background" onClick={slowOnClose} />
+      <div
+        id="modal-background"
+        className={`fade-in-out`}
+        onClick={slowOnClose}
+      />
       <div id="modal-content">{children}</div>
     </div>,
     modalNode

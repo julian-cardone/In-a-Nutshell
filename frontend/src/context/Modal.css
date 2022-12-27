@@ -15,8 +15,25 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(33, 55, 37, 0.5);
+    /* background-color: rgba(33, 55, 37, 0.5); */
+    transition: all .5s ease-in-out;
+    /* animation: fade .5s normal; */
 }
+
+.fade-in-out { 
+    background-color:rgba(33, 55, 37, 0.5)
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
 
 #modal-content {
     width: min-content;
