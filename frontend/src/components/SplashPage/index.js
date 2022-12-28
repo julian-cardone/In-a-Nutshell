@@ -8,6 +8,7 @@ import "./SplashPage.css";
 
 function SplashPage() {
   const [showModal, setShowModal] = useState(false);
+  // const modalBG = document.getElementById("modal-background");
 
   // const sessionModal = document.getElementById("sessionModal");
 
@@ -16,9 +17,14 @@ function SplashPage() {
   //   console.log(sessionModal);
   // }, [showModal, sessionModal]);
 
+  // const fadeIn = () => {
+  //   modalBG.classList.add(`fade-in-out`);
+  // };
+
   const handleModal = (e) => {
     e.preventDefault();
     setShowModal(true);
+    // fadeIn());
   };
 
   return (
