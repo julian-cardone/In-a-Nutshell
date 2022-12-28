@@ -52,12 +52,13 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-router.put("/:id", async (req, res, next) => {
+router.patch("/:id", async (req, res, next) => {
+  console.log(req.body.eventDate)
   const udpatedEvent = await new Event({
     _id: req.params.id,
     title: req.body.title,
     description: req.body.description,
-    eventDate: req.body.completionDate,
+    eventDate: req.body.eventDate,
     status: req.body.status,
   });
 

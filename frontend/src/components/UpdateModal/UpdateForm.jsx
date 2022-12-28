@@ -27,6 +27,7 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // debugger 
     const changedEvent = {
       id: event._id,
       title,
