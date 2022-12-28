@@ -8,7 +8,6 @@ import { EventContext } from "../../App";
 const Events = ({ day, events }) => {
   //this script converts the backend format of the date to match the frontend format and turns it into a
   //date object. it then runs a comparison to see that the days are the same
-
   const eventInfo = useContext(EventContext);
 
   function isSameDayAdv(day, eventDay) {
@@ -95,7 +94,7 @@ const Events = ({ day, events }) => {
       minutes = minutes.toString().split("");
       minutes.unshift("0");
       minutes = minutes.join("");
-      // console.log(minutes);
+      console.log(minutes);
     }
 
     //hours logic

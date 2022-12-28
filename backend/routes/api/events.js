@@ -58,7 +58,7 @@ router.patch("/:id", async (req, res, next) => {
     _id: req.params.id,
     title: req.body.title,
     description: req.body.description,
-    eventDate: req.body.eventDate,
+    eventDate: req.body.nyTime,
     status: req.body.status,
   });
 
