@@ -9,13 +9,6 @@ import "./SplashPage.css";
 function SplashPage() {
   const [showModal, setShowModal] = useState(false);
 
-  // const sessionModal = document.getElementById("sessionModal");
-
-  // useEffect(() => {
-  //   if (sessionModal) sessionModal.classList.add(`closing`);
-  //   console.log(sessionModal);
-  // }, [showModal, sessionModal]);
-
   const handleModal = (e) => {
     e.preventDefault();
     setShowModal(true);
@@ -58,23 +51,3 @@ function SplashPage() {
 }
 
 export default SplashPage;
-
-{
-  /* <form className={`form-fields`}>
-      <input
-        className={`field`}
-        type={`email`}
-        placeholder="Enter Email"
-      />
-      <br />
-      <input
-        className={`field`}
-        type={`password`}
-        placeholder="Enter Password"
-      />
-      <br />
-      <button className={`btnPrimary btn`} onClick={null}>
-        Sign In
-      </button>
-    </form> */
-}
