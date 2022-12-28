@@ -53,7 +53,7 @@ router.delete("/:id", async (req, res, next) => {
 });
 
 router.patch("/:id", async (req, res, next) => {
-  console.log(req.body.eventDate)
+  console.log(req.body)
   const udpatedEvent = await new Event({
     _id: req.params.id,
     title: req.body.title,

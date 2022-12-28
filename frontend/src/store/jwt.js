@@ -8,7 +8,6 @@ function getCookie(cookieName) {
 }
 
 async function jwtFetch(url, options = {}) {
-  // debugger;
   options.method = options.method || "GET";
   options.headers = options.headers || {};
   const jwtToken = localStorage.getItem("jwtToken");

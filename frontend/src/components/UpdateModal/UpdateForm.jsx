@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearEventErrors, updateEvent } from "../../store/events";
 import "./UpdateModal.css";
 import { getDay, getMonth, setHours, setMinutes } from "date-fns";
+import { zonedTimeToUtc } from 'date-fns-tz/esm'
 import { EventContext } from "../../App";
 
 
@@ -27,7 +28,6 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // debugger 
     const changedEvent = {
       id: event._id,
       title,
