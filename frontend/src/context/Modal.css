@@ -16,6 +16,7 @@
     left: 0;
     bottom: 0;
     background-color: rgba(33, 55, 37, 0.5);
+    backdrop-filter: blur(9px);
 }
 
 #modal-content {
@@ -23,4 +24,34 @@
     position: absolute;
     background-color: rgba(33, 55, 37, 0.6)white;
     border-radius: 10px;
+}
+
+.fadeIn {
+    animation: fadeIn .5s normal;
+}
+
+.fadeOut {
+    animation: fadeOut .5s normal;
+}
+
+@keyframes fadeIn {
+    from {
+    background-color: rgba(33, 55, 37, 0);
+    backdrop-filter: blur(0px);
+    }
+    to {
+    background-color: rgba(33, 55, 37, 0.5);
+    backdrop-filter: blur(9px);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+    background-color: rgba(33, 55, 37, 0.5);
+    backdrop-filter: blur(9px);
+    }
+    to {
+    background-color: rgba(33, 55, 37, 0);
+    backdrop-filter: blur(0px);
+    }
 }
