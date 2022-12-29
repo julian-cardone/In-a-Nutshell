@@ -90,9 +90,11 @@ function NavBar({ setEventsInd }) {
         </>
         )}
 
+
+
+      {eTitle !== "N/A" && (
+        <>
         <div className="border-nav"></div>
-
-
       <div className="tasks-nav">
         <div className="task-header">
           <p>TASKS</p>
@@ -106,14 +108,14 @@ function NavBar({ setEventsInd }) {
               return (
                 <li className="task-li">
                   <div className="task-li-div">
-                    <div
+                    <div className="div-list-nav"
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
                       }}
                     >
                       <div style={{ display: "flex", flexDirection: "row" }}>
-                        <div>
+                        <div style={{ position:"relative", justifyContent:"center" }}>
                           <svg
                             width="25px"
                             height="25px"
@@ -150,6 +152,8 @@ function NavBar({ setEventsInd }) {
             })}
           </ul>
         </div>
+        </>
+      )}
         <div className="border-nav-2"></div>
 
         <div className="eventDescription">
@@ -181,12 +185,12 @@ function NavBar({ setEventsInd }) {
                     </span>
                   )}
                 {eTitle !== "N/A" && (
-                  <button
+                  <span
                   onClick={handleDelete}
                   className="changeButton deleteButton"
                   >
               Delete Event
-            </button>
+            </span>
           )}
           <Link to={"/events"} className="eventsLink">
             All Events
