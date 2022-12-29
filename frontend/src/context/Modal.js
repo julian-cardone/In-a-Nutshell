@@ -46,20 +46,14 @@ export function Modal({ onClose, children }) {
 export function SlowModal({ onClose, children }) {
   const modalNode = useContext(ModalContext);
 
-  // const sessionModal = document.getElementById("sessionModal");
-
-  // useEffect(() => {
-  //   {
-  //     console.log(sessionModal);
-  //   }
-  // }, [sessionModal]);
-
   const slowOnClose = () => {
     const sessionModal = document.getElementById("sessionModal");
-    const modalBG = document.getElementById("modal-background");
+    const modalBackground = document.getElementById("modal-background");
     sessionModal.classList.remove(`opening`);
     sessionModal.classList.add(`closing`);
-    modalBG.classList.remove(`fade-in-out`);
+    modalBackground.classList.remove(`fadeIn`);
+    modalBackground.classList.add("fadeOut");
+
     setTimeout(() => {
       onClose();
     }, 500);
@@ -69,11 +63,13 @@ export function SlowModal({ onClose, children }) {
 
   return ReactDOM.createPortal(
     <div id="modal">
+
       <div
         id="modal-background"
         className={`fade-in-out`}
         onClick={slowOnClose}
       />
+      
       <div id="modal-content">{children}</div>
     </div>,
     modalNode

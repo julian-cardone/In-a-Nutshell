@@ -9,6 +9,7 @@ import * as taskActions from "../../store/tasks";
 import { EventContext } from "../../App";
 import { format } from "date-fns";
 import UpdateModal from "../UpdateModal/UpdateModal";
+import logo from "../../assets/NSLogos/Logo.svg";
 
 function NavBar({ setEventsInd }) {
   // const loggedIn = useSelector(state => !!state.session.user);
@@ -16,6 +17,7 @@ function NavBar({ setEventsInd }) {
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   // const [title, setTitle] = useState("");
+  const username = useSelector(state=>state.session.user.username)
 
   const task = useSelector((state) => {
     return state.tasks;
@@ -57,9 +59,11 @@ function NavBar({ setEventsInd }) {
         <div className="nav-content-padding">
           <div className="meat">
         <div className="top-nav-bar">
-          <div className="logo-nav">LOGO</div>
+          <div className="logo-nav">
+          <img className="logo-nav"src={logo} alt=""/>
+          </div>
           <div className="profile-options">
-            <p>username here</p>
+            <p>{username}</p>
             <p>logout</p>
           </div>
         </div>
@@ -67,14 +71,14 @@ function NavBar({ setEventsInd }) {
         {eTitle !== "N/A" && (
           <>
         <div className="events-title-nav">
-          <p>Event</p>
+          <p className="EVENT">EVENT</p>
           <h2 className="eventHeader">{eTitle.title}</h2>
           {/* <h2>{format(new Date(eTitle.eventDate), "eeee")},{" "}
           {format(new Date(eTitle.eventDate), "MMMM do")}</h2> */}
         </div>
         <div className="eventDescription">
           <div className="description-div">
-          {eTitle !== "N/A" && <h3>Description</h3>}
+          {eTitle !== "N/A" && <h3>DESCRIPTION</h3>}
           </div>
           <div className="description-in-nav">
           <p>{eTitle.description}</p>
@@ -88,8 +92,8 @@ function NavBar({ setEventsInd }) {
 
       <div className="tasks-nav">
         <div className="task-header">
-          <h2>Tasks</h2>
-          <h2>Status</h2>
+          <p>TASKS</p>
+          <p>STATUS</p>
         </div>
       </div>
 
@@ -97,8 +101,8 @@ function NavBar({ setEventsInd }) {
           <ul style={{ marginTop: "10px" }}>
             {tasks.map((task) => {
               return (
-                <li>
-                  <div>
+                <li className="task-li">
+                  <div className="task-li-div">
                     <div
                       style={{
                         display: "flex",
@@ -133,7 +137,6 @@ function NavBar({ setEventsInd }) {
                         <div className="status-buttons">
                           <input
                             type="checkbox"
-                            style={{ marginRight: "35px" }}
                           ></input>
                         </div>
                       </div>
@@ -148,7 +151,7 @@ function NavBar({ setEventsInd }) {
 
         <div className="eventDescription">
           <div className="description-div">
-          {eTitle !== "N/A" && <h3>Notes</h3>}
+          {eTitle !== "N/A" && <h3>NOTES</h3>}
           </div>
           <div className="description-in-nav">
           <p>{eTitle.description}</p>

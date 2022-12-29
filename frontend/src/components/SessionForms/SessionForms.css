@@ -52,11 +52,13 @@
 }
 
 .opening {
-    animation: slideInLeft .5s normal;
+
+    animation: slideInRight .5s normal;
 }
 
 .closing {
-    animation: slideOutRight 1s normal;
+    animation: slideOutRight .5s normal;
+
 }
 
 .session-form {
@@ -64,10 +66,24 @@
     flex-flow: column nowrap;
 }
 
-@keyframes slideInLeft {
+@keyframes slideInRight {
     from {position: relative; right: -100%; opacity: 0}
     to {position: relative; right: 0px; opacity: 1}
 }
+
+@keyframes slideOutRight {
+    from {
+            position: relative;
+            right: 0px;
+            opacity: 1
+        }
+    
+        to {
+            position: relative;
+            right: -150%;
+            opacity: 0
+        }
+    }
 @keyframes slideOutRight {
     from {position: relative; right: 0px; opacity: 1}
     to {position: relative; right: -80%; opacity: 0}

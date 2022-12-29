@@ -8,6 +8,7 @@
     /* justify-self: right; */
     align-items: center;
     /* margin: 36px 24px 48px 0; */
+    background-color: rgb(255, 255, 255, .9);
 }
 
 .links-nav{
@@ -26,11 +27,11 @@
 
 #task-title {
     font-weight: 600;
-    font: 400 16px 'Lexend Deca', sans-serif;
+    font-family: 'bitter';
 }
 
 .note-pad {
-    font: 400 20px 'Lexend Deca', sans-serif;
+    font-family: 'bitter';
     /* text-decoration: underline; */
 }
 
@@ -84,6 +85,8 @@
 .eventHeader {
     /* margin-top: 55px;
     margin-bottom: 25px; */
+    font-family: 'bitter';
+
 }
 
 .eventDescription {
@@ -91,7 +94,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-
+    font-family: 'bitter';
 }
 
 .btnContainer {
@@ -135,6 +138,12 @@
 
 .profile-options{
     position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8em;
+    align-self: center;
+    /* justify-content: flex-end; */
+    text-align: right;
 }
 
 .events-title-nav{
@@ -145,6 +154,12 @@
     /* align-items: center; */
     padding-top: 4vh;
     padding-bottom: 4vh;
+}
+
+.EVENT{
+    font-family: 'bitter';
+    font-weight: bold;
+    font-size: 0.7em;
 }
 
 .nav-content-padding{
@@ -161,7 +176,10 @@
 }
 
 .description-div{
-padding-bottom: 1vh;
+padding-bottom: 0.5vh;
+font-family: 'bitter';
+font-weight: bold;
+font-size: 0.7em;
 }
 
 .description-in-nav{
@@ -169,10 +187,11 @@ padding-bottom: 1vh;
 }
 
 .border-nav{
-    border-top: 0.4vh solid #6D8E59;
+    border-top: 0.3vh solid #6D8E59;
     border-radius: 0.4vh;
     padding-bottom: 1vh;
     /* padding-top: 2vh; */
+    opacity: 0.5;
 }
 
 .tasks-nav{
@@ -186,13 +205,17 @@ flex-direction: column;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    font-family: 'bitter';
+    font-weight: bold;
+    font-size: 0.7em;
 }
 
 .border-nav-2{
-    border-top: 0.4vh solid #6D8E59;
+    border-top: 0.3vh solid #6D8E59;
     border-radius: 0.4vh;
     padding-bottom: 1vh;
     /* padding-top: 2vh; */
+    opacity: 0.5;
 }
 
 .tasks{
@@ -200,6 +223,21 @@ flex-direction: column;
     display: flex;
     flex-direction: column;
     padding-bottom: 2vh;
+    /* justify-content: space-between; */
+
+    font-family: 'bitter';
+    /* font-weight: bold; */
+    /* font-size: 0.7em; */
+}
+
+.task-li-div{
+    position: relative;
+    align-self: right;
+}
+
+.task-li{
+    position: relative;
+    justify-content: space-between;
 }
 
 .btn-container{
@@ -214,4 +252,14 @@ flex-direction: column;
     position: relative;
     display: flex;
     flex-direction: column;
+}
+
+.logo-nav{
+    width: 7vh;
+}
+
+.status-buttons{
+    position: relative;
+    align-self: right;
+    right: 1vh;
 }

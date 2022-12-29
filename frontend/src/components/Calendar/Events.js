@@ -60,7 +60,6 @@ const Events = ({ day, events }) => {
   // console.log(((isBefore((eventsArray[0]), (eventsArray[1])))))
   // console.log(eventsArray);
 
-
   if (eventsArray.length > 1) {
     let cont = true;
     while (cont) {
@@ -109,7 +108,6 @@ const Events = ({ day, events }) => {
     }
   };
 
-
   const setCurrentEvent = eventInfo.eventInfo[1];
 
   const handleClick = (e, event) => {
@@ -120,12 +118,12 @@ const Events = ({ day, events }) => {
     <>
       {eventsArray.map((event) => (
         <div
-          className="h1-event-placeholder ssp1 point quikHover"
+          className="h1-event-placeholder p4 point quikHover"
           onClick={(e) => handleClick(e, event)}
         >
-          <span className="cal-event-time p3">
+          {/* <span className="cal-event-time p3">
             {displayTime(event.eventDate)}
-          </span>{" "}
+          </span>{" "} */}
           {event.title}
         </div>
       ))}
