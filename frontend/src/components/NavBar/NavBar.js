@@ -55,6 +55,7 @@ function NavBar({ setEventsInd }) {
 
       <div className="nav" style={{ position: "relative" }}>
         <div className="nav-content-padding">
+          <div className="meat">
         <div className="top-nav-bar">
           <div className="logo-nav">LOGO</div>
           <div className="profile-options">
@@ -62,32 +63,36 @@ function NavBar({ setEventsInd }) {
             <p>logout</p>
           </div>
         </div>
+
+        {eTitle !== "N/A" && (
+          <>
         <div className="events-title-nav">
+          <p>Event</p>
           <h2 className="eventHeader">{eTitle.title}</h2>
           {/* <h2>{format(new Date(eTitle.eventDate), "eeee")},{" "}
           {format(new Date(eTitle.eventDate), "MMMM do")}</h2> */}
         </div>
         <div className="eventDescription">
+          <div className="description-div">
           {eTitle !== "N/A" && <h3>Description</h3>}
+          </div>
+          <div className="description-in-nav">
           <p>{eTitle.description}</p>
-          {eTitle !== "N/A" && (
-            <button
-              onClick={handleDelete}
-              className="changeButton deleteButton"
-            >
-              Delete Event
-            </button>
-          )}
-          {eTitle !== "N/A" && (
-            <span className="changeButton updateButton" onClick={handleModal}>
-              Update Event
-            </span>
-          )}
+          </div>
         </div>
+        </>
+        )}
+
+        <div className="border-nav"></div>
+
+
+      <div className="tasks-nav">
         <div className="task-header">
-          <h2 style={{ marginLeft: "30px" }}>Tasks</h2>
-          <h2 style={{ marginRight: "20px" }}>Status</h2>
+          <h2>Tasks</h2>
+          <h2>Status</h2>
         </div>
+      </div>
+
         <div className="tasks">
           <ul style={{ marginTop: "10px" }}>
             {tasks.map((task) => {
@@ -139,6 +144,17 @@ function NavBar({ setEventsInd }) {
             })}
           </ul>
         </div>
+        <div className="border-nav-2"></div>
+
+        <div className="eventDescription">
+          <div className="description-div">
+          {eTitle !== "N/A" && <h3>Notes</h3>}
+          </div>
+          <div className="description-in-nav">
+          <p>{eTitle.description}</p>
+          </div>
+        </div>
+        </div>
 
         {showModal && (
           <UpdateModal
@@ -149,19 +165,35 @@ function NavBar({ setEventsInd }) {
             onClose={() => setShowModal(false)}
           />
         )}
+
         <div className="btnContainer">
           <div className="links-nav">
-          <Link to={"/devteam"} className="devteamLink">Meet the Team</Link>
-            <Link to={"/events"} className="eventsLink">
-              All Events
-            </Link>
             {/* <Link to={"/events/new"}>Make an Event</Link> */}
-          </div>
-          <button onClick={logoutUser} className="btn navButton">
+          {/* <button onClick={logoutUser} className="btn navButton">
             Logout
-          </button>
+          </button> */}
+                  {eTitle !== "N/A" && (
+                    <span className="changeButton updateButton" onClick={handleModal}>
+                      Update Event
+                    </span>
+                  )}
+                {eTitle !== "N/A" && (
+                  <button
+                  onClick={handleDelete}
+                  className="changeButton deleteButton"
+                  >
+              Delete Event
+            </button>
+          )}
+          <Link to={"/events"} className="eventsLink">
+            All Events
+          </Link>
+          </div>
         </div>
+
+
         </div>
+        {/* <Link to={"/devteam"} className="devteamLink">Meet the Team</Link> */}
       </div>
     </>
   );

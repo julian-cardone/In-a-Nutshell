@@ -3,9 +3,9 @@
     display: flex;
     flex-direction: column;
     /* float: right; */
-    height: 98vh;
+    height: 100vh;
     width: 50vh;
-    justify-self: right;
+    /* justify-self: right; */
     align-items: center;
     /* margin: 36px 24px 48px 0; */
 }
@@ -34,14 +34,6 @@
     /* text-decoration: underline; */
 }
 
-.task-header{
-    display: flex;
-    flex-direction: row;
-    text-decoration: underline;
-    justify-content: space-between;
-    font-size: 20px;
-}
-
 .navButton{
     width: 75%;
     margin-left: 45px;
@@ -54,12 +46,12 @@
 }
 
 .eventsLink {
-    text-decoration: none;
+    /* text-decoration: none;
     color: black;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-20%, -250%);
+    transform: translate(-20%, -250%); */
 }
 
 .eventsLink:hover {
@@ -90,30 +82,30 @@
 }
 
 .eventHeader {
-    margin-top: 55px;
-    margin-bottom: 25px;
+    /* margin-top: 55px;
+    margin-bottom: 25px; */
 }
 
 .eventDescription {
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .btnContainer {
-    position: absolute;
-    bottom: 0;
-    margin-left: 90px;
-    display: flex;
-    flex-direction: column;
+    position: relative;
 }
 
 .devteamLink {
-    text-decoration: none;
+    /* text-decoration: none;
     color: black;
     position: absolute;
     top: 30%;
     left: 50%;
     transform: translate(-20%, -250%);
-    text-align: center;
+    text-align: center; */
 }
 
 .devteamLink:hover {
@@ -130,10 +122,10 @@
     position: relative;
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 4vh;
-    padding-bottom: 4vh;
-    padding-left: 6vh;
-    padding-right: 6vh;
+    /* padding-top: 4vh;
+    padding-bottom: 4vh; */
+    /* padding-left: 6vh;
+    padding-right: 6vh; */
 }
 
 .logo-nav{
@@ -148,13 +140,78 @@
 .events-title-nav{
     position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    padding-top: 4vh;
+    padding-bottom: 4vh;
 }
 
 .nav-content-padding{
     position: relative;
-    max-width: 45vh;
-    width: 32vh;
+    /* max-width: 45vh; */
+    /* width: 32vh; */
+    padding: 3vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    min-height: 100%;
+    justify-content: space-between;
+}
+
+.description-div{
+padding-bottom: 1vh;
+}
+
+.description-in-nav{
+    padding-bottom: 4vh;
+}
+
+.border-nav{
+    border-top: 0.4vh solid #6D8E59;
+    border-radius: 0.4vh;
+    padding-bottom: 1vh;
+    /* padding-top: 2vh; */
+}
+
+.tasks-nav{
+position: relative;
+display: flex;
+flex-direction: column;
+}
+
+.task-header{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.border-nav-2{
+    border-top: 0.4vh solid #6D8E59;
+    border-radius: 0.4vh;
+    padding-bottom: 1vh;
+    /* padding-top: 2vh; */
+}
+
+.tasks{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2vh;
+}
+
+.btn-container{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    /* justify-items: flex-end; */
+    /* bottom: 0; */
+}
+
+.meat{
+    position: relative;
     display: flex;
     flex-direction: column;
 }
