@@ -5,6 +5,7 @@ import "./NewEventForm.css";
 import NewEventFormBox from "./NewEventForm";
 import { getDay, getMonth, setHours, setMinutes } from "date-fns";
 import { fetchEvents } from "../../store/events";
+import { zonedTimeToUtc, formatInTimeZone } from 'date-fns-tz/esm'
 
 function NewEventForm({ eventDateProp, showModal, setShowModal, setEventsInd }) {
   const [title, setTitle] = useState("");
@@ -14,7 +15,6 @@ function NewEventForm({ eventDateProp, showModal, setShowModal, setEventsInd }) 
   const errors = useSelector((state) => state.errors.events);
   const newEvent = useSelector((state) => state.events.new);
   const dispatch = useDispatch();
-
   // const [hour, setTheHour] = useState(null);
   // const [minute, setTheMinute] = useState();
 
@@ -24,15 +24,15 @@ function NewEventForm({ eventDateProp, showModal, setShowModal, setEventsInd }) 
   }, [dispatch, eventDateProp]);
 
   const handleSubmit = (e) => {
+    const nyTime = formatInTimeZone(eventDate, 'America/New_York', 'yyyy-MM-dd HH:mm:ss zzz')
     e.preventDefault();
     setEventsInd(e);
     setShowModal(false);
     const event = {
       title,
       description,
-      eventDate,
+      nyTime,
     };
-    debugger;
     dispatch(createEvent({ event }));
   };
 
@@ -89,16 +89,13 @@ function NewEventForm({ eventDateProp, showModal, setShowModal, setEventsInd }) 
   //   }
 
   function handleHoursTwo(e) {
-    console.log(e.target.value);
     // setTheHour(e.target.value);
     // console.log(hour);
     setEventDate(setHours(new Date(eventDate), e.target.value));
   }
 
   function handleMinutesTwo(e) {
-    console.log(e.target.value);
     // setTheHour(e.target.value);
-    // console.log(hour);
     setEventDate(setMinutes(new Date(eventDate), e.target.value));
   }
 

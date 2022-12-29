@@ -34,7 +34,7 @@ const Cells = ({
     setEventDate(e.target.dataset.day);
   };
 
-  // console.log(new Date(2022, 11, 13, 18, 0));
+
 
   const startOfMonthCur = startOfMonth(currentMonth);
   const endOfMonthCur = endOfMonth(currentMonth);

@@ -2,6 +2,7 @@ const { response, json } = require("express");
 const express = require("express");
 const router = express.Router();
 
+
 const Event = require("../../models/Event");
 
 router.get("/test", function (req, res, next) {
@@ -33,8 +34,8 @@ router.post("/new", async (req, res, next) => {
     eventDate: req.body.event.nyTime,
     status: req.body.event.status,
   });
+
   try {
-    console.log(newEvent);
     const savedEvent = await newEvent.save();
     res.json(newEvent);
   } catch (error) {
@@ -43,7 +44,6 @@ router.post("/new", async (req, res, next) => {
 });
 
 router.delete("/:id", async (req, res, next) => {
-  console.log(req.params);
   try {
     await Event.findByIdAndDelete({ _id: req.params.id });
   } catch (err) {
@@ -53,7 +53,6 @@ router.delete("/:id", async (req, res, next) => {
 });
 
 router.patch("/:id", async (req, res, next) => {
-  console.log(req.body)
   const udpatedEvent = await new Event({
     _id: req.params.id,
     title: req.body.title,

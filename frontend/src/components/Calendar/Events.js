@@ -94,7 +94,6 @@ const Events = ({ day, events }) => {
       minutes = minutes.toString().split("");
       minutes.unshift("0");
       minutes = minutes.join("");
-      console.log(minutes);
     }
 
     //hours logic
