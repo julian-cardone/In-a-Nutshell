@@ -1,5 +1,6 @@
 import jwtFetch from "./jwt";
 import { RECEIVE_USER_LOGOUT  } from "./session";
+import { formatInTimeZone } from 'date-fns-tz/esm'
 
 const RECEIVE_EVENT = "events/RECEIVE_EVENT"
 const RECEIVE_EVENTS = "events/RECEIVE_EVENTS"
@@ -74,7 +75,9 @@ export const createEvent = data => async dispatch => {
         headers: { "Content-Type" : "application/json"},
         body: JSON.stringify(data)
       });
-      const event = await res.json();
+      let event = await res.json();
+      const nyTime = formatInTimeZone(event.eventDate, 'America/New_York', 'yyyy-MM-dd HH:mm:ss zzz')
+      event = { ...event, eventDate: nyTime }
       dispatch(receiveNewEvent(event));
     } catch(err) {
       const resBody = await err.json();
@@ -99,10 +102,9 @@ export const createEvent = data => async dispatch => {
 }
 
 export const updateEvent = (event) => async (dispatch) => {
-  // debugger 
   try {
     const res = await jwtFetch(`/api/events/${event.id}`, {
-      method: 'PUT',
+      method: 'PATCH',
       body: JSON.stringify(event),
       headers: {
           'Content-Type': 'application/json'

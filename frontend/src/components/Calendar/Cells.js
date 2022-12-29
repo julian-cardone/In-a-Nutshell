@@ -31,12 +31,11 @@ const Cells = ({
     e.preventDefault();
     // showModal === false ? setShowModal(true) : setShowModal(false);
     setShowModal(true);
-    setEventDate(e.currentTarget.dataset.day);
+    setEventDate(e.target.dataset.day);
     console.log(eventDate);
-    debugger
   };
 
-  // console.log(new Date(2022, 11, 13, 18, 0));
+
 
   const startOfMonthCur = startOfMonth(currentMonth);
   const endOfMonthCur = endOfMonth(currentMonth);
