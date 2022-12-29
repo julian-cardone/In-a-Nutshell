@@ -54,7 +54,15 @@ function NavBar({ setEventsInd }) {
       {/* { getLinks() } */}
 
       <div className="nav" style={{ position: "relative" }}>
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div className="nav-content-padding">
+        <div className="top-nav-bar">
+          <div className="logo-nav">LOGO</div>
+          <div className="profile-options">
+            <p>username here</p>
+            <p>logout</p>
+          </div>
+        </div>
+        <div className="events-title-nav">
           <h2 className="eventHeader">{eTitle.title}</h2>
           {/* <h2>{format(new Date(eTitle.eventDate), "eeee")},{" "}
           {format(new Date(eTitle.eventDate), "MMMM do")}</h2> */}
@@ -152,6 +160,7 @@ function NavBar({ setEventsInd }) {
           <button onClick={logoutUser} className="btn navButton">
             Logout
           </button>
+        </div>
         </div>
       </div>
     </>

@@ -4,8 +4,9 @@
     flex-direction: column;
     /* float: right; */
     height: 98vh;
-    width: 60vh;
+    width: 50vh;
     justify-self: right;
+    align-items: center;
     /* margin: 36px 24px 48px 0; */
 }
 
@@ -122,4 +123,38 @@
 
 .devteamLink:visited {
     color:black;
+}
+
+.top-nav-bar{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    padding-left: 6vh;
+    padding-right: 6vh;
+}
+
+.logo-nav{
+    position: relative;
+    align-self: center;
+}
+
+.profile-options{
+    position: relative;
+}
+
+.events-title-nav{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-content-padding{
+    position: relative;
+    max-width: 45vh;
+    width: 32vh;
+    display: flex;
+    flex-direction: column;
 }
