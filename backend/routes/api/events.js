@@ -30,7 +30,7 @@ router.post("/new", async (req, res, next) => {
   const newEvent = new Event({
     title: req.body.event.title,
     description: req.body.event.description,
-    eventDate: req.body.event.eventDate,
+    eventDate: req.body.event.nyTime,
     status: req.body.event.status,
   });
   try {
