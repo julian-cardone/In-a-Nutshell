@@ -185,12 +185,12 @@ function NavBar({ setEventsInd }) {
                     </span>
                   )}
                 {eTitle !== "N/A" && (
-                  <button
+                  <span
                   onClick={handleDelete}
                   className="changeButton deleteButton"
                   >
               Delete Event
-            </button>
+            </span>
           )}
           <Link to={"/events"} className="eventsLink">
             All Events

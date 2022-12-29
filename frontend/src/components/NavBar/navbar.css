@@ -18,8 +18,8 @@
 
 .links-nav{
     position: relative;
-    /* display: flex; */
-    /* flex-direction: row; */
+    display: flex;
+    flex-direction: row;
     /* align-items: center; */
     justify-content: space-around;
 }
@@ -74,8 +74,8 @@
 }
 
 .changeButton {
-    border: none;
-    background-color: inherit;
+    /* border: none; */
+    /* background-color: inherit; */
 }
 
 .deleteButton {
