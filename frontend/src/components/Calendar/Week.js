@@ -9,7 +9,7 @@ const Days = ({ currentMonth }) => {
 
   for (let i = 0; i < 7; i++) {
     days.push(
-      <div className="day-name-box" key={i}>
+      <div className="day-name-box p2" key={i}>
         {format(addDays(startDate, i), formatForDay)}
       </div>
     );
@@ -18,7 +18,7 @@ const Days = ({ currentMonth }) => {
   return (
     <>
       <div className="days-container">
-        <div className="days-row h3">{days}</div>
+        <div className="days-row">{days}</div>
       </div>
     </>
   );

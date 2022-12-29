@@ -21,6 +21,12 @@ h2 {
     font: 600 1.7rem 'Lexend Deca', sans-serif;
 }
 
+.h2 {
+    font: 600 1.7rem 'Lexend Deca', sans-serif;
+}
+
+
+
 .h3 {
     font: 500 1.2rem 'Lexend Deca', sans-serif;
 }
@@ -37,24 +43,24 @@ h2 {
     font: 600 12px 'Lexend Deca', sans-serif;
 }
 
-.ssp1 {
+.sp1 {
     font: 400 13px 'Bitter', serif;
 }
 
-.ssp2 {
+.sp2 {
     font: 400 16px 'Bitter', serif;
 }
 
-.ssh1 {
+.sh1 {
     font: 600 2.1rem 'Bitter', serif;
     padding-bottom: 0.8em;
 }
 
-.ssh2 {
+.sh2 {
     font: 600 1.7rem 'Bitter', serif;
 }
 
-.ssh3 {
+.sh3 {
     font: 500 1.3rem 'Bitter', serif;
 }
 

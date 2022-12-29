@@ -5,6 +5,8 @@ import getYear from "date-fns/getYear";
 import eachYearOfInterval from "date-fns/eachYearOfInterval";
 import subYears from "date-fns/subYears";
 import addYears from "date-fns/addYears";
+import forwardArrow from "../../assets/arrows/right-arrow.png";
+import backArrow from "../../assets/arrows/back-arrow.png";
 
 const Header = ({ currentMonth, setCurrentMonth }) => {
   //guide for formatting:
@@ -108,13 +110,13 @@ const Header = ({ currentMonth, setCurrentMonth }) => {
   return (
     <>
       <div className="header-flex-row">
-        <div className="back-button-div point calBtn">
-          <div className="back-icon" onClick={previousMonth}>
-            &#11077;
+        <div className="back-button-div">
+          <div className="back-icon point calBtn" onClick={previousMonth}>
+            <img src={backArrow} alt="" width="42" />
           </div>
         </div>
 
-        <div className="date-div ssh2">
+        <div className="date-div h2">
           <span className="date-display menu" onClick={openMenu}>
             {showMenu && (
               <div className="dropdown-root">
@@ -156,9 +158,9 @@ const Header = ({ currentMonth, setCurrentMonth }) => {
           </span>
         </div>
 
-        <div className="forward-button-div point calBtn">
-          <div className="forward-icon" onClick={nextMonth}>
-            &#11078;
+        <div className="forward-button-div">
+          <div className="forward-icon point calBtn" onClick={nextMonth}>
+            <img src={forwardArrow} alt="" width="42" />
           </div>
         </div>
       </div>

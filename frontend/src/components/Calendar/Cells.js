@@ -21,7 +21,7 @@ const Cells = ({
   seletedDate,
   setSelectedDate,
   events,
-  setEventsInd
+  setEventsInd,
 }) => {
   // const events = useSelector(state => Object.values(state.eventsReducer.all));
 
@@ -76,13 +76,17 @@ const Cells = ({
           <div className="cell-box-container">
             <div className="date-in-cell-box">{format(firstSunday, "dd")}</div>
             <div className="event-title-container">
-              <Events day={firstSunday} events={events}setEventsInd={setEventsInd} />
+              <Events
+                day={firstSunday}
+                events={events}
+                setEventsInd={setEventsInd}
+              />
             </div>
             <div className="add-button-container">
               <button
                 data-day={firstSunday}
                 onClick={(e) => handleModal(e)}
-                className="add-button"
+                className="add-button p3"
               >
                 &#x2795;
               </button>

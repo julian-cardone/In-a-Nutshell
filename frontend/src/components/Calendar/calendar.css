@@ -2,6 +2,8 @@
     display: flex;
     justify-content: space-between;
     background: #E8E4D9;
+    height: 100vh;
+    /* padding-bottom: 7px; */
 }
 
 .menu {
@@ -25,20 +27,14 @@
 .calendar-container{
     position: relative;
     width: 100%;
-    max-width: 100%;
-    height: 100%;
-    max-height: 100vh;
-    margin: 8px 8px 24px 8px;
+    height: calc(100% - 16px);
+    margin: 8px 8px 8px 8px;
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    /* contain: content; */
-    /* background: #eee center / contain no-repeat url("../../assets/squirrel-origami-paper-svgrepo-com.svg");
-    background-color: #698e59; */
-    /* border-radius: 6rem; */
 }
 
-.calendar-container::before{
+/* .calendar-container::before{
     content: "";
     position: absolute;
     background: center / contain no-repeat url("../../assets/squirrel-origami-paper-svgrepo-com.svg");
@@ -49,66 +45,71 @@
     left: 0px;
     opacity: .6;
     border-radius: 3rem;
-    height: 101%;
-}
+    height: 100%;
+} */
 
 .header-flex-row{
     position: relative;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    border: 1px solid black;
+    margin-bottom: 9px;
+    /* border: 1px solid black; */
     border-radius: 5px;
     /* max-height: 1.7vh; */
 }
 
-.back-button-div{
-    font-size: 24px;
-    color: red;
-    padding: 0 24px;
+.back-icon {
+    display: flex;
+    /* font-size: 24px; */
+    /* color: red; */
+    /* padding: 0 24px; */
     border-radius: 5px;
 }
 
 
 .date-div{
-    font-weight: bold;
+    font-weight: 600;
     display: flex;
+    width: 250px;
+    justify-content: center;
     gap: 1vh;
 }
 
-.forward-button-div{
-    font-size: 24px;
-    padding: 0 24px;
-    color: green;
+.forward-icon {
+    display: flex;
     border-radius: 5px;
+}
+
+.day-name-box {
+    width: 14.285%;
+    padding: 5px 0;
+    /* border: 1px solid blue; */
+    background-color: #3d672d;
+    color: white;
+    border-radius: 2px;
+    text-align: center;
 }
 
 .days-container{
     position: relative;
-    /* display: flex; */
-    /* border: 1px solid black; */
-    border-radius: 5px;
-    background: rgba(255, 166, 0, 0.775);
-    /* height: 100%; */
-    /* max-height: 100%; */
 }
 
 .days-row{
+    /* border: 1px solid red; */
     position: relative;
     display: flex;
     justify-content: space-around;
-    padding: 10px;
+    gap: 5px;
+    margin-bottom: 5px;
 }
 
 .cells-container{
     position: relative;
     display: flex;
     flex-direction: column;
-    /* gap: 50px; */
-    border: 1px solid black;
+    gap: 5px;
     border-radius: 1%;
-    height: 100%;
     max-height: 100%;
 }
 
@@ -116,33 +117,29 @@
     position: relative;
     display: flex;
     justify-content: space-around;
-    /* height: 100%; */
+    gap: 5px;
     min-height: 20%;
 }
 
-.cell-box-container{
-    border-radius: 5px;
-    border: 1px solid black;
+.cell-box-container {
+    padding: 0 5px 5px 5px;
+    overflow: hidden;
+    border-radius: 3px;
     width: 14.28571428571429%;
     min-width: 105px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    overflow: auto;
+    justify-content: flex-start;
     height: 15.7vh;
-    /* background: rgb(, green, blue); */
+    background-color: rgb(255, 255, 255, .9);
 }
 
-.date-in-cell-box{
+.date-in-cell-box {
     max-width: min-content;
-    /* max-height: min-content; */
-    /* padding: 2px; */
-    padding-left: 4px;
 }
 
 .date-in-cell-box-gray{
     max-width: min-content;
-    padding: 2px;
     color: lightgrey;
 }
 
@@ -174,31 +171,24 @@
 }
 
 .add-button{
-    position: relative;
+    position: absolute;
     background-color: rgba(47,
         72,
-        42, .3);
-    /* top: 88%; */
-    /* bottom: 75%; */
-    /* left: 50%; */
-    /* left: 58%; */
+        42, 0.3);
+    right: 0;
+    bottom: 0;
     opacity: 0;
     z-index: -1;
-    /* height: 13%; */
-    /* max-height: 13%; */
-    width: 39%;
-    max-width: 39%;
+    width: 29px;
+    height: 29px;
     /* padding: 1px; */
     font-size: 1em;
-    /* top: 104%; */
-    /* left: 39.5%; */
-    /* margin: 2px; */
     border: 0;
     /* padding: 1em 2em; */
     text-decoration: none;
     /* font-size: 15px; */
     text-transform: uppercase;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
 
 
@@ -209,24 +199,12 @@
 }
 
 .cell-box-container:hover .add-button{
-    position: relative;
+    /* position: absolute; */
     opacity: 1;
     z-index: 1;
 }
 
 .cal-event-time {
     border-radius: 3px;
+    z-index: 0;
 }
-
-.complete {
-
-}
-
-.urgent {
-    
-}
-
-/* .event-modal{
-    position: relative;
-    z-index: 1;
-} */
