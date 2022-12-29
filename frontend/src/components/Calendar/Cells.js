@@ -86,7 +86,7 @@ const Cells = ({
               <button
                 data-day={firstSunday}
                 onClick={(e) => handleModal(e)}
-                className="add-button p3"
+                className="add-button"
               >
                 &#x2795;
               </button>
@@ -106,7 +106,7 @@ const Cells = ({
               <button
                 data-day={firstSunday}
                 onClick={(e) => handleModal(e)}
-                className="add-button p3"
+                className="add-button"
               >
                 &#x2795;
               </button>

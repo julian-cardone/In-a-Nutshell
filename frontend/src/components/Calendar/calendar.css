@@ -3,7 +3,7 @@
     justify-content: space-between;
     background: #E8E4D9;
     height: 100vh;
-    /* padding-bottom: 7px; */
+    /* padding-bottom: px; */
 }
 
 .menu {
@@ -108,7 +108,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 2.5px;
     border-radius: 1%;
     max-height: 100%;
 }
@@ -122,6 +122,7 @@
 }
 
 .cell-box-container {
+    position: relative;
     padding: 0 5px 5px 5px;
     overflow: hidden;
     border-radius: 3px;
@@ -165,12 +166,16 @@
 }
 
 .add-button-container{
-    position: relative;
+    position: absolute;
+    right: 0;
+    bottom: 0;
     display: flex;
     justify-content: flex-end;
 }
 
 .add-button{
+    padding: 0;
+    border: none;
     position: absolute;
     background-color: rgba(47,
         72,
@@ -178,15 +183,11 @@
     right: 0;
     bottom: 0;
     opacity: 0;
-    z-index: -1;
+    /* z-index: -1; */
     width: 29px;
     height: 29px;
-    /* padding: 1px; */
-    font-size: 1em;
-    border: 0;
-    /* padding: 1em 2em; */
+    font-size: 1rem;
     text-decoration: none;
-    /* font-size: 15px; */
     text-transform: uppercase;
     border-radius: 15px;
     cursor: pointer;
@@ -199,12 +200,14 @@
 }
 
 .cell-box-container:hover .add-button{
-    /* position: absolute; */
+    position: absolute;
+    right: 0;
+    bottom: 0;
     opacity: 1;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .cal-event-time {
     border-radius: 3px;
-    z-index: 0;
+    /* z-index: -1; */
 }

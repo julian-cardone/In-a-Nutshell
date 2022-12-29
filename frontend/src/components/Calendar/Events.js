@@ -118,12 +118,12 @@ const Events = ({ day, events }) => {
     <>
       {eventsArray.map((event) => (
         <div
-          className="h1-event-placeholder sp1 point quikHover"
+          className="h1-event-placeholder p4 point quikHover"
           onClick={(e) => handleClick(e, event)}
         >
-          <span className="cal-event-time p3">
+          {/* <span className="cal-event-time p3">
             {displayTime(event.eventDate)}
-          </span>{" "}
+          </span>{" "} */}
           {event.title}
         </div>
       ))}

@@ -43,6 +43,10 @@ h2 {
     font: 600 12px 'Lexend Deca', sans-serif;
 }
 
+.p4 {
+    font: 400 10px 'Lexend Deca', sans-serif;
+}
+
 .sp1 {
     font: 400 13px 'Bitter', serif;
 }
@@ -115,7 +119,7 @@ a:visited {
 }
 
 .calBtn:hover {
-    background-color: #DDA15E;
+    background-color: #c8bcbc;
 }
 
 .txtField{
