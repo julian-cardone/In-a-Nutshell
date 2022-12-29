@@ -199,8 +199,8 @@ function NavBar({ setEventsInd }) {
         </div>
 
 
+        <Link to={"/devteam"} className="devteamLink">Meet the Team</Link>
         </div>
-        {/* <Link to={"/devteam"} className="devteamLink">Meet the Team</Link> */}
       </div>
     </>
   );
