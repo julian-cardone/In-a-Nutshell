@@ -248,6 +248,11 @@ flex-direction: column;
     /* bottom: 0; */
 }
 
+.logout-btn-nav:hover{
+    cursor: pointer;
+    font-weight: bold;
+}
+
 .meat{
     position: relative;
     display: flex;

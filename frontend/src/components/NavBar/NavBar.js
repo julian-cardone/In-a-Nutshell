@@ -64,7 +64,10 @@ function NavBar({ setEventsInd }) {
           </div>
           <div className="profile-options">
             <p>{username}</p>
-            <p>logout</p>
+          {/* <button onClick={logoutUser} className="btn navButton">
+            Logout
+          </button> */}
+            <p className="logout-btn-nav" onClick={logoutUser}>Logout</p>
           </div>
         </div>
 
@@ -172,9 +175,6 @@ function NavBar({ setEventsInd }) {
         <div className="btnContainer">
           <div className="links-nav">
             {/* <Link to={"/events/new"}>Make an Event</Link> */}
-          {/* <button onClick={logoutUser} className="btn navButton">
-            Logout
-          </button> */}
                   {eTitle !== "N/A" && (
                     <span className="changeButton updateButton" onClick={handleModal}>
                       Update Event
