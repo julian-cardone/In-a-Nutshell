@@ -88,7 +88,7 @@ const Cells = ({
                 onClick={(e) => handleModal(e)}
                 className="add-button"
               >
-                &#x2795;
+                <span>&#x2795;</span>
               </button>
             </div>
           </div>
@@ -108,7 +108,7 @@ const Cells = ({
                 onClick={(e) => handleModal(e)}
                 className="add-button"
               >
-                &#x2795;
+                <span>&#x2795;</span>
               </button>
             </div>
           </div>
