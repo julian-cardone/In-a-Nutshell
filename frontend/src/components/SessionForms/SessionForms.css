@@ -83,6 +83,7 @@
             right: -150%;
             opacity: 0
         }
+    }
 @keyframes slideOutRight {
     from {position: relative; right: 0px; opacity: 1}
     to {position: relative; right: -80%; opacity: 0}
