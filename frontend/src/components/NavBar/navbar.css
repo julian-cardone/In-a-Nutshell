@@ -6,6 +6,7 @@
     /* max-height: 100vh; */
     /* min-height: 100vh; */
     /* overflow: scroll; */
+    /* justify-content: space-between; */
     overflow-x: hidden;
     overflow-y: scroll;
     width: 50vh;
@@ -22,6 +23,8 @@
     flex-direction: row;
     /* align-items: center; */
     justify-content: space-around;
+    /* vertical-align: baseline; */
+
 }
 
 .task-box {
@@ -99,6 +102,8 @@
     /* margin-top: 55px;
     margin-bottom: 25px; */
     font-family: 'bitter';
+    font-size: 2.5vh;
+    font-weight: none;
 
 }
 
@@ -122,6 +127,7 @@
     left: 50%;
     transform: translate(-20%, -250%);
     text-align: center; */
+    /* vertical-align: bottom; */
 }
 
 .devteamLink:hover {
@@ -165,8 +171,8 @@
     flex-direction: column;
     /* justify-content: center; */
     /* align-items: center; */
-    padding-top: 4vh;
-    padding-bottom: 4vh;
+    /* padding-top: 4vh; */
+    padding-bottom: 2vh;
 }
 
 .EVENT{
@@ -196,7 +202,7 @@ font-size: 1.7vh;
 }
 
 .description-in-nav{
-    padding-bottom: 4vh;
+    padding-bottom: 2vh;
 }
 
 .border-nav{
@@ -303,4 +309,28 @@ flex-direction: column;
 
   body {
     background: #E8E4D9;
+  }
+
+  .title-time{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .date-nav-bar{
+    font-family: 'bitter';
+    font-size: 2vh;
+    position: relative;
+    align-self: center;
+    padding-top: 2vh;
+    /* padding-bottom: 1vh; */
+    text-align: right;
+    width: 100%;
+    color: #6D8E59;
+    opacity: 0.6;
+  }
+
+  .meet-the-team a{
+    width: 100%;
+    text-align: center;
   }
