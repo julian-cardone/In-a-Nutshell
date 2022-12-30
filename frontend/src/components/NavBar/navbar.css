@@ -300,3 +300,7 @@ flex-direction: column;
     background-color: darkgrey;
     /* outline: 1px solid slategrey; */
   }
+
+  body {
+    background: #E8E4D9;
+  }
