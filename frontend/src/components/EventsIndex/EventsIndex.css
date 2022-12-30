@@ -1,5 +1,5 @@
 .event-card {
-    background-color: #2F482A;
+    background-color: #3d672d;
     color: white;
     margin: 15px;
     border-radius: 5px;
@@ -12,7 +12,7 @@
 .event-title {
     font-size: 24px;
     margin: 10px;
-    color: #E8E4D9;
+    color: white;
     font-weight: 600;
 }
 
@@ -21,11 +21,11 @@
 }
 
 .outer-events-div {
-    background-color: #6D8E59;
+    background-color: #E8E4D9;
 }
 
 .title-for-events {
-    color: #E8E4D9;
+    color: #000;
     font-weight: 600;
     margin: 10px;
 }
