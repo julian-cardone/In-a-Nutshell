@@ -57,7 +57,6 @@ function NavBar({ setEventsInd }) {
       {/* { getLinks() } */}
 
       <div className="nav" style={{ position: "relative" }}>
-
         <div className="nav-content-padding">
           <div className="meat">
             <div className="top-nav-bar">
@@ -77,13 +76,19 @@ function NavBar({ setEventsInd }) {
 
             {eTitle !== "N/A" && (
               <>
-                <p className="date-nav-bar">
-                  {format(new Date(eventInfo.eventInfo[0].eventDate), "eeee")},{" "}
-                  {format(
-                    new Date(eventInfo.eventInfo[0].eventDate),
-                    "MMMM do"
-                  )}
-                </p>
+                <div className="date-nav-bar">
+                  <p>
+                    {format(new Date(eventInfo.eventInfo[0].eventDate), "p")}
+                  </p>
+                  <p>
+                    {format(new Date(eventInfo.eventInfo[0].eventDate), "eeee")}
+                    ,{" "}
+                    {format(
+                      new Date(eventInfo.eventInfo[0].eventDate),
+                      "MMMM do"
+                    )}{" "}
+                  </p>
+                </div>
                 <div className="events-title-nav">
                   <p className="EVENT">EVENT</p>
 
@@ -222,15 +227,12 @@ function NavBar({ setEventsInd }) {
               </Link>
             </div>
           </div>
-        <div className="meet-the-team">
-          <Link to={"/devteam"} className="devteamLink">
-            Meet the Team
-          </Link>
+          <div className="meet-the-team">
+            <Link to={"/devteam"} className="devteamLink">
+              Meet the Team
+            </Link>
+          </div>
         </div>
-
-        </div>
-
-
       </div>
     </>
   );
