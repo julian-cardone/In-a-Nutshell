@@ -31,7 +31,7 @@ const Cells = ({
     e.preventDefault();
     // showModal === false ? setShowModal(true) : setShowModal(false);
     setShowModal(true);
-    setEventDate(e.target.dataset.day);
+    setEventDate(e.currentTarget.dataset.day);
     console.log(eventDate);
   };
 
