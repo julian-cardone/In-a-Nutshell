@@ -35,8 +35,6 @@ const Cells = ({
     console.log(eventDate);
   };
 
-
-
   const startOfMonthCur = startOfMonth(currentMonth);
   const endOfMonthCur = endOfMonth(currentMonth);
   // const days =
@@ -88,7 +86,7 @@ const Cells = ({
                 onClick={(e) => handleModal(e)}
                 className="add-button"
               >
-              &#x2795;
+                +
               </button>
             </div>
           </div>
@@ -108,7 +106,7 @@ const Cells = ({
                 onClick={(e) => handleModal(e)}
                 className="add-button"
               >
-              &#x2795;
+                +
               </button>
             </div>
           </div>
