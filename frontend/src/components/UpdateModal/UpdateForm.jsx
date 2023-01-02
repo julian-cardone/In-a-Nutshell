@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearEventErrors, updateEvent } from "../../store/events";
 import "./UpdateModal.css";
 import { getDay, getMonth, setHours, setMinutes } from "date-fns";
+import { zonedTimeToUtc, formatInTimeZone } from 'date-fns-tz/esm'
 import { EventContext } from "../../App";
 
 
@@ -17,13 +18,16 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
   const newEvent = useSelector((state) => state.events.new);
 
   const eventInfo = useContext(EventContext);
-  // const [hour, setTheHour] = useState(null);
-  // const [minute, setTheMinute] = useState();
 
   useEffect(() => {
     setEventDate(event.eventDate);
     return () => dispatch(clearEventErrors());
   }, [dispatch, event.eventDate]);
+
+
+
+  const nyTime = formatInTimeZone(eventDate, 'America/New_York', 'yyyy-MM-dd HH:mm:ss zzz')
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +35,7 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
       id: event._id,
       title,
       description,
-      eventDate,
+      nyTime,
     };
     setEventsInd("literally anything")
     dispatch(updateEvent(changedEvent));

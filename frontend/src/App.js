@@ -48,8 +48,8 @@ function App() {
               <Route exact path="/events" component={EventsIndex} />
               <Route exact path="/events/new" component={NewEventForm} />
               <Route exact path="/home">
-                {loggedIn && <Calendar setEventsInd={setEventsInd}/>}
                 {loggedIn && <NavBar setEventsInd={setEventsInd}/>}
+                {loggedIn && <Calendar setEventsInd={setEventsInd}/>}
               </Route>
               <Route exact path= "/devteam" component={DevTeam}></Route>
             </EventContext.Provider>
