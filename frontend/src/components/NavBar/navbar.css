@@ -21,7 +21,7 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
+    align-items: center;
     justify-content: space-around;
     /* vertical-align: baseline; */
 
@@ -56,20 +56,22 @@
 }
 
 .eventsLink {
+    text-decoration: none;
+    text-transform: uppercase;
     /* text-decoration: none;
     color: black;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-20%, -250%); */
-    text-decoration: none;
+    /* text-decoration: none;
     font-family: 'bitter';
-    font-size: 2vh;
+    font-size: 2vh; */
 }
 
 .eventsLink:hover {
-    text-decoration: underline;
-    font-weight: 700;
+    /* text-decoration: underline; */
+    /* font-weight: 700; */
 }
 
 .eventsLink:visited {
@@ -82,28 +84,39 @@
 }
 
 .deleteButton {
-    color: red;
-    font-family: 'bitter';
-    font-size: 2vh;
+    color: crimson;
+    text-decoration: underline;
+    cursor: pointer;
+    /* font-family: 'bitter'; */
+    /* font-size: 2vh; */
 }
 .updateButton{
-    font-family: 'bitter';
-    color: rgb(4, 129, 77);
-    font-size: 2vh;
+    cursor: pointer;
+    background-color: #3d672d;
+    color:white;
+    border-radius: 35px;
+    transition: all .33s ease-out;
+    padding: 2px 5px;
+    margin-right: .7rem;
+}
+
+.updateButton:hover {
+    background-color: #292E1E;
+
 }
 
 .changeButton:hover{
     text-decoration: underline;
-    font-weight: 700;
+    /* font-weight: 700; */
     cursor: pointer;
 }
 
 .eventHeader {
     /* margin-top: 55px;
     margin-bottom: 25px; */
-    font-family: 'bitter';
+    /* font-family: 'bitter'; */
     font-size: 2.5vh;
-    font-weight: none;
+    /* font-weight: none; */
 
 }
 
@@ -120,19 +133,18 @@
 }
 
 .devteamLink {
-    /* text-decoration: none;
-    color: black;
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-20%, -250%);
-    text-align: center; */
-    /* vertical-align: bottom; */
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #3d672d;
+    color:white;
+    border-radius: 35px;
+    transition: all .33s ease-out;
+    padding: 5px 9px;
+    margin-right: .7rem;
 }
 
 .devteamLink:hover {
-    text-decoration: underline;
-    font-weight: 700;
+    background-color: #292E1E;
 }
 
 .devteamLink:visited {
@@ -176,9 +188,7 @@
 }
 
 .EVENT{
-    font-family: 'bitter';
-    font-weight: bold;
-    font-size: 1.7vh;
+    margin-bottom: 4px;
 }
 
 .nav-content-padding{
@@ -195,10 +205,10 @@
 }
 
 .description-div{
-padding-bottom: 0.5vh;
-font-family: 'bitter';
-font-weight: bold;
-font-size: 1.7vh;
+padding-bottom: .5vh;
+/* font-family: 'bitter';
+font-weight: bold; */
+/* font-size: 1.7vh; */
 }
 
 .description-in-nav{
@@ -224,9 +234,9 @@ flex-direction: column;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    font-family: 'bitter';
+    /* font-family: 'bitter';
     font-weight: bold;
-    font-size: 1.7vh;
+    font-size: 1.7vh; */
 }
 
 .border-nav-2{
@@ -267,9 +277,14 @@ flex-direction: column;
     /* bottom: 0; */
 }
 
+.logout-btn-nav {
+    margin-top: 3px;
+    font-size: 11px;
+    text-decoration: underline;
+}
+
 .logout-btn-nav:hover{
     cursor: pointer;
-    font-weight: bold;
 }
 
 .div-list-nav{
@@ -318,13 +333,9 @@ flex-direction: column;
   }
 
   .date-nav-bar{
-    font-family: 'bitter';
-    font-size: 2vh;
     position: relative;
     align-self: center;
     padding-top: 2vh;
-    /* padding-bottom: 1vh; */
-    /* text-align: right; */
     justify-content: space-between;
     width: 100%;
     color: #6D8E59;
@@ -334,7 +345,12 @@ flex-direction: column;
     padding-bottom: 1vh;
   }
 
-  .meet-the-team a{
-    width: 100%;
-    text-align: center;
+  .date-nav-bar p {
+    font-family: 'Lexend Deca', sans-serif;
+  }
+
+  .teamLink {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
   }

@@ -64,7 +64,7 @@ function NavBar({ setEventsInd }) {
                 <img className="logo-nav" src={logo} alt="" />
               </div>
               <div className="profile-options">
-                <p>{username}</p>
+                <p className={`p1`}>{username}</p>
                 {/* <button onClick={logoutUser} className="btn navButton">
             Logout
           </button> */}
@@ -90,18 +90,18 @@ function NavBar({ setEventsInd }) {
                   </p>
                 </div>
                 <div className="events-title-nav">
-                  <p className="EVENT">EVENT</p>
+                  <p className="EVENT h4">EVENT</p>
 
                   <div className="title-time">
-                    <h2 className="eventHeader">{eTitle.title}</h2>
+                    <p className="eventHeader h3">{eTitle.title}</p>
                   </div>
 
                   {/* <h2>{format(new Date(eTitle.eventDate), "eeee")},{" "}
           {format(new Date(eTitle.eventDate), "MMMM do")}</h2> */}
                 </div>
                 <div className="eventDescription">
-                  <div className="description-div">
-                    {eTitle !== "N/A" && <h3>DESCRIPTION</h3>}
+                  <div className="description-div h4">
+                    {eTitle !== "N/A" && <>DESCRIPTION</>}
                   </div>
                   <div className="description-in-nav">
                     <p>{eTitle.description}</p>
@@ -114,9 +114,9 @@ function NavBar({ setEventsInd }) {
               <>
                 <div className="border-nav"></div>
                 <div className="tasks-nav">
-                  <div className="task-header">
-                    <p>TASKS</p>
-                    <p>STATUS</p>
+                  <div className="task-header h4">
+                    <h3>TASKS</h3>
+                    <h3>STATUS</h3>
                   </div>
                 </div>
 
@@ -184,7 +184,7 @@ function NavBar({ setEventsInd }) {
             <div className="border-nav-2"></div>
 
             <div className="eventDescription">
-              <div className="description-div">
+              <div className="description-div h4">
                 {eTitle !== "N/A" && <h3>NOTES</h3>}
               </div>
               <div className="description-in-nav">
@@ -205,30 +205,26 @@ function NavBar({ setEventsInd }) {
 
           <div className="btnContainer">
             <div className="links-nav">
-              {/* <Link to={"/events/new"}>Make an Event</Link> */}
-              {eTitle !== "N/A" && (
-                <span
-                  className="changeButton updateButton"
-                  onClick={handleModal}
-                >
-                  Update Event
-                </span>
-              )}
-              {eTitle !== "N/A" && (
-                <span
-                  onClick={handleDelete}
-                  className="changeButton deleteButton"
-                >
-                  Delete Event
-                </span>
-              )}
-              <Link to={"/events"} className="eventsLink">
-                All Events
+              <div>
+                {/* <Link to={"/events/new"}>Make an Event</Link> */}
+                {eTitle !== "N/A" && (
+                  <span className="updateButton p4" onClick={handleModal}>
+                    Update Event
+                  </span>
+                )}
+                {eTitle !== "N/A" && (
+                  <span onClick={handleDelete} className="deleteButton p4">
+                    Delete Event
+                  </span>
+                )}
+              </div>
+              <Link to={"/events"} className="eventsLink h4">
+                All Events <span>&#10140;</span>
               </Link>
             </div>
           </div>
-          <div className="meet-the-team">
-            <Link to={"/devteam"} className="devteamLink">
+          <div className="teamLink">
+            <Link to={"/devteam"} className="devteamLink p4">
               Meet the Team
             </Link>
           </div>
