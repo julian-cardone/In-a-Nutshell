@@ -2,7 +2,8 @@ import './EventsIndex.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteEvent, updateEvent } from '../../store/events';
 import { useHistory } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 function EventCard({event}) {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -94,8 +95,8 @@ function EventCard({event}) {
         <div className="event-card">
             <h2 className="event-title">{event.title}</h2>
             <p className="event-description">{event.description}</p>
-            <button onClick={removeEvent}>remove</button>
-            <button onClick={updateClick}>update</button>
+            <span className="remove-event-button" onClick={removeEvent}>remove</span>
+            <span className="update-event-button" onClick={updateClick}>update</span>
         </div>
         </>
     )

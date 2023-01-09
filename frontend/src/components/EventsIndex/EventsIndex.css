@@ -29,3 +29,22 @@
     font-weight: 600;
     margin: 10px;
 }
+
+.remove-event-button {
+    color: crimson;
+    cursor: pointer;
+    background-color: white;
+    padding: 2px 5px;
+    margin: 0.7rem;
+    border-radius: 35px;
+}
+
+.update-event-button {
+    cursor: pointer;
+    color: #3d672d;
+    border-radius: 20px;
+    transition: all .33s ease-out;
+    padding: 2px 5px;
+    margin: 0.7rem;
+    background-color: white;
+}
