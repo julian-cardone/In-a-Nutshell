@@ -78,7 +78,15 @@ function NavBar({ setEventsInd }) {
               <>
                 <div className="date-nav-bar">
                   <p>
-                    {format(addMinutes(new Date(eventInfo.eventInfo[0].eventDate),new Date(eventInfo.eventInfo[0].eventDate).getTimezoneOffset()), "p")}
+                    {format(
+                      addMinutes(
+                        new Date(eventInfo.eventInfo[0].eventDate),
+                        new Date(
+                          eventInfo.eventInfo[0].eventDate
+                        ).getTimezoneOffset()
+                      ),
+                      "p"
+                    )}
                     {/* {new Date(eventInfo.eventInfo[0].eventDate).getTimezoneOffset()} */}
                   </p>
                   <p>
@@ -214,17 +222,24 @@ function NavBar({ setEventsInd }) {
                   </span>
                 )}
                 {eTitle !== "N/A" && (
-                  <span onClick={handleDelete} className="deleteButton p4">
+                  <span className="deleteButton p4" onClick={handleDelete}>
                     Delete Event
                   </span>
                 )}
               </div>
-              <Link to={"/events"} className="eventsLink h4">
-                All Events <span>&#10140;</span>
-              </Link>
+              {eTitle !== "N/A" && (
+                <Link to={"/events"} className="eventsLink h4">
+                  All Events <span>&#10140;</span>
+                </Link>
+              )}
             </div>
           </div>
           <div className="teamLink">
+            {eTitle === "N/A" && (
+              <Link to={"/events"} className="devteamLink h4">
+                All Events
+              </Link>
+            )}
             <Link to={"/devteam"} className="devteamLink p4">
               Meet the Team
             </Link>
