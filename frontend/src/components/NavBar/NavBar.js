@@ -7,7 +7,7 @@ import { deleteEvent, fetchEvent } from "../../store/events";
 import { tasks } from "./tasks";
 import * as taskActions from "../../store/tasks";
 import { EventContext } from "../../App";
-import { format } from "date-fns";
+import { format, subMinutes, addMinutes } from "date-fns";
 import UpdateModal from "../UpdateModal/UpdateModal";
 import logo from "../../assets/NSLogos/Logo.svg";
 
@@ -78,7 +78,8 @@ function NavBar({ setEventsInd }) {
               <>
                 <div className="date-nav-bar">
                   <p>
-                    {format(new Date(eventInfo.eventInfo[0].eventDate), "p")}
+                    {format(addMinutes(new Date(eventInfo.eventInfo[0].eventDate),new Date(eventInfo.eventInfo[0].eventDate).getTimezoneOffset()), "p")}
+                    {/* {new Date(eventInfo.eventInfo[0].eventDate).getTimezoneOffset()} */}
                   </p>
                   <p>
                     {format(new Date(eventInfo.eventInfo[0].eventDate), "eeee")}
