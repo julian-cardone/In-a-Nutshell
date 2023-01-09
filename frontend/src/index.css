@@ -31,6 +31,10 @@ h2 {
     font: 500 1.2rem 'Lexend Deca', sans-serif;
 }
 
+.h4 {
+    font: 600 .6rem 'Lexend Deca', sans-serif;
+}
+
 .p1 {
     font: 400 13px 'Lexend Deca', sans-serif;
 }
@@ -73,7 +77,7 @@ h2 {
     border: 0;
     padding: 1em 2em;
     text-decoration: none;
-    font-family: sans-serif;
+    font-family: 'Lexend Deca', sans-serif;
     text-transform: uppercase;
     border-radius: 35px;
     cursor: pointer;

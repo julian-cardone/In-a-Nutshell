@@ -1,7 +1,6 @@
 const { response, json } = require("express");
 const express = require("express");
 const router = express.Router();
-
 const Event = require("../../models/Event");
 
 router.get("/test", function (req, res, next) {
@@ -19,31 +18,38 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const event = await Event.findOne({ _id: req.params.id })
-    res.send(event)
-  } catch(err) {
-    next(err)
+    const event = await Event.findOne({ _id: req.params.id });
+    res.send(event);
+  } catch (err) {
+    next(err);
   }
 });
 
 router.post("/new", async (req, res, next) => {
-  const newEvent = new Event({
+
+  let newEvent = new Event({
     title: req.body.event.title,
     description: req.body.event.description,
-    eventDate: req.body.event.eventDate,
+    eventDate: req.body.event.nyTime,
     status: req.body.event.status,
   });
+
+  let offset = newEvent.eventDate.getTimezoneOffset();
+  let time = newEvent.eventDate.getTime();
+  let dateTime = new Date( time - (offset * 60000))
+  newEvent.eventDate = dateTime
+
   try {
-    console.log(newEvent);
+    // console.log(newEvent);
     const savedEvent = await newEvent.save();
     res.json(newEvent);
   } catch (error) {
+    console.log(error);
     res.send(error);
   }
 });
 
 router.delete("/:id", async (req, res, next) => {
-  console.log(req.params);
   try {
     await Event.findByIdAndDelete({ _id: req.params.id });
   } catch (err) {
@@ -52,12 +58,12 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-router.put("/:id", async (req, res, next) => {
+router.patch("/:id", async (req, res, next) => {
   const udpatedEvent = await new Event({
     _id: req.params.id,
     title: req.body.title,
     description: req.body.description,
-    eventDate: req.body.completionDate,
+    eventDate: req.body.nyTime,
     status: req.body.status,
   });
 

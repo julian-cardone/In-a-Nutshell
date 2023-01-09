@@ -8,10 +8,13 @@ import "./SplashPage.css";
 
 function SplashPage() {
   const [showModal, setShowModal] = useState(false);
+  // const modalBG = document.getElementById("modal-background");
+
 
   const handleModal = (e) => {
     e.preventDefault();
     setShowModal(true);
+    // fadeIn());
   };
 
   return (

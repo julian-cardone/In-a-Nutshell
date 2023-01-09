@@ -170,23 +170,29 @@
     right: 0;
     bottom: 0;
     display: flex;
-    justify-content: flex-end;
+    vertical-align: middle;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .add-button{
-    /* padding: 0 1px 1px 0; */
-    border: none;
+    vertical-align: middle;
+    align-self: center;
+    padding: 0;
+    border: 0;
     position: absolute;
     background-color: rgba(47,
         72,
-        42, 0.3);
-    right: 0;
-    bottom: 0;
+        42, 0.8);
+    color: white;
+    right: 3px;
+    bottom: 3px;
     opacity: 0;
-    /* z-index: -1; */
-    width: 29px;
-    height: 29px;
-    font-size: 1rem;
+    width: 25px;
+    height: 25px;
+    font-size: 1.5rem;
     text-decoration: none;
     text-transform: uppercase;
     border-radius: 15px;
@@ -200,14 +206,9 @@
 }
 
 .cell-box-container:hover .add-button{
-    position: absolute;
-    right: 0;
-    bottom: 0;
     opacity: 1;
-    /* z-index: 1; */
 }
 
 .cal-event-time {
     border-radius: 3px;
-    /* z-index: -1; */
 }
