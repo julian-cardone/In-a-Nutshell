@@ -26,7 +26,7 @@ function App() {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
   const [currentEvent, setCurrentEvent] = useState(null);
-
+console.log(currentEvent);
   const [eventsInd, setEventsInd] = useState();
 
   useEffect(()=>{
