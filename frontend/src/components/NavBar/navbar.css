@@ -346,4 +346,10 @@ flex-direction: column;
 
   .event-container-default-nav{
     padding-bottom: 15px;
+    /* border-radius: 2%; */
+  }
+
+  .event-container-default-nav:hover{
+    cursor: pointer;
+    background-image: linear-gradient(rgb(181, 247, 181), rgb(230, 230, 230));
   }
