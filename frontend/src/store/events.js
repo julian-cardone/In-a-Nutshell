@@ -102,6 +102,7 @@ export const createEvent = data => async dispatch => {
 }
 
 export const updateEvent = (event) => async (dispatch) => {
+  // console.log(event)
   try {
     const res = await jwtFetch(`/api/events/${event.id}`, {
       method: 'PATCH',
@@ -110,7 +111,9 @@ export const updateEvent = (event) => async (dispatch) => {
           'Content-Type': 'application/json'
       }
   });
-  const data = await res.json();
+  let data = await res.json();
+  const nyTime = formatInTimeZone(data.eventDate, 'America/New_York', 'yyyy-MM-dd HH:mm:ss zzz')
+  data.eventDate =  nyTime
   dispatch(receiveEvent(data));
   } catch(err) {
     const resBody = await err.json();

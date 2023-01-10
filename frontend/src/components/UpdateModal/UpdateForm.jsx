@@ -13,10 +13,11 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
   const [description, setDescription] = useState(event.description);
   const [eventDate, setEventDate] = useState(event.eventDate);
   const [status, setStatus] = useState(false);
+  const[amPm , setAmPm] = useState("AM")
   const dispatch = useDispatch();
   const errors = useSelector((state) => state.errors.events);
   const newEvent = useSelector((state) => state.events.new);
-
+  // console.log(amPm)
   const eventInfo = useContext(EventContext);
 
   useEffect(() => {
@@ -27,7 +28,8 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
 
 
   const nyTime = formatInTimeZone(eventDate, 'America/New_York', 'yyyy-MM-dd HH:mm:ss zzz')
-
+  // console.log(eventDate)
+  // console.log(nyTime)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,17 +39,15 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
       description,
       nyTime,
     };
+
     setEventsInd("literally anything")
+    // debugger
     dispatch(updateEvent(changedEvent));
     setShowModal(false);
     eventInfo.eventInfo[1]()
   };
   setEventsInd("literally anything else")
 
-  const hours = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23,
-  ];
   const minutes = [];
 
   for (let i = 0; i < 60; i++) {
@@ -58,10 +58,6 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
     }
   }
 
-  //   const titleUpdate = e => setTitle(e.currentTarget.value);
-  //   const descriptionUpdate = e => setDescription(e.currentTarget.value);
-  //   const eventDateUpdate = e => setEventDate(e.currentTarget.value);
-  //   const statusUpdate ==> { return (e) => setStatus(e.currentTarget.value);};
   const update = (field) => {
     let setState;
 
@@ -82,27 +78,23 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
     return (e) => setState(e.currentTarget.value);
   };
 
-  // function handleHours(e){
-  //   let cHour = e.targer.value;
-  //   setTheHour(cHour);
-  //   }
-
-  //   function handleMinutes(e){
-  //     let cMinute = e.target.value;
-  //     setTheMinute(cMinute)
-  //   }
-
   function handleHoursTwo(e) {
-    console.log(e.target.value);
-    // setTheHour(e.target.value);
-    // console.log(hour);
-    setEventDate(setHours(new Date(eventDate), e.target.value));
+    // console.log(e.target.value);
+    if(amPm === "AM") {
+      setEventDate(setHours(new Date(eventDate), e.target.value));
+    } else if(amPm === "PM") {
+      let int = parseInt(e.target.value) + 12
+      let str = int.toString()
+      setEventDate(setHours(new Date(eventDate), str));
+    }
   }
+  // function handleHoursTwo(e) {
+  //   e.preventDefault();
+  //   setEventDate(setHours(new Date(eventDate), e.target.value));
+  // }
 
   function handleMinutesTwo(e) {
-    console.log(e.target.value);
-    // setTheHour(e.target.value);
-    // console.log(hour);
+    // console.log(e.target.value);
     setEventDate(setMinutes(new Date(eventDate), e.target.value));
   }
 
@@ -131,9 +123,9 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
           <div className={`timeMenu`}>
             <p>Select Time</p>
             <select className={`slctMenu`} onChange={(e) => handleHoursTwo(e)}>
-              {hours.map((hour) => (
-                <option className="hour-option" value={hour}>
-                  {hour}
+              {[...Array(12)].map((hour, index) => (
+                <option className="hour-option" value={index + 1}>
+                  {index + 1}
                 </option>
               ))}
             </select>
@@ -146,6 +138,10 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
                   {minute}
                 </option>
               ))}
+            </select>
+            <select onChange={(e) => setAmPm(e.target.value)}>
+              <option>AM</option>
+              <option>PM</option>
             </select>
           </div>
           {/* <label>AM

@@ -26,14 +26,14 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.post("/new", async (req, res, next) => {
-
+  console.log(req.body.event.nyTime)
   let newEvent = new Event({
     title: req.body.event.title,
     description: req.body.event.description,
     eventDate: req.body.event.nyTime,
     status: req.body.event.status,
   });
-
+  console.log(newEvent.eventDate)
   let offset = newEvent.eventDate.getTimezoneOffset();
   let time = newEvent.eventDate.getTime();
   let dateTime = new Date( time - (offset * 60000))
@@ -59,7 +59,7 @@ router.delete("/:id", async (req, res, next) => {
 });
 
 router.patch("/:id", async (req, res, next) => {
-  const udpatedEvent = await new Event({
+  const updatedEvent = await new Event({
     _id: req.params.id,
     title: req.body.title,
     description: req.body.description,
@@ -67,8 +67,14 @@ router.patch("/:id", async (req, res, next) => {
     status: req.body.status,
   });
 
+  let offset = updatedEvent.eventDate.getTimezoneOffset();
+  let time = updatedEvent.eventDate.getTime();
+  let dateTime = new Date( time - (offset * 60000))
+  console.log(dateTime)
+  updatedEvent.eventDate = dateTime
+  console.log(updatedEvent.eventDate)
   try {
-    await Event.updateOne({ _id: req.params.id }, udpatedEvent);
+    await Event.updateOne({ _id: req.params.id }, updatedEvent);
   } catch (err) {
     next(err);
   }
