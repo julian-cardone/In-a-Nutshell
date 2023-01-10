@@ -145,12 +145,20 @@
 .top-nav-bar{
     display: flex;
     position: relative;
+    top: 0;
     flex-direction: row;
     justify-content: space-between;
     /* padding-top: 4vh;
     padding-bottom: 4vh; */
     /* padding-left: 6vh;
     padding-right: 6vh; */
+}
+
+.top-nav-bar-container{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    opacity: 1;
 }
 
 .logo-nav{
@@ -195,6 +203,10 @@
     justify-content: space-between;
 }
 
+.nav::-webkit-scrollbar{
+    display: none;
+}
+
 .description-div{
 padding-bottom: .5vh;
 /* font-family: 'bitter';
@@ -233,7 +245,7 @@ flex-direction: column;
 .border-nav-2{
     border-top: 0.3vh solid #6D8E59;
     border-radius: 0.4vh;
-    padding-bottom: 1vh;
+    padding-bottom: 0.1vh;
     /* padding-top: 2vh; */
     opacity: 0.5;
 }
@@ -322,14 +334,14 @@ flex-direction: column;
   .date-nav-bar{
     position: relative;
     align-self: center;
-    padding-top: 2vh;
+    padding-top: 0.5vh;
     justify-content: space-between;
     width: 100%;
     color: #6D8E59;
     opacity: 0.4;
     display: flex;
     flex-direction: row;
-    padding-bottom: 1vh;
+    padding-bottom: 1.5vh;
   }
 
   .date-nav-bar p {
