@@ -17,7 +17,7 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
   const dispatch = useDispatch();
   const errors = useSelector((state) => state.errors.events);
   const newEvent = useSelector((state) => state.events.new);
-  console.log(amPm)
+  // console.log(amPm)
   const eventInfo = useContext(EventContext);
 
   useEffect(() => {
@@ -28,8 +28,8 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
 
 
   const nyTime = formatInTimeZone(eventDate, 'America/New_York', 'yyyy-MM-dd HH:mm:ss zzz')
-  console.log(eventDate)
-  console.log(nyTime)
+  // console.log(eventDate)
+  // console.log(nyTime)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,6 +41,7 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
     };
 
     setEventsInd("literally anything")
+    // debugger
     dispatch(updateEvent(changedEvent));
     setShowModal(false);
     eventInfo.eventInfo[1]()
@@ -77,20 +78,20 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
     return (e) => setState(e.currentTarget.value);
   };
 
-  // function handleHoursTwo(e) {
-  //   console.log(e.target.value);
-  //   if(amPm === "AM") {
-  //     setEventDate(setHours(new Date(eventDate), e.target.value));
-  //   } else if(amPm === "PM") {
-  //     let int = parseInt(e.target.value) + 12
-  //     let str = int.toString()
-  //     setEventDate(setHours(new Date(eventDate), str));
-  //   }
-  // }
   function handleHoursTwo(e) {
-    e.preventDefault();
-    setEventDate(setHours(new Date(eventDate), e.target.value));
+    // console.log(e.target.value);
+    if(amPm === "AM") {
+      setEventDate(setHours(new Date(eventDate), e.target.value));
+    } else if(amPm === "PM") {
+      let int = parseInt(e.target.value) + 12
+      let str = int.toString()
+      setEventDate(setHours(new Date(eventDate), str));
+    }
   }
+  // function handleHoursTwo(e) {
+  //   e.preventDefault();
+  //   setEventDate(setHours(new Date(eventDate), e.target.value));
+  // }
 
   function handleMinutesTwo(e) {
     // console.log(e.target.value);
