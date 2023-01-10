@@ -48,3 +48,7 @@
     margin: 0.7rem;
     background-color: white;
 }
+
+.event-card-date {
+    margin: 10px;
+}
