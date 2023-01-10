@@ -1,8 +1,9 @@
 #root{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     background: #E8E4D9;
     height: 100%;
+    /* width: 100%; */
 }
 
 .menu {
@@ -19,13 +20,14 @@
 
 .quikHover:hover {
     background-color: rgba(183, 199, 14, .5);
-    border-radius: 10px;
+    border-radius: 8px;
 
 }
  
 .calendar-container{
     position: relative;
     width: 100%;
+    min-width: 600px;
     height: calc(100% - 16px);
     margin: 8px 8px 8px 8px;
     display: flex;
@@ -69,11 +71,20 @@
 
 
 .date-div{
+    position: relative;
     font-weight: 600;
     display: flex;
     width: 250px;
     justify-content: center;
     gap: 1vh;
+}
+
+.date-display {
+    position: relative;
+}
+
+.date-display-year {
+    position: relative;
 }
 
 .forward-icon {
@@ -110,15 +121,17 @@
     flex-direction: column;
     gap: 2.5px;
     border-radius: 1%;
-    max-height: 100%;
+    width: 100%;
+    /* max-height: 100%; */
+    /* overflow-x: auto; */
 }
 
 .cells-row-container{
     position: relative;
     display: flex;
     justify-content: space-around;
-    gap: 5px;
-    min-height: 20%;
+    gap:2.5px;
+    min-height: 69px;
 }
 
 .cell-box-container {
@@ -127,7 +140,7 @@
     overflow: hidden;
     border-radius: 3px;
     width: 14.28571428571429%;
-    min-width: 105px;
+    min-width: 69px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -147,22 +160,31 @@
 .dropdown-root{
     position: absolute;
     z-index: 1;
-    top: 4vh;
-    background-color: lightgray;
+    top: 4.5vh;
+    background-color: rgba(183, 199, 14, .8);
+    border-radius: 8px;
 }
 
+
 .dropdown-container{
-    position: relative;
+    /* position: relative; */
     cursor: pointer;
 }
 
 .ul-dropdown{
-    position: relative;
+    /* position: relative; */
+    /* top: .5vh; */
     padding: 0.5vh;
 }
 
 .ul-dropdown li:hover {
+    border-radius: 8px;
     background-color: #B0F0A2;
+}
+
+.year-height {
+    height: 340px;
+    overflow: auto;
 }
 
 .add-button-container{
