@@ -2,6 +2,7 @@ import { format, addMonths, subMonths, getMonth, setYear } from "date-fns";
 import { useState, useEffect } from "react";
 import eachMonthOfInterval from "date-fns/eachMonthOfInterval";
 import getYear from "date-fns/getYear";
+import startOfToday from "date-fns/startOfToday";
 import eachYearOfInterval from "date-fns/eachYearOfInterval";
 import subYears from "date-fns/subYears";
 import addYears from "date-fns/addYears";
@@ -37,6 +38,8 @@ const Header = ({ currentMonth, setCurrentMonth }) => {
     start: new Date(getYear(subYears(currentMonth, 10)), 0, 1),
     end: new Date(getYear(addYears(currentMonth, 10)), 11, 1),
   });
+
+  const thisYear = getYear(new Date(startOfToday()));
 
   // console.log(years);
   // const formatForDate = "LLLL yyyy"
@@ -145,6 +148,14 @@ const Header = ({ currentMonth, setCurrentMonth }) => {
               <div className="dropdown-root">
                 <div className="dropdown-container">
                   <ul className="ul-dropdown year-height">
+                    <div
+                      // className="list-container-dropdown"
+                      onClick={(e) => changeYear(e)}
+                    >
+                      <li id="this-year" value={thisYear}>
+                        {thisYear}
+                      </li>
+                    </div>
                     {years.map((year) => (
                       <div
                         className="list-container-dropdown"
