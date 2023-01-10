@@ -67,7 +67,7 @@ function App() {
       sortedArr.push(right.shift())
     }
 
-    return [...sortedArr, ...left, ...right]
+    return [ ...sortedArr, ...left, ...right]
 
   }
 //end of sort

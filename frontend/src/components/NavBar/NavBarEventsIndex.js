@@ -12,7 +12,10 @@ function NavBarEventsIndex(){
 // }, [dispatch])
 
   return(
-  <NavBarEventsItem/>
+    <>
+    <h1>Upcoming Events</h1>
+    <NavBarEventsItem/>
+    </>
   )
 }
 
