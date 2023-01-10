@@ -47,40 +47,14 @@ const Events = ({ day, events }) => {
   let test;
 
   let eventsArray = [];
-  for (let i = 0; i < events.length; i++) {
-    if (isSameDayAdv(day, events[i].eventDate)) {
-      test = events[i];
+  for (let i = 0; i < eventInfo.eventInfo[2].length; i++) {
+    if (isSameDayAdv(day, eventInfo.eventInfo[2][i].eventDate)) {
+      test = eventInfo.eventInfo[2][i];
       eventsArray.push(test);
     }
   }
 
-  //sort the array:
-
-  // console.log(((isBefore((eventsArray[0]), (eventsArray[1])))))
-  // console.log(eventsArray);
-
-  if (eventsArray.length > 1) {
-    let cont = true;
-    while (cont) {
-      cont = false;
-
-      for (let i = 0; i < eventsArray.length - 1; i++) {
-        if (
-          !isBefore(
-            new Date(eventsArray[i].eventDate),
-            new Date(eventsArray[i + 1].eventDate)
-          )
-        ) {
-          [eventsArray[i], eventsArray[i + 1]] = [
-            eventsArray[i + 1],
-            eventsArray[i],
-          ];
-          cont = true;
-          // debugger
-        }
-      }
-    }
-  }
+  //R.I.P. Bubble sort :'(
 
   // console.log(eventsArray);
 
