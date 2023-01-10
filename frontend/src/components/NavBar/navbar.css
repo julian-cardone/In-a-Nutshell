@@ -291,6 +291,11 @@ flex-direction: column;
 .logo-nav{
     width: 7vh;
     height: 100%;
+    position: relative;
+}
+
+.logo-nav:hover{
+    cursor: pointer;
 }
 
 .status-buttons{
