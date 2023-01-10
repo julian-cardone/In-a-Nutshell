@@ -78,12 +78,13 @@ function NavBar({ setEventsInd }) {
               <>
                 <div className="date-nav-bar">
                   <p>
-                    {format(
+                    {format( 
                       addMinutes(
                         new Date(eventInfo.eventInfo[0].eventDate),
                         new Date(
                           eventInfo.eventInfo[0].eventDate
                         ).getTimezoneOffset()
+
                       ),
                       "p"
                     )}

@@ -26,14 +26,14 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.post("/new", async (req, res, next) => {
-
+  console.log(req.body.event.nyTime)
   let newEvent = new Event({
     title: req.body.event.title,
     description: req.body.event.description,
     eventDate: req.body.event.nyTime,
     status: req.body.event.status,
   });
-
+  console.log(newEvent.eventDate)
   let offset = newEvent.eventDate.getTimezoneOffset();
   let time = newEvent.eventDate.getTime();
   let dateTime = new Date( time - (offset * 60000))
