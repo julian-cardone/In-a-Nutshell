@@ -85,7 +85,8 @@ console.log(sortedEvents);
             <AuthRoute exact path="/" component={SplashPage} />
             <AuthRoute exact path="/login" component={LoginForm} />
             <AuthRoute exact path="/signup" component={SignupForm} />
-            <EventContext.Provider value={{eventInfo: [currentEvent, setCurrentEvent]}}>
+            {eventsLoaded && (
+            <EventContext.Provider value={{eventInfo: [currentEvent, setCurrentEvent, sortedEvents]}}>
               <Route exact path="/events" > 
               <NavBar setEventsInd={setEventsInd}/>
               <EventsIndex setEventsInd={setEventsInd}/>
@@ -97,6 +98,7 @@ console.log(sortedEvents);
               </Route>
               <Route exact path= "/devteam" component={DevTeam}></Route>
             </EventContext.Provider>
+            )}
             {/* {!loggedIn && <Redirect to="/"></Redirect>} */}
           </Switch>
         </>

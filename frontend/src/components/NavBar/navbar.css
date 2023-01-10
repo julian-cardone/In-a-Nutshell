@@ -343,3 +343,7 @@ flex-direction: column;
     justify-content: center;
     padding-bottom: 15px;
   }
+
+  .event-container-default-nav{
+    padding-bottom: 15px;
+  }
