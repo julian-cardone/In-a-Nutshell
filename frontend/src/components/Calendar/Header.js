@@ -144,7 +144,7 @@ const Header = ({ currentMonth, setCurrentMonth }) => {
             {showMenuYear && (
               <div className="dropdown-root">
                 <div className="dropdown-container">
-                  <ul className="ul-dropdown">
+                  <ul className="ul-dropdown year-height">
                     {years.map((year) => (
                       <div
                         className="list-container-dropdown"
