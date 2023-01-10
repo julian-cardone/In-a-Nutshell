@@ -6,7 +6,7 @@ import './EventsIndex.css';
 
 
 
-function EventsIndex() {
+function EventsIndex({ setEventsInd }) {
     const events = useSelector(state => Object.values(state.events.all));
     const dispatch = useDispatch();
     useEffect(() => {
@@ -20,7 +20,7 @@ function EventsIndex() {
     <div className="events-div" >
     
     {events.map(event => (
-       <EventCard key={event.id} event={event}/>
+       <EventCard key={event.id} event={event} setEventsInd={ setEventsInd }/>
     ))}
     </div>    
     </div>  

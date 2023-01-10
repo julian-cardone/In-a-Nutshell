@@ -45,7 +45,10 @@ console.log(currentEvent);
             <AuthRoute exact path="/login" component={LoginForm} />
             <AuthRoute exact path="/signup" component={SignupForm} />
             <EventContext.Provider value={{eventInfo: [currentEvent, setCurrentEvent]}}>
-              <Route exact path="/events" component={EventsIndex} />
+              <Route exact path="/events" > 
+              <NavBar setEventsInd={setEventsInd}/>
+              <EventsIndex setEventsInd={setEventsInd}/>
+              </Route>
               <Route exact path="/events/new" component={NewEventForm} />
               <Route exact path="/home">
                 {loggedIn && <NavBar setEventsInd={setEventsInd}/>}
