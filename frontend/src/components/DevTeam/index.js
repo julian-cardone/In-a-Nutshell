@@ -1,10 +1,21 @@
+import { useHistory } from "react-router-dom";
 import "./DevTeam.css"
 
 function DevTeam() {
+
+    const history = useHistory();
+
+    const handleClick = () =>{
+        history.replace("/home");
+    }
+
     return (
         <>
         <div className="meet-the-team">
-        <h1 style={{margin: "20px"}}>Meet the Team</h1>
+            <div className="meet-team-header">
+                <h1 className="header-meet-the-team">Meet the Team</h1>
+                <h2 className="header-meet-the-team-home"onClick={handleClick}>Home</h2>
+            </div>
         <div className="meet-the-team-names">
         <div className="meet-the-team-each-name"><h2 className="meet-the-team-title">Team Lead</h2>
         <img src={require('../../assets/1643330472842.jpg')} alt="julian-pic" style={{height: "160px", width: "160px",margin: "10px"}}/>
@@ -55,6 +66,9 @@ function DevTeam() {
         <h3 className="meet-the-team-name">Ethan Graham</h3>
         </div>
         </div>
+        <div className="header-meet-the-team-2">
+                <h1 className="header-meet-the-team">Meet the Team</h1>
+            </div>
         </div>
         </>
     )
