@@ -192,6 +192,13 @@ function NavBar({ setEventsInd }) {
             )}
             <div className="border-nav-2"></div>
 
+            {/* default nav bar, upcoming events */}
+            {eTitle === "N/A" && (
+              <>
+                <div>test</div>
+              </>
+            )}
+
             <div className="eventDescription">
               <div className="description-div h4">
                 {eTitle !== "N/A" && <h3>NOTES</h3>}
@@ -212,9 +219,10 @@ function NavBar({ setEventsInd }) {
             />
           )}
 
+            <div>
           <div className="btnContainer">
             <div className="links-nav">
-              <div>
+              <div className="nav-buttons-left">
                 {/* <Link to={"/events/new"}>Make an Event</Link> */}
                 {eTitle !== "N/A" && (
                   <span className="updateButton p4" onClick={handleModal}>
@@ -243,6 +251,7 @@ function NavBar({ setEventsInd }) {
             <Link to={"/devteam"} className="devteamLink p4">
               Meet the Team
             </Link>
+          </div>
           </div>
         </div>
       </div>

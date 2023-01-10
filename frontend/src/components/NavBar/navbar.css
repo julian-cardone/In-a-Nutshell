@@ -27,6 +27,12 @@
 
 }
 
+.nav-buttons-left{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .task-box {
     display: flex;
     flex-direction: row;
@@ -326,7 +332,7 @@ flex-direction: column;
   }
 
   .teamLink {
-    padding-top: 10px;
+    padding-top: 13px;
     display: flex;
     gap: 10px;
     justify-content: center;
