@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import UpdateModal from "../UpdateModal/UpdateModal";
 import { EventContext } from "../../App";
+import { format, addMinutes } from "date-fns";
 
 function EventCard({event, setEventsInd}) {
     const dispatch = useDispatch();
@@ -12,9 +13,8 @@ function EventCard({event, setEventsInd}) {
     const eventInfo = useContext(EventContext);
     const [showModal, setShowModal] = useState(false);
     const removeEvent = () => {
-        dispatch(deleteEvent(eventInfo.eventInfo[0]._id));
+        dispatch(deleteEvent(event._id));
         setEventsInd(null);
-        eventInfo.eventInfo[1](null);
       };
 
 
@@ -32,7 +32,28 @@ function EventCard({event, setEventsInd}) {
         <div className="event-card">
             <h2 className="event-title">{event.title}</h2>
             <p className="event-description">{event.description}</p>
-            <p className="event-description">{event.eventDate}</p>
+            <div className='event-card-date'>
+            <p>
+                    {format(
+                      addMinutes(
+                        new Date(event.eventDate),
+                        new Date(
+                          event.eventDate
+                        ).getTimezoneOffset()
+                      ),
+                      "p"
+                    )}
+                    {/* {new Date(eventInfo.eventInfo[0].eventDate).getTimezoneOffset()} */}
+                  </p>
+                  <p>
+                    {format(new Date(event.eventDate), "eeee")}
+                    ,{" "}
+                    {format(
+                      new Date(event.eventDate),
+                      "MMMM do"
+                    )}{" "}
+                  </p>
+                </div>
             <span className="remove-event-button" onClick={removeEvent}>remove</span>
             <span className="update-event-button" onClick={updateClick}>update</span>
         </div>
