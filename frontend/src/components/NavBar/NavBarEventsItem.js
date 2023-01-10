@@ -1,18 +1,16 @@
-function NavBarEventsItem( { events } ){
+function NavBarEventsItem(){
 
-  console.log(events);
-
-  return (
-    events.map((event)=>{
-      return(
-        <>
-          <div className="event-container-default-nav">
-            {event.title}
-          </div>
-        </>
-      )
-    })
-  )
+  // return (
+  //   events.map((event)=>{
+  //     return(
+  //       <>
+  //         <div className="event-container-default-nav">
+  //           {event.title}
+  //         </div>
+  //       </>
+  //     )
+  //   })
+  // )
 
 }
 

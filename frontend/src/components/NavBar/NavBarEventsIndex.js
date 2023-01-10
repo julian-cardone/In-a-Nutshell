@@ -5,15 +5,14 @@ import NavBarEventsItem from "./NavBarEventsItem";
 
 function NavBarEventsIndex(){
 
-  const dispatch = useDispatch();
-  const events = useSelector((state) => state.events.all);
+//   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchEvents);
-}, [dispatch])
+//   useEffect(() => {
+//     dispatch(fetchEvents);
+// }, [dispatch])
 
   return(
-  <NavBarEventsItem events={events}/>
+  <NavBarEventsItem/>
   )
 }
 
