@@ -269,3 +269,4 @@ function NavBar({ setEventsInd }) {
 }
 
 export default NavBar;
+ 
