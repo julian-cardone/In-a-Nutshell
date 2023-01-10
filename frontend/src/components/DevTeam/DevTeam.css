@@ -1,18 +1,52 @@
 .meet-the-team {
+    position: relative;
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.meet-team-header{
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .meet-the-team-names {
+    position: relative;
     display: flex;
-    margin-top: 200px;
+    /* margin-top: 200px; */
     font-size: 20px;
     font-weight: bold;
-    margin-right: 200px;
+    justify-content: center;
+    gap: 5%;
+    /* margin-right: 200px; */
+    /* justify-self: center; */
+    /* vertical-align: center; */
+    /* top: 20%; */
+}
+
+.header-meet-the-team{
+    padding: 0;
+}
+
+.header-meet-the-team-home:hover{
+    cursor: pointer;
+}
+
+.header-meet-the-team-home{
+    position: relative;
+    align-self: center;
+}
+
+.header-meet-the-team-2{
+    opacity: 0;
+    padding: 2%;
 }
 
 .meet-the-team-each-name {
-    margin-left: 100px;
-    padding-bottom: 500px;
+    /* margin-left: 100px; */
+    /* padding-bottom: 500px; */
 }
 
 .social-links {
