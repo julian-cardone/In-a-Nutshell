@@ -341,7 +341,7 @@ flex-direction: column;
     display: flex;
     gap: 10px;
     justify-content: center;
-    padding-bottom: 0px;
+    padding-bottom: 5px;
   }
 
   .event-container-default-nav{
