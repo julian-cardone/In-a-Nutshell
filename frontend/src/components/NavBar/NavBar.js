@@ -10,6 +10,7 @@ import { EventContext } from "../../App";
 import { format, subMinutes, addMinutes } from "date-fns";
 import UpdateModal from "../UpdateModal/UpdateModal";
 import logo from "../../assets/NSLogos/Logo.svg";
+import NavBarEventsIndex from "./NavBarEventsIndex";
 
 function NavBar({ setEventsInd }) {
   // const loggedIn = useSelector(state => !!state.session.user);
@@ -51,6 +52,11 @@ function NavBar({ setEventsInd }) {
     setShowModal(true);
   };
 
+  const handleEvents = () =>{
+    eventInfo.eventInfo[1]("N/A");
+    history.replace("/home")
+  }
+
   return (
     <>
       {/* <h1>In A Nutshell</h1> */}
@@ -60,8 +66,8 @@ function NavBar({ setEventsInd }) {
         <div className="nav-content-padding">
           <div className="meat">
             <div className="top-nav-bar">
-              <div className="logo-nav">
-                <img className="logo-nav" src={logo} alt="" />
+              <div className="logo-nav" onClick={handleEvents}>
+                <img className="logo-nav" src={logo} alt=""/>
               </div>
               <div className="profile-options">
                 <p className={`p1`}>{username}</p>
@@ -192,6 +198,15 @@ function NavBar({ setEventsInd }) {
             )}
             <div className="border-nav-2"></div>
 
+            {/* default nav bar, upcoming events */}
+            {eTitle === "N/A" && (
+              <>
+                <div className="upcomingEvents-container">
+                  <NavBarEventsIndex />
+                </div>
+              </>
+            )}
+
             <div className="eventDescription">
               <div className="description-div h4">
                 {eTitle !== "N/A" && <h3>NOTES</h3>}
@@ -212,9 +227,10 @@ function NavBar({ setEventsInd }) {
             />
           )}
 
+            <div>
           <div className="btnContainer">
             <div className="links-nav">
-              <div>
+              <div className="nav-buttons-left">
                 {/* <Link to={"/events/new"}>Make an Event</Link> */}
                 {eTitle !== "N/A" && (
                   <span className="updateButton p4" onClick={handleModal}>
@@ -243,6 +259,7 @@ function NavBar({ setEventsInd }) {
             <Link to={"/devteam"} className="devteamLink p4">
               Meet the Team
             </Link>
+          </div>
           </div>
         </div>
       </div>

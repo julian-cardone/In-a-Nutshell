@@ -27,6 +27,12 @@
 
 }
 
+.nav-buttons-left{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .task-box {
     display: flex;
     flex-direction: row;
@@ -285,6 +291,11 @@ flex-direction: column;
 .logo-nav{
     width: 7vh;
     height: 100%;
+    position: relative;
+}
+
+.logo-nav:hover{
+    cursor: pointer;
 }
 
 .status-buttons{
@@ -326,9 +337,13 @@ flex-direction: column;
   }
 
   .teamLink {
-    padding-top: 10px;
+    padding-top: 13px;
     display: flex;
     gap: 10px;
     justify-content: center;
+    padding-bottom: 15px;
+  }
+
+  .event-container-default-nav{
     padding-bottom: 15px;
   }
