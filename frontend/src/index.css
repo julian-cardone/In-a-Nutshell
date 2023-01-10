@@ -1,6 +1,11 @@
 /* TODO Add site wide styles */
 @import "reset.css";
 
+
+body {
+    height: 100vh;
+}
+
 .content-container {
     height: 100%;
     width: 100%;

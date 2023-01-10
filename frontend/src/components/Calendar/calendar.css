@@ -2,8 +2,7 @@
     display: flex;
     justify-content: space-between;
     background: #E8E4D9;
-    height: 100vh;
-    /* padding-bottom: px; */
+    height: 100%;
 }
 
 .menu {
@@ -31,7 +30,8 @@
     margin: 8px 8px 8px 8px;
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: .8rem 2rem;
+    overflow-y: auto;
 }
 
 /* .calendar-container::before{
