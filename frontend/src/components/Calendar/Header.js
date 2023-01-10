@@ -34,8 +34,8 @@ const Header = ({ currentMonth, setCurrentMonth }) => {
 
   // console.log(monthNums);
   const years = eachYearOfInterval({
-    start: new Date(getYear(subYears(currentMonth, 5)), 0, 1),
-    end: new Date(getYear(addYears(currentMonth, 5)), 11, 1),
+    start: new Date(getYear(subYears(currentMonth, 10)), 0, 1),
+    end: new Date(getYear(addYears(currentMonth, 10)), 11, 1),
   });
 
   // console.log(years);
@@ -117,7 +117,7 @@ const Header = ({ currentMonth, setCurrentMonth }) => {
         </div>
 
         <div className="date-div h2">
-          <span className="date-display menu" onClick={openMenu}>
+          <span className="date-display point quikHover" onClick={openMenu}>
             {showMenu && (
               <div className="dropdown-root">
                 <div className="dropdown-container">
@@ -137,7 +137,10 @@ const Header = ({ currentMonth, setCurrentMonth }) => {
             {format(currentMonth, "LLLL")}
           </span>
 
-          <span className="date-display-year menu" onClick={openMenuYear}>
+          <span
+            className="date-display-year point quikHover"
+            onClick={openMenuYear}
+          >
             {showMenuYear && (
               <div className="dropdown-root">
                 <div className="dropdown-container">
