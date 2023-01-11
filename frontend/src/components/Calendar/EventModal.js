@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import { format } from "date-fns";
 import NewEventForm from "../NewEventForm";
+import "../CreateEvent/CreateEvent.css"
 
 // export { SignupForm, LoginForm };
 
