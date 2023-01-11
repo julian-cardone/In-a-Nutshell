@@ -2,21 +2,29 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearEventErrors, createEvent } from "../../store/events";
 import "./NewEventForm.css";
-import NewEventFormBox from "./NewEventForm";
 import { getDay, getMonth, setHours, setMinutes } from "date-fns";
 import { fetchEvents } from "../../store/events";
-import { zonedTimeToUtc, formatInTimeZone } from 'date-fns-tz/esm'
+import DatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css";
 
-function NewEventForm({ eventDateProp, showModal, setShowModal, setEventsInd }) {
+function NewEventForm({
+  eventDateProp,
+  showModal,
+  setShowModal,
+  setEventsInd,
+}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [eventDate, setEventDate] = useState(new Date());
-  const [status, setStatus] = useState(false);
   const errors = useSelector((state) => state.errors.events);
-  const newEvent = useSelector((state) => state.events.new);
   const dispatch = useDispatch();
-  // const [hour, setTheHour] = useState(null);
-  // const [minute, setTheMinute] = useState();
+  // const [startDate, setStartDate] = useState(new Date());
+  const datething = new Date(eventDateProp)
+  let offset = datething.getTimezoneOffset();
+  let time = datething.getTime();
+  let dateTime = new Date( time + (offset * 108000))
+  const [startDate, setStartDate] = useState(dateTime);
+  // debugger
 
   useEffect(() => {
     setEventDate(eventDateProp);
@@ -24,7 +32,12 @@ function NewEventForm({ eventDateProp, showModal, setShowModal, setEventsInd }) 
   }, [dispatch, eventDateProp]);
 
   const handleSubmit = (e) => {
-    const nyTime = formatInTimeZone(eventDate, 'America/New_York', 'yyyy-MM-dd HH:mm:ss zzz')
+    // const nyTime = formatInTimeZone(
+    //   eventDate,
+    //   "America/New_York",
+    //   "yyyy-MM-dd HH:mm:ss zzz"
+    // );
+    let nyTime = startDate
     e.preventDefault();
     setEventsInd(e);
     setShowModal(false);
@@ -36,23 +49,6 @@ function NewEventForm({ eventDateProp, showModal, setShowModal, setEventsInd }) 
     dispatch(createEvent({ event }));
   };
 
-  // useEffect(()=>{
-  //   dispatch(fetchEvents())
-  // },[dispatch, handleSubmit])
-
-  const hours = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23,
-  ];
-  const minutes = [];
-
-  for (let i = 0; i < 60; i++) {
-    if (i < 10) {
-      minutes.push(`0${i}`);
-    } else {
-      minutes.push(i);
-    }
-  }
 
   //   const titleUpdate = e => setTitle(e.currentTarget.value);
   //   const descriptionUpdate = e => setDescription(e.currentTarget.value);
@@ -78,27 +74,6 @@ function NewEventForm({ eventDateProp, showModal, setShowModal, setEventsInd }) 
     return (e) => setState(e.currentTarget.value);
   };
 
-  // function handleHours(e){
-  //   let cHour = e.targer.value;
-  //   setTheHour(cHour);
-  //   }
-
-  //   function handleMinutes(e){
-  //     let cMinute = e.target.value;
-  //     setTheMinute(cMinute)
-  //   }
-
-  function handleHoursTwo(e) {
-    // setTheHour(e.target.value);
-    // console.log(hour);
-    setEventDate(setHours(new Date(eventDate), e.target.value));
-  }
-
-  function handleMinutesTwo(e) {
-    // setTheHour(e.target.value);
-    setEventDate(setMinutes(new Date(eventDate), e.target.value));
-  }
-
   return (
     <>
       <div className="form-wrapper">
@@ -123,31 +98,18 @@ function NewEventForm({ eventDateProp, showModal, setShowModal, setEventsInd }) 
           ></textarea>
           <div className={`timeMenu`}>
             <p>Select Time</p>
-            <select className={`slctMenu`} onChange={(e) => handleHoursTwo(e)}>
-              {hours.map((hour) => (
-                <option className="hour-option" value={hour}>
-                  {hour}
-                </option>
-              ))}
-            </select>
-            <select
-              className={`slctMenu`}
-              onChange={(e) => handleMinutesTwo(e)}
-            >
-              {minutes.map((minute) => (
-                <option className="minute-option" value={minute}>
-                  {minute}
-                </option>
-              ))}
-            </select>
+            <div className="date-picker-container" style={{width: "100px"}}>
+              <DatePicker
+                className="date-picker"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                showTimeSelect
+                timeIntervals={5}
+                minDate = {new Date()}
+                dateFormat="MMMM d, yyyy h:mm aa"
+              />
+            </div>
           </div>
-          {/* <label>AM
-        <input name="rad"type="radio"value="AM"></input>
-        </label>
-        <label>PM
-        <input name="rad"type="radio"value="PM"></input>
-        </label> */}
-
           <div className="errors">{errors && errors.event}</div>
           <input
             className={`btn btnPrimary`}
