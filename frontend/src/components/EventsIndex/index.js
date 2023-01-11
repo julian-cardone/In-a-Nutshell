@@ -15,8 +15,8 @@ function EventsIndex({ setEventsInd }) {
     return (
     <>
     <div className="outer-events-div" >
-    
-    <h1 className="title-for-events">Upcoming Interviews</h1>
+     
+    <h1 className="title-for-events">All Events</h1>
     <div className="events-div" >
     
     {events.map(event => (

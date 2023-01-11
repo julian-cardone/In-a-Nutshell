@@ -27,9 +27,15 @@ function EventCard({event, setEventsInd}) {
         e.preventDefault();
         setShowModal(true);
     }
+
+    const handleClick = (event) =>{
+      console.log(event);
+      eventInfo.eventInfo[1](event);
+    }
+
     return (
         <>
-        <div className="event-card">
+        <div className="event-card"onClick={()=> handleClick(event)}>
             <h2 className="event-title">{event.title}</h2>
             <p className="event-description">{event.description}</p>
             <div className='event-card-date'>
@@ -54,8 +60,14 @@ function EventCard({event, setEventsInd}) {
                     )}{" "}
                   </p>
                 </div>
-            <span className="remove-event-button" onClick={removeEvent}>remove</span>
-            <span className="update-event-button" onClick={updateClick}>update</span>
+                <div className='index-container'>
+                <span className="updateButton p4" onClick={updateClick}>
+                    Update Event
+                  </span>
+                  <span className="deleteButton p4" onClick={removeEvent}>
+                    Delete Event
+                  </span>
+                </div>
         </div>
         {showModal && (
             <UpdateModal
