@@ -37,3 +37,14 @@ input[type=text] {
 .timeMenu {
     margin-bottom: 1rem;
 }
+
+.date-picker-container {
+    /* position: relative; */
+}
+
+.date-picker {
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 37.5px;
+}
