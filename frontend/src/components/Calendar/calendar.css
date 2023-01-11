@@ -161,7 +161,7 @@
     position: absolute;
     z-index: 1;
     top: 4.5vh;
-    background-color: rgba(183, 199, 14, .8);
+    background-color: rgba(245, 249, 209, 0.9);
     border-radius: 8px;
 }
 
@@ -179,7 +179,8 @@
 
 .ul-dropdown li:hover {
     border-radius: 8px;
-    background-color: #B0F0A2;
+    background-color: rgb(228, 240, 178);
+    text-decoration: underline;
 }
 
 #this-year {
