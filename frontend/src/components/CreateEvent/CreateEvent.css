@@ -1,0 +1,26 @@
+.event-modal {
+    background-color: #E8E4D9;;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #3d672d;
+  }
+  
+  /* Add subtle border to the title and description boxes */
+  .event-modal h1 {
+    color: #4b4b4b;
+    font-size: 2em;
+    text-align: center;
+  }
+  .event-modal form input[type="text"] {
+    border: 1px solid #3d672d;
+    border-radius: 0.25em;
+    padding: 0.5em;
+    margin-bottom: 1em;
+  }
+  
+  /* style the form elements within the modal */
+  .event-modal form {
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 0.5em;
+  }
