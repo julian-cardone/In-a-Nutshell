@@ -65,6 +65,7 @@ function NavBar({ setEventsInd }) {
       <div className="nav" style={{ position: "relative" }}>
         <div className="nav-content-padding">
           <div className="meat">
+            <div className="top-nav-bar-container">
             <div className="top-nav-bar">
               <div className="logo-nav" onClick={handleEvents}>
                 <img className="logo-nav" src={logo} alt=""/>
@@ -78,6 +79,8 @@ function NavBar({ setEventsInd }) {
                   Logout
                 </p>
               </div>
+            </div>
+            <div className="border-nav-2"></div>
             </div>
 
             {eTitle !== "N/A" && (
@@ -194,10 +197,10 @@ function NavBar({ setEventsInd }) {
                       );
                     })}
                   </ul>
+                  <div className="border-nav-2"></div>
                 </div>
               </>
             )}
-            <div className="border-nav-2"></div>
 
             {/* default nav bar, upcoming events */}
             {eTitle === "N/A" && (
@@ -269,3 +272,4 @@ function NavBar({ setEventsInd }) {
 }
 
 export default NavBar;
+ 

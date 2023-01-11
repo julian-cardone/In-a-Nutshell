@@ -1,12 +1,28 @@
 .event-card {
-    background-color: #3d672d;
+    background-color: #2e2418d3;
     color: white;
-    margin: 15px;
+    /* margin: 5px; */
     border-radius: 5px;
+    width: 60%;
+    position: relative;
+}
+
+.event-card:hover{
+    cursor: pointer;
+    border: 3px solid rgb(253, 219, 127);
+}
+
+.index-container{
+    margin: 10px;
 }
 
 .events-div {
-    display:block;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    align-items: center;
+    /* align-content: center; */
 }
 
 .event-title {
@@ -22,12 +38,15 @@
 
 .outer-events-div {
     background-color: #E8E4D9;
+    width: 100%;
 }
 
 .title-for-events {
+    position: relative;
     color: #000;
     font-weight: 600;
     margin: 10px;
+    text-align: center;
 }
 
 .remove-event-button {
