@@ -18,9 +18,13 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
   const dispatch = useDispatch();
   const errors = useSelector((state) => state.errors.events);
   const datething = new Date(event.eventDate)
+  let offset = datething.getTimezoneOffset();
+  let time = datething.getTime();
+  let dateTime = new Date( time + (offset * 60000))
+  // debugger
   const [startDate, setStartDate] = useState(
-    datething
-  );
+    dateTime
+);
   // const localTime = formatInTimeZone(eventDate, 'America/New_York', 'yyyy-MM-dd HH:mm:ss zzz')
 
   const eventInfo = useContext(EventContext);
