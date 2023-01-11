@@ -59,6 +59,7 @@ router.delete("/:id", async (req, res, next) => {
 });
 
 router.patch("/:id", async (req, res, next) => {
+  
   const updatedEvent = await new Event({
     _id: req.params.id,
     title: req.body.title,

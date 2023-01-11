@@ -1,10 +1,11 @@
-import { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearEventErrors, updateEvent } from "../../store/events";
 import "./UpdateModal.css";
 import { getDay, getMonth, setHours, setMinutes } from "date-fns";
 import { zonedTimeToUtc, formatInTimeZone } from 'date-fns-tz/esm'
 import { EventContext } from "../../App";
+import DatePicker from 'react-datepicker'
 
 
 
@@ -13,11 +14,10 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
   const [description, setDescription] = useState(event.description);
   const [eventDate, setEventDate] = useState(event.eventDate);
   const [status, setStatus] = useState(false);
-  const[amPm , setAmPm] = useState("AM")
   const dispatch = useDispatch();
   const errors = useSelector((state) => state.errors.events);
   const newEvent = useSelector((state) => state.events.new);
-  // console.log(amPm)
+  const [startDate, setStartDate] = useState(new Date());
   const eventInfo = useContext(EventContext);
 
   useEffect(() => {
@@ -28,10 +28,11 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
 
 
   const nyTime = formatInTimeZone(eventDate, 'America/New_York', 'yyyy-MM-dd HH:mm:ss zzz')
-  // console.log(eventDate)
+  console.log(eventDate)
   // console.log(nyTime)
 
   const handleSubmit = (e) => {
+    debugger
     e.preventDefault();
     const changedEvent = {
       id: event._id,
@@ -78,24 +79,22 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
     return (e) => setState(e.currentTarget.value);
   };
 
-  function handleHoursTwo(e) {
-    // console.log(e.target.value);
-    if(amPm === "AM") {
-      setEventDate(setHours(new Date(eventDate), e.target.value));
-    } else if(amPm === "PM") {
-      let int = parseInt(e.target.value) + 12
-      let str = int.toString()
-      setEventDate(setHours(new Date(eventDate), str));
-    }
-  }
   // function handleHoursTwo(e) {
   //   e.preventDefault();
   //   setEventDate(setHours(new Date(eventDate), e.target.value));
   // }
 
-  function handleMinutesTwo(e) {
-    // console.log(e.target.value);
-    setEventDate(setMinutes(new Date(eventDate), e.target.value));
+  // function handleMinutesTwo(e) {
+  //   // console.log(e.target.value);
+  //   setEventDate(setMinutes(new Date(eventDate), e.target.value));
+  // }
+
+  function handleTime(e) {
+    let time = e.target.value
+    let hour = time.slice(0, 2)
+    let minute = time.slice(3, 6)
+   setEventDate(setHours(new Date(event.eventDate), e.target.value));
+   setEventDate(setMinutes(new Date(event.eventDate), e.target.value));
   }
 
   return (
@@ -122,35 +121,17 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
           ></textarea>
           <div className={`timeMenu`}>
             <p>Select Time</p>
-            <select className={`slctMenu`} onChange={(e) => handleHoursTwo(e)}>
-              {[...Array(12)].map((hour, index) => (
-                <option className="hour-option" value={index + 1}>
-                  {index + 1}
-                </option>
-              ))}
-            </select>
-            <select
-              className={`slctMenu`}
-              onChange={(e) => handleMinutesTwo(e)}
-            >
-              {minutes.map((minute) => (
-                <option className="minute-option" value={minute}>
-                  {minute}
-                </option>
-              ))}
-            </select>
-            <select onChange={(e) => setAmPm(e.target.value)}>
-              <option>AM</option>
-              <option>PM</option>
-            </select>
+            {/* <input type="datetime-local" onChange={e => handleTime(e)}></input> */}
+            <DatePicker
+      selected={startDate}
+      onChange={(date) => setStartDate(date)}
+      showTimeSelect
+      timeFormat="HH:mm"
+      timeIntervals={15}
+      timeCaption="time"
+      dateFormat="MMMM d, yyyy h:mm aa"
+    />
           </div>
-          {/* <label>AM
-        <input name="rad"type="radio"value="AM"></input>
-        </label>
-        <label>PM
-        <input name="rad"type="radio"value="PM"></input>
-        </label> */}
-
           <div className="errors">{errors && errors.event}</div>
           <input
             className={`btn btnPrimary`}
