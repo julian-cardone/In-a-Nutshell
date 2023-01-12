@@ -66,6 +66,7 @@ router.patch("/:id", async (req, res, next) => {
     description: req.body.description,
     eventDate: req.body.nyTime,
     status: req.body.status,
+    tasks: req.body.tasks,
   });
 
   let offset = updatedEvent.eventDate.getTimezoneOffset();
