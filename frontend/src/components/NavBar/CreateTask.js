@@ -34,7 +34,7 @@ function CreateTask({ setEventsInd }) {
     //   task: event.eventInfo[0].tasks.push(task)
     // };
 
-    // setEventsInd("literally anything")
+    setEventsInd("something crazy");
     // dispatch(updateEvent(changedEvent));
     // event.eventInfo[1]()
   };

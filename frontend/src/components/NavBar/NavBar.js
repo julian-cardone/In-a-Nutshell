@@ -14,7 +14,7 @@ import NavBarEventsIndex from "./NavBarEventsIndex";
 import TaskList from "./TaskList";
 import CreateTask from "./CreateTask";
 
-function NavBar({ setEventsInd }) {
+function NavBar({ setEventsInd, eventsInd }) {
   // const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -142,8 +142,8 @@ function NavBar({ setEventsInd }) {
                 </div>
 
                 <div className="tasks">
-                  <TaskList />
-                  <CreateTask />
+                  <TaskList setEventsInd={setEventsInd} eventsInd={eventsInd}/>
+                  <CreateTask setEventsInd={setEventsInd} eventsInd={eventsInd}/>
                   <div className="border-nav-2"></div>
                 </div>
               </>

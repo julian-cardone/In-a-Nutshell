@@ -136,7 +136,6 @@ export const tasksReducer = (state = { all: {}, event: {}, new: undefined }, act
         case RECEIVE_TASKS:
             return { ...state, all: action.tasks, new: undefined };
         case RECEIVE_NEW_TASK:
-          debugger
             return { ...state, new: action.task };
         case REMOVE_TASK: {
             delete state[action.taskId];

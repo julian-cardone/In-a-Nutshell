@@ -1,12 +1,32 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { EventContext } from "../../App";
+import { fetchTasks } from "../../store/tasks";
 
-function TasksListItem() {
+function TasksListItem({setEventsInd, eventsInd}) {
 
   const event = useContext(EventContext);
-  const tasks = event.eventInfo[0].tasks;
+  // const dispatch = useDispatch();
 
-          tasks.map((task) => {
+  // useEffect(()=>{
+  //   dispatch(fetchTasks())
+  // },[dispatch])
+
+  // const allTasks = useSelector(state => state.tasks.all)||[];
+  
+  const allTasks = event.eventInfo[3];
+
+  const eventTasks = [];
+  
+  for (let i = 0; i < allTasks.length; i++){
+    if (allTasks[i].eventId === event.eventInfo[0]._id){
+      eventTasks.push(allTasks[i]);
+    }
+  }
+  
+  // console.log(eventTasks[0].description);
+      return (
+          eventTasks.map((task) => {
             return (
               <>
               <li className="task-li">
@@ -49,7 +69,7 @@ function TasksListItem() {
                         </svg>
                       </div>
                       <div id="task-title">
-                        <h3>{task.title}</h3>
+                        <h3>{task.description}</h3>
                       </div>
                     </div>
                     <div>
@@ -63,6 +83,7 @@ function TasksListItem() {
             </>
             );
           })
+      )
 }
 
 export default TasksListItem;
