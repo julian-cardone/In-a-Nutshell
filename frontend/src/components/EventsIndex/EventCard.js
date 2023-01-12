@@ -29,7 +29,7 @@ function EventCard({event, setEventsInd}) {
     }
 
     const handleClick = (event) =>{
-      console.log(event);
+      // console.log(event);
       eventInfo.eventInfo[1](event);
     }
 

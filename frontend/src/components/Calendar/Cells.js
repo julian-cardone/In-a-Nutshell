@@ -32,7 +32,7 @@ const Cells = ({
     // showModal === false ? setShowModal(true) : setShowModal(false);
     setShowModal(true);
     setEventDate(e.currentTarget.dataset.day);
-    console.log(eventDate);
+    // console.log(eventDate);
   };
 
   const startOfMonthCur = startOfMonth(currentMonth);

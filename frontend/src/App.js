@@ -72,7 +72,7 @@ function App() {
   }
 //end of sort
 const sortedEvents = sortEvents(events);
-console.log(sortedEvents);
+// console.log(sortedEvents);
 
   const loggedIn = useSelector((state) => !!state.session.user);
   return (

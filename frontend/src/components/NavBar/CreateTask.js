@@ -8,9 +8,9 @@ function CreateTask({ setEventsInd }) {
   const [adding, setAdding] = useState(false);
   const dispatch = useDispatch();
 
-  const tasks = useSelector(state => console.log(state));
+  // const tasks = useSelector(state => console.log(state));
   const event = useContext(EventContext);
-  // console.log(event.eventInfo[0].tasks);
+  // console.log(event.eventInfo[0].id);
 
   // useEffect(()=>{
 
@@ -24,8 +24,12 @@ function CreateTask({ setEventsInd }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setAdding(false);
-    const task = e.target[0].value;
-    dispatch(createTask({task}));
+    const task = {
+      eventId: event.eventInfo[0]._id,
+      description: e.target[0].value,
+      status: false,
+    }
+    dispatch(createTask(task));
     // const changedEvent = {
     //   task: event.eventInfo[0].tasks.push(task)
     // };

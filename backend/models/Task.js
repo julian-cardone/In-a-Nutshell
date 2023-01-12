@@ -10,16 +10,11 @@ const taskSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: 'Event'
   },
-  title: {
-    type: String,
-    required: true
-  },
   description: {
     type: String
   },
   status: {
     type: Boolean,
-    required: true
   }
 }, {
   timestamps: true
