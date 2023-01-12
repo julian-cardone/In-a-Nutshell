@@ -363,5 +363,6 @@ flex-direction: column;
 
   .event-container-default-nav:hover{
     cursor: pointer;
-    background-image: linear-gradient(rgb(181, 247, 181), rgb(230, 230, 230));
+    background-image: linear-gradient(rgb(226, 248, 171), rgb(230, 230, 230));
+    border-radius: 8px;
   }

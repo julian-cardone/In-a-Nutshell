@@ -3,20 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchEvents } from "../../store/events";
 import NavBarEventsItem from "./NavBarEventsItem";
 
-function NavBarEventsIndex(){
+function NavBarEventsIndex() {
+  //   const dispatch = useDispatch();
 
-//   const dispatch = useDispatch();
+  //   useEffect(() => {
+  //     dispatch(fetchEvents);
+  // }, [dispatch])
 
-//   useEffect(() => {
-//     dispatch(fetchEvents);
-// }, [dispatch])
-
-  return(
+  return (
     <>
-    <h1>Upcoming Events</h1>
-    <NavBarEventsItem/>
+      <p className={`h3`}>Upcoming Events</p>
+      <NavBarEventsItem />
     </>
-  )
+  );
 }
 
 export default NavBarEventsIndex;
