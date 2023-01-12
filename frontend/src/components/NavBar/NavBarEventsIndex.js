@@ -12,7 +12,7 @@ function NavBarEventsIndex() {
 
   return (
     <>
-      <p className={`h3`}>Upcoming Events</p>
+      <h2 className={`upcomingHeader`}>Upcoming Events</h2>
       <NavBarEventsItem />
     </>
   );
