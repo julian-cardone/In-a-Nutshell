@@ -374,3 +374,15 @@ flex-direction: column;
   .event-title-container {
     color:rgb(74, 95, 60);
   }
+
+  .add-button-container-2{
+    position: relative;
+    margin-bottom: 3px;
+  }
+
+  .task-input{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }

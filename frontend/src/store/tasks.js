@@ -64,6 +64,7 @@ const removeTask = taskId => ({
   }
 
   export const createTask = data => async dispatch => {
+    // debugger
     try {
       const res = await jwtFetch('/api/tasks/', {
         method: 'POST',
@@ -130,6 +131,7 @@ export const tasksErrorReducer = (state = nullErrors, action) => {
 export const tasksReducer = (state = { all: {}, event: {}, new: undefined }, action ) => {
     switch (action.type) {
         case RECEIVE_TASK:
+          // debugger
             return { ...state, all: action.task, new: undefined };
         case RECEIVE_TASKS:
             return { ...state, all: action.tasks, new: undefined };
