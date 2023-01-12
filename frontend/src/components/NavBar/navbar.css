@@ -353,7 +353,7 @@ flex-direction: column;
     display: flex;
     gap: 10px;
     justify-content: center;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
   }
 
   .upcomingHeader {
@@ -369,4 +369,8 @@ flex-direction: column;
     cursor: pointer;
     background-image: linear-gradient(rgb(226, 248, 171), rgb(109, 142, 89));
     border-radius: 8px;
+  }
+
+  .event-title-container {
+    color:rgb(74, 95, 60);
   }
