@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { EventContext } from "../../App";
 import { createTask } from "../../store/tasks";
+import { updateEvent } from "../../store/events";
 
 function CreateTask({ setEventsInd }) {
   const [adding, setAdding] = useState(false);
@@ -21,10 +22,16 @@ function CreateTask({ setEventsInd }) {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setAdding(false);
     const task = e.target[0].value;
-    dispatch(createTask(task));
+    e.preventDefault();
+    const changedEvent = {
+      task: event.eventInfo[0].tasks.push(task)
+    };
+
+    // setEventsInd("literally anything")
+    dispatch(updateEvent(changedEvent));
+    setAdding(false);
+    // event.eventInfo[1]()
   };
 
   return (
