@@ -337,7 +337,7 @@ flex-direction: column;
     padding-top: 0.5vh;
     justify-content: space-between;
     width: 100%;
-    color: #6D8E59;
+    color: #6d8e59;
     opacity: 0.4;
     display: flex;
     flex-direction: row;
@@ -353,7 +353,11 @@ flex-direction: column;
     display: flex;
     gap: 10px;
     justify-content: center;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
+  }
+
+  .upcomingHeader {
+    padding: .8rem 0;
   }
 
   .event-container-default-nav{
@@ -363,5 +367,10 @@ flex-direction: column;
 
   .event-container-default-nav:hover{
     cursor: pointer;
-    background-image: linear-gradient(rgb(181, 247, 181), rgb(230, 230, 230));
+    background-image: linear-gradient(rgb(226, 248, 171), rgb(109, 142, 89));
+    border-radius: 8px;
+  }
+
+  .event-title-container {
+    color:rgb(74, 95, 60);
   }
