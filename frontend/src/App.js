@@ -19,6 +19,8 @@ import { fetchEvents } from "./store/events";
 
 import { isBefore } from "date-fns";
 import { fetchTasks } from "./store/tasks";
+import { isAfter } from "date-fns";
+import { differenceInMinutes } from "date-fns";
 
 export const EventContext = createContext(null);
 
@@ -52,15 +54,6 @@ function App() {
 
   const userEvents = [];
 
-  if (loggedIn){
-
-    for (let i = 0; i < events.length; i++){
-      if (events[i].authorId === currUser._id){
-        userEvents.push(events[i])
-      }
-    }
-  }
-
   //sorting the events by chronoligical order
   const sortEvents = (events) => {
     if (eventsLoaded){
@@ -93,8 +86,25 @@ function App() {
 
   }
 //end of sort
+
+if (loggedIn){
+
+  for (let i = 0; i < events.length; i++){
+    if (events[i].authorId === currUser._id){
+      userEvents.push(events[i])
+    }
+  }
+
+}
+
 const sortedEvents = sortEvents(userEvents);
+// console.log(userEvents);
 // console.log(sortedEvents);
+// console.log(isBefore(sortedEvents[1].eventDate, sortedEvents[2].eventDate));
+
+// const [newNote, setNewNote] = useState(currentEvent.note);
+// console.log(currentEvent);
+const [newNote, setNewNote] = useState("");
 
   return (
     <>
@@ -107,7 +117,7 @@ const sortedEvents = sortEvents(userEvents);
             <AuthRoute exact path="/login" component={LoginForm} />
             <AuthRoute exact path="/signup" component={SignupForm} />
             {eventsLoaded && (
-            <EventContext.Provider value={{eventInfo: [currentEvent, setCurrentEvent, sortedEvents, allTasks, currUser]}}>
+            <EventContext.Provider value={{eventInfo: [currentEvent, setCurrentEvent, sortedEvents, allTasks, currUser, newNote, setNewNote]}}>
               <Route exact path="/events" > 
               <NavBar setEventsInd={setEventsInd}/>
               <EventsIndex setEventsInd={setEventsInd}/>

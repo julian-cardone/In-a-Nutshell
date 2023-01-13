@@ -32,7 +32,8 @@ router.post("/new", async (req, res, next) => {
     description: req.body.event.description,
     eventDate: req.body.event.nyTime,
     status: req.body.event.status,
-    authorId: req.body.event.authorId
+    authorId: req.body.event.authorId,
+    note: req.body.event.note
   });
   // console.log(newEvent.eventDate)
   let offset = newEvent.eventDate.getTimezoneOffset();

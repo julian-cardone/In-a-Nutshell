@@ -15,6 +15,9 @@ import TaskList from "./TaskList";
 import CreateTask from "./CreateTask";
 import { fetchEvents } from "../../store/events";
 import NotesCreate from "./NotesCreate";
+import { createContext } from "react";
+
+// export const NoteContext = createContext(null);
 
 function NavBar({ setEventsInd, eventsInd }) {
   // const loggedIn = useSelector(state => !!state.session.user);
@@ -32,6 +35,8 @@ function NavBar({ setEventsInd, eventsInd }) {
   // console.log(eventInfo.eventInfo[0].eventDate);
   const eTitle = eventInfo.eventInfo[0] || "N/A";
   const eArray = eventInfo.eventInfo[0] || [];
+
+  const [newNote, setNewNote] = useState(eTitle.note);
 
   // console.log(eTitle);
 
@@ -155,7 +160,7 @@ function NavBar({ setEventsInd, eventsInd }) {
             {eTitle === "N/A" && (
               <>
                 <div className="upcomingEvents-container">
-                  <NavBarEventsIndex />
+                  <NavBarEventsIndex setEventsInd={setEventsInd}setNewNote={setNewNote}/>
                 </div>
                 <div className="teamLink">
                   {eTitle === "N/A" && (
@@ -176,7 +181,7 @@ function NavBar({ setEventsInd, eventsInd }) {
                   <div className="description-div h4">
                     <h3>NOTES</h3>
                   </div>
-                  <NotesCreate eTitle={eTitle}/>
+                  <NotesCreate eTitle={eTitle}setEventsInd={setEventsInd}newNote={newNote}setNewNote={setNewNote}/>
                 </div>
               </>
             )}

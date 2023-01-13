@@ -1,21 +1,31 @@
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Dispatch } from "react";
-import { fetchEvent } from "../../store/events";
+import { fetchEvent, fetchEvents } from "../../store/events";
 import { updateEvent } from "../../store/events";
 import "./notes.css";
+import { EventContext } from "../../App";
+import { addHours } from "date-fns";
 
-function NotesCreate({ eTitle }){
+function NotesCreate({ eTitle, setEventsInd }){
 
   const [newEvent, setNewEvent] = useState(eTitle);
   // const fetchedEvent = useSelector((state) => state.events.one) || "";
-  const [newNote, setNewNote] = useState(eTitle.note);
+  // const [newNote, setNewNote] = useState(eTitle.note);
+  const noteCon = useContext(EventContext);
+  console.log(noteCon.eventInfo[5]);
+  const newNote = noteCon.eventInfo[5];
+  const setNewNote = noteCon.eventInfo[6];
 
   const [saved, setSaved] = useState(false);
   const [edited, setEdited] = useState(false);
 
   const dispatch = useDispatch();
+
+  // useEffect(()=>{
+  //   dispatch(fetchEvents())
+  // },[dispatch, newNote])
 
   //things i learned during this struggle:
   //1. use event handlers in the onchange and onclick attributes (outside functions)
@@ -31,9 +41,10 @@ function NotesCreate({ eTitle }){
   // }, [dispatch, eTitle]);
 
   const handleSubmit = () => {
-    dispatch(updateEvent(newEvent));
     setEdited(false);
     setSaved(true);
+    dispatch(updateEvent(newEvent));
+    setEventsInd("cooler");
   };
 
   const handleChange = (e) => {
@@ -45,7 +56,7 @@ function NotesCreate({ eTitle }){
       id: eTitle._id,
       title: eTitle.title,
       description: eTitle.description,
-      nyTime: eTitle.eventDate,
+      nyTime: addHours(new Date(eTitle.eventDate),5),
       authorId: eTitle.authorId,
       note: newNote,
     });
