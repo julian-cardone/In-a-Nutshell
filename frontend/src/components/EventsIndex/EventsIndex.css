@@ -1,5 +1,6 @@
 .event-card {
-    background-color: #2e2418d3;
+    box-sizing: border-box;
+    background-color: hsla(33, 31%, 14%, 0.827);
     color: white;
     /* margin: 5px; */
     border-radius: 5px;
@@ -8,8 +9,14 @@
 }
 
 .event-card:hover{
+    box-sizing: border-box;
+    background-color: rgb(201, 147, 103);
     cursor: pointer;
-    border: 3px solid rgb(253, 219, 127);
+    bottom: .7rem;
+    right: .7rem;
+    z-index: 5;
+    /* border: 3px solid rgb(253, 219, 127); */
+    box-shadow: rgba(0, 0, 0, 0.5) 10px 40px 90px 0px;
 }
 
 .index-container{
@@ -22,7 +29,30 @@
     flex-direction: column;
     gap: 1vh;
     align-items: center;
+    padding-top: 20px;
     /* align-content: center; */
+}
+
+/* .header-for-events {
+    position: sticky;
+    top: 0;
+    z-index: 9;
+} */
+
+.backToCalendar {
+    display: flex;
+    cursor: pointer;
+    position: sticky;
+    top: 0;
+    text-align: left;
+    /* width: 100%; */
+    /* background-color: #E8E4D9; */
+    padding: 20px 0 0 20px;
+    z-index: 10;
+}
+
+.backToCalendar:hover {
+    text-decoration: underline;
 }
 
 .event-title {
@@ -37,8 +67,11 @@
 }
 
 .outer-events-div {
-    background-color: #E8E4D9;
+    /* background-color: #E8E4D9; */
+    overflow-y: auto;
     width: 100%;
+    height: 100%;
+    padding-bottom: 35px;
 }
 
 .title-for-events {
@@ -46,7 +79,10 @@
     color: #000;
     font-weight: 600;
     margin: 10px;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
     text-align: center;
+
 }
 
 .remove-event-button {
