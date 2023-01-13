@@ -10,6 +10,10 @@ Nutshell uses the MERN stack.
 * React is an open-source frontend library.
 * Node.js is an open-source JavaScript runtime environment that is used to build backend applications.
 
+##
+
+## Code Snippets
+
 # Our Team
 * Team Lead - Julian Cardone
 * Frontend - Ross Mabbett
