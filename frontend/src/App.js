@@ -26,6 +26,7 @@ function App() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const [eventsLoaded, setEventsLoaded] = useState(false);
+  const loggedIn = useSelector((state) => !!state.session.user);
 
   useEffect(() => {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
@@ -45,6 +46,20 @@ function App() {
 
   const [currentEvent, setCurrentEvent] = useState(null);
   const events = useSelector((state) => state.events.all);
+  console.log(events);
+
+  const currUser = useSelector((state) => state.session.user);
+
+  const userEvents = [];
+
+  if (loggedIn){
+
+    for (let i = 0; i < events.length; i++){
+      if (events[i].authorId === currUser._id){
+        userEvents.push(events[i])
+      }
+    }
+  }
 
   //sorting the events by chronoligical order
   const sortEvents = (events) => {
@@ -78,10 +93,9 @@ function App() {
 
   }
 //end of sort
-const sortedEvents = sortEvents(events);
+const sortedEvents = sortEvents(userEvents);
 // console.log(sortedEvents);
 
-  const loggedIn = useSelector((state) => !!state.session.user);
   return (
     <>
 
@@ -93,7 +107,7 @@ const sortedEvents = sortEvents(events);
             <AuthRoute exact path="/login" component={LoginForm} />
             <AuthRoute exact path="/signup" component={SignupForm} />
             {eventsLoaded && (
-            <EventContext.Provider value={{eventInfo: [currentEvent, setCurrentEvent, sortedEvents, allTasks]}}>
+            <EventContext.Provider value={{eventInfo: [currentEvent, setCurrentEvent, sortedEvents, allTasks, currUser]}}>
               <Route exact path="/events" > 
               <NavBar setEventsInd={setEventsInd}/>
               <EventsIndex setEventsInd={setEventsInd}/>
@@ -113,7 +127,5 @@ const sortedEvents = sortEvents(events);
     </>
   );
 }
-
-// demo-user@appacademy.io
 
 export default App;

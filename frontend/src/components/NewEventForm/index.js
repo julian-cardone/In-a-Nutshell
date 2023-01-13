@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearEventErrors, createEvent } from "../../store/events";
 import "./NewEventForm.css";
@@ -6,6 +6,7 @@ import { getDay, getMonth, setHours, setMinutes } from "date-fns";
 import { fetchEvents } from "../../store/events";
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
+import { EventContext } from "../../App";
 
 function NewEventForm({
   eventDateProp,
@@ -25,6 +26,8 @@ function NewEventForm({
   let dateTime = new Date( time + (offset * 108000))
   const [startDate, setStartDate] = useState(dateTime);
   // debugger
+  const info = useContext(EventContext);
+  // console.log(info.eventInfo[4]._id)
 
   useEffect(() => {
     setEventDate(eventDateProp);
@@ -45,7 +48,10 @@ function NewEventForm({
       title,
       description,
       nyTime,
+      note: "",
+      authorId: info.eventInfo[4]._id
     };
+    // debugger
     dispatch(createEvent({ event }));
   };
 

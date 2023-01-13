@@ -32,6 +32,7 @@ router.post("/new", async (req, res, next) => {
     description: req.body.event.description,
     eventDate: req.body.event.nyTime,
     status: req.body.event.status,
+    authorId: req.body.event.authorId
   });
   // console.log(newEvent.eventDate)
   let offset = newEvent.eventDate.getTimezoneOffset();
@@ -67,6 +68,7 @@ router.patch("/:id", async (req, res, next) => {
     eventDate: req.body.nyTime,
     status: req.body.status,
     tasks: req.body.tasks,
+    note: req.body.note
   });
 
   let offset = updatedEvent.eventDate.getTimezoneOffset();
