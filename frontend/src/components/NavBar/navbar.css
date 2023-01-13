@@ -393,6 +393,8 @@ flex-direction: column;
   .event-container-default-nav{
     padding-bottom: 15px;
     /* border-radius: 2%; */
+    font-family: 'bitter';
+    font-size: 13px;
   }
 
   .event-container-default-nav:hover{

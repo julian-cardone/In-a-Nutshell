@@ -97,8 +97,8 @@ const removeTask = taskId => ({
 
 export const updateTask = (task) => async (dispatch) => {
     try {
-      const res = await jwtFetch(`/api/tasks/${task.id}`, {
-        method: 'PATCH',
+      const res = await jwtFetch(`/api/tasks/${task._id}`, {
+        method: 'PUT',
         body: JSON.stringify(task),
         headers: {
             'Content-Type': 'application/json'

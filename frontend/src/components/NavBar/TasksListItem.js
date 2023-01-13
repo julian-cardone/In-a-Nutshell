@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { EventContext } from "../../App";
 import { fetchTask, fetchTasks } from "../../store/tasks";
 import { deleteTask } from "../../store/tasks";
+import { updateTask } from "../../store/tasks";
 
 function TasksListItem({ setEventsInd, eventsInd }) {
   const event = useContext(EventContext);
@@ -23,6 +24,17 @@ function TasksListItem({ setEventsInd, eventsInd }) {
       eventTasks.push(allTasks[i]);
     }
   }
+
+  // const updateStatus = (task) =>{
+  //   let newStatus = false;
+  //   task.status? newStatus = false : newStatus = true;
+  //   const updatedTask = {
+  //     ...task,
+  //     status: newStatus
+  //   }
+  //   dispatch(updateTask(updatedTask));
+  //   setEventsInd("wow!")
+  // }
 
   // const [currentTask, setCurrentTask] = useState({});
 
@@ -86,7 +98,38 @@ function TasksListItem({ setEventsInd, eventsInd }) {
               </div>
               <div>
                 <div className="status-buttons">
-                  <input type="checkbox"></input>
+                  {task.status && (
+                    <input
+                      type="checkbox"
+                      checked="checked"
+                      onChange={() => {
+                        let newStatus = false;
+                        task.status ? (newStatus = false) : (newStatus = true);
+                        const updatedTask = {
+                          ...task,
+                          status: newStatus,
+                        };
+                        dispatch(updateTask(updatedTask));
+                        setEventsInd("wow!");
+                      }}
+                    ></input>
+                  )}
+                  {!task.status && (
+                    <input
+                      type="checkbox"
+                      onChange={() => {
+                        let newStatus = false;
+                        task.status ? (newStatus = false) : (newStatus = true);
+                        const updatedTask = {
+                          ...task,
+                          status: newStatus,
+                        };
+                        console.log(updatedTask);
+                        dispatch(updateTask(updatedTask));
+                        setEventsInd("wow!");
+                      }}
+                    ></input>
+                  )}
                   {/* <div className="edit">Edit</div> */}
                   <div
                     className="delete"
