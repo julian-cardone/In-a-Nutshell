@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Dispatch } from "react";
 import { fetchEvent } from "../../store/events";
 import { updateEvent } from "../../store/events";
+import "./notes.css";
 
 function NotesCreate({ eTitle }){
 
@@ -47,11 +48,12 @@ return (
 <>
   <div className="description-in-nav">
   <input
+  className="note-input"
     type="textarea"
     value={newNote}
     onChange={handleChange}
   ></input>
-  <button onClick={handleSubmit}>Save</button>
+  <button className="note-button"onClick={handleSubmit}>Save</button>
 </div>
 </>
 )
