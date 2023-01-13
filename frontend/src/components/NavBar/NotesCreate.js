@@ -6,6 +6,7 @@ import { fetchEvent, fetchEvents } from "../../store/events";
 import { updateEvent } from "../../store/events";
 import "./notes.css";
 import { EventContext } from "../../App";
+import { addHours } from "date-fns";
 
 function NotesCreate({ eTitle, setEventsInd }){
 
@@ -55,7 +56,7 @@ function NotesCreate({ eTitle, setEventsInd }){
       id: eTitle._id,
       title: eTitle.title,
       description: eTitle.description,
-      nyTime: eTitle.eventDate,
+      nyTime: addHours(new Date(eTitle.eventDate),5),
       authorId: eTitle.authorId,
       note: newNote,
     });
