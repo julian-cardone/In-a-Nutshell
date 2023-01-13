@@ -11,13 +11,13 @@ function NavBarEventsItem() {
   const today = new Date(startOfToday());
 
   const handleClick = (event) => {
-    console.log(event);
+    // console.log(event);
     eventInfo.eventInfo[1](event);
   };
 
-  console.log(
-    isBefore(new Date(events[2].eventDate), new Date(events[1].eventDate))
-  );
+  // console.log(
+  //   isBefore(new Date(events[2].eventDate), new Date(events[1].eventDate))
+  // );
 
   return events.map((event) => {
     if (
@@ -39,6 +39,7 @@ function NavBarEventsItem() {
                 {format(new Date(event.eventDate), "MMMM do")}{" "}
                 {format(new Date(event.eventDate), "yyyy")}{" "}
                 <span className="p3">
+                  
                   {format(
                     addMinutes(
                       new Date(event.eventDate),

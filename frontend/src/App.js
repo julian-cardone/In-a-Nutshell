@@ -18,6 +18,7 @@ import Calendar from "./components/Calendar";
 import { fetchEvents } from "./store/events";
 
 import { isBefore } from "date-fns";
+import { fetchTasks } from "./store/tasks";
 
 export const EventContext = createContext(null);
 
@@ -35,6 +36,12 @@ function App() {
   useEffect(()=>{
     dispatch(fetchEvents()).then(() => setEventsLoaded((true)));
   },[dispatch, eventsInd])
+
+  useEffect(()=>{
+    dispatch(fetchTasks());
+  },[dispatch, eventsInd])
+
+  const allTasks = useSelector(state => state.tasks.all);
 
   const [currentEvent, setCurrentEvent] = useState(null);
   const events = useSelector((state) => state.events.all);
@@ -72,7 +79,7 @@ function App() {
   }
 //end of sort
 const sortedEvents = sortEvents(events);
-console.log(sortedEvents);
+// console.log(sortedEvents);
 
   const loggedIn = useSelector((state) => !!state.session.user);
   return (
@@ -86,7 +93,7 @@ console.log(sortedEvents);
             <AuthRoute exact path="/login" component={LoginForm} />
             <AuthRoute exact path="/signup" component={SignupForm} />
             {eventsLoaded && (
-            <EventContext.Provider value={{eventInfo: [currentEvent, setCurrentEvent, sortedEvents]}}>
+            <EventContext.Provider value={{eventInfo: [currentEvent, setCurrentEvent, sortedEvents, allTasks]}}>
               <Route exact path="/events" > 
               <NavBar setEventsInd={setEventsInd}/>
               <EventsIndex setEventsInd={setEventsInd}/>
