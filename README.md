@@ -25,8 +25,40 @@ https://user-images.githubusercontent.com/112725448/212434009-42059228-aedf-491c
 
 ## Code Snippets
 
+```js
+  //sorting the events by chronoligical order
+  const sortEvents = (events) => {
+    if (eventsLoaded){
+    //base case
+    if (events.length <= 1) return events
 
+    let mid = Math.floor(events.length / 2);
 
+    //recursive calls
+    let left = sortEvents(events.slice(0,mid));
+    let right = sortEvents(events.slice(mid));
+
+    return sortHelper(left, right);
+    }
+  }
+
+  const sortHelper = (left, right) => {
+    let sortedArr = [];
+
+    if (isBefore(
+      new Date(left[0].eventDate),
+      new Date(right[0].eventDate)
+    )){
+      sortedArr.push(left.shift())
+    } else {
+      sortedArr.push(right.shift())
+    }
+
+    return [ ...sortedArr, ...left, ...right]
+
+  }
+//end of sort
+```
 
 
 # Our Team
