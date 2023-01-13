@@ -28,7 +28,7 @@ function CreateTask({ setEventsInd }) {
       eventId: event.eventInfo[0]._id,
       description: e.target[0].value,
       status: false,
-    }
+    };
     dispatch(createTask(task));
     // const changedEvent = {
     //   task: event.eventInfo[0].tasks.push(task)
@@ -41,25 +41,34 @@ function CreateTask({ setEventsInd }) {
 
   return (
     <div>
-    {adding && (
-      <>
-        <div>
-          <form className="task-input"onSubmit={(e) => handleSubmit(e)}>
-            <input type="text" name="name" />
-            <input type="submit" value="Add Task" />
-          </form>
-        </div>
-      </>
-    )}
-    {!adding && (
-      <>
-        <div className="add-button-container-2">
-          <button onClick={handleTask}>
-            +
-          </button>
-        </div>
-      </>
-    )}
+      {adding && (
+        <>
+          <div>
+            <form className="task-input" onSubmit={(e) => handleSubmit(e)}>
+              <input
+                className="task-input-text sp1"
+                type="text"
+                name="name"
+                placeholder="New Task"
+              />
+              <input
+                className="btn-reset h4 btnAddTask"
+                type="submit"
+                value="Add"
+              />
+            </form>
+          </div>
+        </>
+      )}
+      {!adding && (
+        <>
+          <div className="add-button-container-2">
+            <button className="btn-reset btnTaskPlus h2" onClick={handleTask}>
+              +
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }

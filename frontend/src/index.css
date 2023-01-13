@@ -80,6 +80,13 @@ h2 {
     font: 500 1.3rem 'Bitter', serif;
 }
 
+.btn-reset {
+    padding: 0;
+    border: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
 
 .btn {
     border: 0;
@@ -112,6 +119,30 @@ h2 {
     padding: 1em 4em;
 }
 
+.btnTaskPlus {
+    margin-top: -8px;
+    padding: 0px 6px;
+    background-color: transparent;
+    color:#8e5959;
+    transition: all .33s ease-out;
+}
+
+.btnTaskPlus:hover {
+    color: #292E1E;
+}
+
+.btnAddTask {
+    background-color: #8e5959;
+    color:white;
+    transition: all .33s ease-out;
+    border-radius: 35px;
+    padding: 2px 5px;
+}
+
+.btnAddTask:hover {
+    background-color: #292E1E;
+}
+
 a {
     color: inherit;
 }
@@ -140,6 +171,8 @@ a:visited {
     margin: 10px 0;
     border: 0;
     border-radius: 3px;
+    overflow: auto;
+    resize: none;
 }
 
 .frm {
