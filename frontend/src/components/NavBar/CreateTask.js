@@ -45,7 +45,12 @@ function CreateTask({ setEventsInd }) {
         <>
           <div>
             <form className="task-input" onSubmit={(e) => handleSubmit(e)}>
-              <input className="task-input-text sp1" type="text" name="name" />
+              <input
+                className="task-input-text sp1"
+                type="text"
+                name="name"
+                placeholder="New Task"
+              />
               <input
                 className="btn-reset h4 btnAddTask"
                 type="submit"
