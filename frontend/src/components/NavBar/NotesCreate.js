@@ -12,6 +12,9 @@ function NotesCreate({ eTitle }){
   // const fetchedEvent = useSelector((state) => state.events.one) || "";
   const [newNote, setNewNote] = useState(eTitle.note);
 
+  const [saved, setSaved] = useState(false);
+  const [edited, setEdited] = useState(false);
+
   const dispatch = useDispatch();
 
   //things i learned during this struggle:
@@ -29,9 +32,13 @@ function NotesCreate({ eTitle }){
 
   const handleSubmit = () => {
     dispatch(updateEvent(newEvent));
+    setEdited(false);
+    setSaved(true);
   };
 
   const handleChange = (e) => {
+    setSaved(false);
+    setEdited(true);
     const newValue = e.target.value;
     setNewNote(newValue);
     setNewEvent({
@@ -47,13 +54,19 @@ function NotesCreate({ eTitle }){
 return (
 <>
   <div className="description-in-nav">
-  <input
+  <textarea
+  rows="10"
   className="note-input"
-    type="textarea"
+    type="text"
     value={newNote}
     onChange={handleChange}
-  ></input>
+  ></textarea>
+  {edited &&(
   <button className="note-button"onClick={handleSubmit}>Save</button>
+  )}
+  {saved &&(
+    <button className="note-button-2">Saved</button>
+  )}
 </div>
 </>
 )

@@ -8,8 +8,36 @@
     width: 100%;
     /* white-space: pre-wrap;
     word-wrap: break-word; */
+    border: 1px solid #3d672d;
+    border-radius: 0.25em;
+    padding: 0.5em;
+    /* margin-bottom: 1em; */
+    resize: none;
+    background-image: linear-gradient(to right, rgb(231, 231, 231), rgb(255, 255, 255), rgb(231, 231, 231));
+    box-shadow: 2px 1px rgb(215, 253, 215);
 }
 
 .note-button{
-    
+    cursor: pointer;
+    color: #3d672d;
+    border-radius: 20px;
+    transition: all .33s ease-out;
+    padding: 2px 5px;
+    margin: 0.7rem;
+    background-color: rgb(75, 114, 63);
+    width: 50px;
+    align-self: center;
+    color: white;
+}
+
+.note-button-2{
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all .33s ease-out;
+    padding: 2px 5px;
+    margin: 0.7rem;
+    background-color: rgb(152, 192, 158);
+    width: 50px;
+    align-self: center;
+    color: #000000;
 }
