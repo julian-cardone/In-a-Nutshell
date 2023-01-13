@@ -13,6 +13,8 @@ import logo from "../../assets/NSLogos/Logo.svg";
 import NavBarEventsIndex from "./NavBarEventsIndex";
 import TaskList from "./TaskList";
 import CreateTask from "./CreateTask";
+import { fetchEvents } from "../../store/events";
+import NotesCreate from "./NotesCreate";
 
 function NavBar({ setEventsInd, eventsInd }) {
   // const loggedIn = useSelector(state => !!state.session.user);
@@ -21,23 +23,17 @@ function NavBar({ setEventsInd, eventsInd }) {
   const [showModal, setShowModal] = useState(false);
   // const [title, setTitle] = useState("");
   const username = useSelector((state) => state.session.user.username);
-  
+
   const task = useSelector((state) => {
     return state.tasks;
   });
-  
+
   const eventInfo = useContext(EventContext);
   // console.log(eventInfo.eventInfo[0].eventDate);
   const eTitle = eventInfo.eventInfo[0] || "N/A";
   const eArray = eventInfo.eventInfo[0] || [];
-  const [newEvent, setNewEvent] = useState(eTitle);
-  const [newNote, setNewNote] = useState(eTitle.note);
 
-  // useEffect(() => {
-  //   dispatch(taskActions.createTask());
-  // });
-
-  console.log(eTitle);
+  // console.log(eTitle);
 
   const logoutUser = (e) => {
     e.preventDefault();
@@ -180,29 +176,7 @@ function NavBar({ setEventsInd, eventsInd }) {
                   <div className="description-div h4">
                     <h3>NOTES</h3>
                   </div>
-                  <div className="description-in-nav">
-                    <input
-                      type="textarea"
-                      value={newNote}
-                      onChange={(e) => {
-                        setNewNote(e.target.value);
-                        // setNote(e.target.value);
-                        setNewEvent({
-                          id: eTitle._id,
-                          title: eTitle.title,
-                          description: eTitle.description,
-                          nyTime: eTitle.eventDate,
-                          authorId: eTitle.authorId,
-                          note: newNote
-                        })
-                        // dispatch(updateEvent(newEvent))
-                        debugger
-                      }}
-                    ></input>
-                    <button onClick={()=>{
-                      debugger
-                      dispatch(updateEvent(newEvent))}}>Save</button>
-                  </div>
+                  <NotesCreate eTitle={eTitle}/>
                 </div>
               </>
             )}

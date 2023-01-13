@@ -143,7 +143,7 @@ const eventsReducer =(state = { all: {}, user: {}, new: undefined }, action) => 
     case RECEIVE_EVENTS:
       return { ...newState, all: action.events, new: undefined }
     case RECEIVE_EVENT:
-      return { ...newState, all: action.event, new: undefined}
+      return { ...newState, one: action.event, new: undefined}
     case RECEIVE_NEW_EVENT:
       return { ...newState, new: action.event};
     case REMOVE_EVENT: {

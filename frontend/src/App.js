@@ -46,7 +46,7 @@ function App() {
 
   const [currentEvent, setCurrentEvent] = useState(null);
   const events = useSelector((state) => state.events.all);
-  console.log(events);
+  // console.log(events);
 
   const currUser = useSelector((state) => state.session.user);
 
