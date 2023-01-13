@@ -50,9 +50,9 @@ const removeTask = taskId => ({
     }
   }
 
-  export const fetchTask = () => async dispatch => {
+  export const fetchTask = (taskId) => async dispatch => {
     try {
-        const res = await jwtFetch('/api/task')
+        const res = await jwtFetch(`/api/tasks/${taskId}`)
         const task = await res.json();
         dispatch(receiveTask(task))
     } catch(err) {

@@ -294,6 +294,36 @@ flex-direction: column;
     padding-bottom: 0.7vh;
 }
 
+.div-list-nav:hover{
+    background-color: antiquewhite;
+}
+
+.div-list-nav:hover .delete{
+    opacity: 1;
+}
+
+.div-list-nav:hover .edit{
+    opacity: 1;
+}
+
+.delete{
+    position: absolute;
+    top: 10px;
+    right: 28px;
+    font-size: 1.2vh;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.edit{
+    position: absolute;
+    top: 10px;
+    right: 75px;
+    font-size: 1.2vh;
+    opacity: 0;
+    cursor: pointer;
+}
+
 .meat{
     position: relative;
     display: flex;
