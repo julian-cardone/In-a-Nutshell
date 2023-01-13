@@ -21,7 +21,7 @@ const eventSchema = Schema({
     type: String,
     required: false
   },
-  author: {
+  authorId: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },

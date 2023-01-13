@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import "./navbar.css";
 import { useContext, useEffect, useState } from "react";
-import { deleteEvent, fetchEvent } from "../../store/events";
+import { deleteEvent, fetchEvent, updateEvent } from "../../store/events";
 import { tasks } from "./tasks";
 import * as taskActions from "../../store/tasks";
 import { EventContext } from "../../App";
@@ -34,6 +34,8 @@ function NavBar({ setEventsInd, eventsInd }) {
   // useEffect(() => {
   //   dispatch(taskActions.createTask());
   // });
+
+  console.log(eTitle);
 
   const logoutUser = (e) => {
     e.preventDefault();
@@ -177,7 +179,18 @@ function NavBar({ setEventsInd, eventsInd }) {
                     <h3>NOTES</h3>
                   </div>
                   <div className="description-in-nav">
-                    <p>{eTitle.description}</p>
+                    <input
+                      type="textarea"
+                      value={eTitle.note}
+                      // onChange={(e) => {
+                      //   let newEvent = {
+                      //     ...eTitle,
+                      //     note: e.target.value,
+                      //   };
+                      //   debugger
+                      //   dispatch(updateEvent(newEvent));
+                      // }}
+                    ></input>
                   </div>
                 </div>
               </>
