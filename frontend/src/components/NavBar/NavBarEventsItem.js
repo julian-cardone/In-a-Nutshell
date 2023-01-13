@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { EventContext } from "../../App";
-import { format, isWithinInterval, startOfToday } from "date-fns";
+import { addMonths, format, isWithinInterval, startOfToday } from "date-fns";
 import { addMinutes } from "date-fns";
 import { isBefore } from "date-fns";
 import { addYears } from "date-fns";
@@ -8,6 +8,7 @@ import { addYears } from "date-fns";
 function NavBarEventsItem() {
   const eventInfo = useContext(EventContext);
   const events = eventInfo.eventInfo[2];
+  console.log(events);
   const today = new Date(startOfToday());
 
   const handleClick = (event) => {
@@ -23,7 +24,7 @@ function NavBarEventsItem() {
     if (
       isWithinInterval(new Date(event.eventDate), {
         start: today,
-        end: new Date(addYears(today, 1)),
+        end: new Date(addMonths(today, 1)),
       })
     ) {
       return (
