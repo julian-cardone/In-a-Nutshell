@@ -4,12 +4,16 @@ import { useEffect } from "react";
 import { Dispatch } from "react";
 import { fetchEvent } from "../../store/events";
 import { updateEvent } from "../../store/events";
+import "./notes.css";
 
 function NotesCreate({ eTitle }){
 
   const [newEvent, setNewEvent] = useState(eTitle);
   // const fetchedEvent = useSelector((state) => state.events.one) || "";
   const [newNote, setNewNote] = useState(eTitle.note);
+
+  const [saved, setSaved] = useState(false);
+  const [edited, setEdited] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -28,9 +32,13 @@ function NotesCreate({ eTitle }){
 
   const handleSubmit = () => {
     dispatch(updateEvent(newEvent));
+    setEdited(false);
+    setSaved(true);
   };
 
   const handleChange = (e) => {
+    setSaved(false);
+    setEdited(true);
     const newValue = e.target.value;
     setNewNote(newValue);
     setNewEvent({
@@ -46,12 +54,19 @@ function NotesCreate({ eTitle }){
 return (
 <>
   <div className="description-in-nav">
-  <input
-    type="textarea"
+  <textarea
+  rows="10"
+  className="note-input"
+    type="text"
     value={newNote}
     onChange={handleChange}
-  ></input>
-  <button onClick={handleSubmit}>Save</button>
+  ></textarea>
+  {edited &&(
+  <button className="note-button"onClick={handleSubmit}>Save</button>
+  )}
+  {saved &&(
+    <button className="note-button-2">Saved</button>
+  )}
 </div>
 </>
 )
