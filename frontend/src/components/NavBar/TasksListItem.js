@@ -132,13 +132,13 @@ function TasksListItem({ setEventsInd, eventsInd }) {
                   )}
                   {/* <div className="edit">Edit</div> */}
                   <div
-                    className="delete"
+                    className="delete h4"
                     onClick={() => {
                       dispatch(deleteTask(task._id));
                       setEventsInd("something cool");
                     }}
                   >
-                    Delete
+                    Remove
                   </div>
                 </div>
               </div>

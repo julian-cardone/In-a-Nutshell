@@ -310,13 +310,15 @@ flex-direction: column;
     opacity: 1;
 }
 
-.delete{
+.delete {
+    color: darkred;
     position: absolute;
-    top: 10px;
+    top: 8px;
     right: 28px;
     font-size: 1.2vh;
     opacity: 0;
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .edit{
