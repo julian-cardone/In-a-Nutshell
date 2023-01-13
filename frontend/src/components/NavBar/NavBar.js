@@ -21,15 +21,17 @@ function NavBar({ setEventsInd, eventsInd }) {
   const [showModal, setShowModal] = useState(false);
   // const [title, setTitle] = useState("");
   const username = useSelector((state) => state.session.user.username);
-
+  
   const task = useSelector((state) => {
     return state.tasks;
   });
-
+  
   const eventInfo = useContext(EventContext);
   // console.log(eventInfo.eventInfo[0].eventDate);
   const eTitle = eventInfo.eventInfo[0] || "N/A";
   const eArray = eventInfo.eventInfo[0] || [];
+  const [newEvent, setNewEvent] = useState(eTitle);
+  const [newNote, setNewNote] = useState(eTitle.note);
 
   // useEffect(() => {
   //   dispatch(taskActions.createTask());
@@ -181,16 +183,25 @@ function NavBar({ setEventsInd, eventsInd }) {
                   <div className="description-in-nav">
                     <input
                       type="textarea"
-                      value={eTitle.note}
-                      // onChange={(e) => {
-                      //   let newEvent = {
-                      //     ...eTitle,
-                      //     note: e.target.value,
-                      //   };
-                      //   debugger
-                      //   dispatch(updateEvent(newEvent));
-                      // }}
+                      value={newNote}
+                      onChange={(e) => {
+                        setNewNote(e.target.value);
+                        // setNote(e.target.value);
+                        setNewEvent({
+                          id: eTitle._id,
+                          title: eTitle.title,
+                          description: eTitle.description,
+                          nyTime: eTitle.eventDate,
+                          authorId: eTitle.authorId,
+                          note: newNote
+                        })
+                        // dispatch(updateEvent(newEvent))
+                        debugger
+                      }}
                     ></input>
+                    <button onClick={()=>{
+                      debugger
+                      dispatch(updateEvent(newEvent))}}>Save</button>
                   </div>
                 </div>
               </>
