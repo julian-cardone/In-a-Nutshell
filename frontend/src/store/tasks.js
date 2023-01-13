@@ -50,9 +50,9 @@ const removeTask = taskId => ({
     }
   }
 
-  export const fetchTask = () => async dispatch => {
+  export const fetchTask = (taskId) => async dispatch => {
     try {
-        const res = await jwtFetch('/api/task')
+        const res = await jwtFetch(`/api/tasks/${taskId}`)
         const task = await res.json();
         dispatch(receiveTask(task))
     } catch(err) {
@@ -65,8 +65,9 @@ const removeTask = taskId => ({
 
   export const createTask = data => async dispatch => {
     // debugger
+    // debugger
     try {
-      const res = await jwtFetch('/api/tasks/', {
+      const res = await jwtFetch('/api/tasks/new', {
         method: 'POST',
         body: JSON.stringify(data)
       });
@@ -96,8 +97,8 @@ const removeTask = taskId => ({
 
 export const updateTask = (task) => async (dispatch) => {
     try {
-      const res = await jwtFetch(`/api/tasks/${task.id}`, {
-        method: 'PATCH',
+      const res = await jwtFetch(`/api/tasks/${task._id}`, {
+        method: 'PUT',
         body: JSON.stringify(task),
         headers: {
             'Content-Type': 'application/json'
@@ -131,7 +132,6 @@ export const tasksErrorReducer = (state = nullErrors, action) => {
 export const tasksReducer = (state = { all: {}, event: {}, new: undefined }, action ) => {
     switch (action.type) {
         case RECEIVE_TASK:
-          // debugger
             return { ...state, all: action.task, new: undefined };
         case RECEIVE_TASKS:
             return { ...state, all: action.tasks, new: undefined };

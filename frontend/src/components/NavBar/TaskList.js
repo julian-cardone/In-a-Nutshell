@@ -1,10 +1,10 @@
 import TasksListItem from "./TasksListItem";
 
-function TaskList() {
+function TaskList({ eventsInd, setEventsInd }) {
   return (
     <>
       <ul style={{ marginTop: "10px" }}>
-        <TasksListItem />
+        <TasksListItem eventsInd={eventsInd}setEventsInd={setEventsInd}/>
       </ul>
     </>
   );

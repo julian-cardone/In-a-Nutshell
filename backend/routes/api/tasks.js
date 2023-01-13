@@ -29,7 +29,7 @@ router.get("/:id", async (req, res, next) => {
 
 router.post('/new', async(req, res, next) => {
   const newTask = new Task({
-        title: req.body.title,
+        eventId: req.body.eventId,
         description: req.body.description,
         status: req.body.status,
       });
