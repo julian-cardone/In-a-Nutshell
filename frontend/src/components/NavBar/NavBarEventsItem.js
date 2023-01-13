@@ -39,6 +39,7 @@ function NavBarEventsItem() {
                 {format(new Date(event.eventDate), "MMMM do")}{" "}
                 {format(new Date(event.eventDate), "yyyy")}{" "}
                 <span className="p3">
+                  
                   {format(
                     addMinutes(
                       new Date(event.eventDate),

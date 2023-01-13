@@ -54,10 +54,10 @@ function NavBar({ setEventsInd, eventsInd }) {
     setShowModal(true);
   };
 
-  const handleEvents = () =>{
+  const handleEvents = () => {
     eventInfo.eventInfo[1]("N/A");
-    history.replace("/home")
-  }
+    history.replace("/home");
+  };
 
   return (
     <>
@@ -68,34 +68,33 @@ function NavBar({ setEventsInd, eventsInd }) {
         <div className="nav-content-padding">
           <div className="meat">
             <div className="top-nav-bar-container">
-            <div className="top-nav-bar">
-              <div className="logo-nav" onClick={handleEvents}>
-                <img className="logo-nav" src={logo} alt=""/>
-              </div>
-              <div className="profile-options">
-                <p className={`p1`}>{username}</p>
-                {/* <button onClick={logoutUser} className="btn navButton">
+              <div className="top-nav-bar">
+                <div className="logo-nav" onClick={handleEvents}>
+                  <img className="logo-nav" src={logo} alt="" />
+                </div>
+                <div className="profile-options">
+                  <p className={`p1`}>{username}</p>
+                  {/* <button onClick={logoutUser} className="btn navButton">
             Logout
           </button> */}
-                <p className="logout-btn-nav" onClick={logoutUser}>
-                  Logout
-                </p>
+                  <p className="logout-btn-nav" onClick={logoutUser}>
+                    Logout
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="border-nav-2"></div>
+              <div className="border-nav-2"></div>
             </div>
 
             {eTitle !== "N/A" && (
               <>
                 <div className="date-nav-bar">
                   <p>
-                    {format( 
+                    {format(
                       addMinutes(
                         new Date(eventInfo.eventInfo[0].eventDate),
                         new Date(
                           eventInfo.eventInfo[0].eventDate
                         ).getTimezoneOffset()
-
                       ),
                       "p"
                     )}
@@ -142,8 +141,11 @@ function NavBar({ setEventsInd, eventsInd }) {
                 </div>
 
                 <div className="tasks">
-                  <TaskList setEventsInd={setEventsInd} eventsInd={eventsInd}/>
-                  <CreateTask setEventsInd={setEventsInd} eventsInd={eventsInd}/>
+                  <TaskList setEventsInd={setEventsInd} eventsInd={eventsInd} />
+                  <CreateTask
+                    setEventsInd={setEventsInd}
+                    eventsInd={eventsInd}
+                  />
                   <div className="border-nav-2"></div>
                 </div>
               </>
@@ -155,17 +157,31 @@ function NavBar({ setEventsInd, eventsInd }) {
                 <div className="upcomingEvents-container">
                   <NavBarEventsIndex />
                 </div>
+                <div className="teamLink">
+                  {eTitle === "N/A" && (
+                    <Link to={"/events"} className="devteamLink h4">
+                      All Events
+                    </Link>
+                  )}
+                  <Link to={"/devteam"} className="devteamLink p4">
+                    Meet the Team
+                  </Link>
+                </div>
               </>
             )}
 
-            <div className="eventDescription">
-              <div className="description-div h4">
-                {eTitle !== "N/A" && <h3>NOTES</h3>}
-              </div>
-              <div className="description-in-nav">
-                <p>{eTitle.description}</p>
-              </div>
-            </div>
+            {eTitle !== "N/A" && (
+              <>
+                <div className="eventDescription">
+                  <div className="description-div h4">
+                    <h3>NOTES</h3>
+                  </div>
+                  <div className="description-in-nav">
+                    <p>{eTitle.description}</p>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
           {showModal && (
@@ -178,7 +194,6 @@ function NavBar({ setEventsInd, eventsInd }) {
             />
           )}
 
-            <div>
           <div className="btnContainer">
             <div className="links-nav">
               <div className="nav-buttons-left">
@@ -201,17 +216,6 @@ function NavBar({ setEventsInd, eventsInd }) {
               )}
             </div>
           </div>
-          <div className="teamLink">
-            {eTitle === "N/A" && (
-              <Link to={"/events"} className="devteamLink h4">
-                All Events
-              </Link>
-            )}
-            <Link to={"/devteam"} className="devteamLink p4">
-              Meet the Team
-            </Link>
-          </div>
-          </div>
         </div>
       </div>
     </>
@@ -219,4 +223,3 @@ function NavBar({ setEventsInd, eventsInd }) {
 }
 
 export default NavBar;
- 
