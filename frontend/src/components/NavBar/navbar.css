@@ -294,9 +294,8 @@ flex-direction: column;
     cursor: pointer;
 }
 
-.div-list-nav{
-    padding-bottom: 0.7vh;
-}
+/* .div-list-nav{
+} */
 
 .div-list-nav:hover{
     background-color: antiquewhite;
