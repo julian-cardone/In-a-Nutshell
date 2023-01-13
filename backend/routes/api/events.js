@@ -68,15 +68,14 @@ router.patch("/:id", async (req, res, next) => {
     eventDate: req.body.nyTime,
     status: req.body.status,
     tasks: req.body.tasks,
-    note: req.body.note
+    note: req.body.note,
+    authorId: req.body.authorId
   });
 
   let offset = updatedEvent.eventDate.getTimezoneOffset();
   let time = updatedEvent.eventDate.getTime();
   let dateTime = new Date( time - (offset * 60000))
-  console.log(dateTime)
   updatedEvent.eventDate = dateTime
-  console.log(updatedEvent.eventDate)
   try {
     await Event.updateOne({ _id: req.params.id }, updatedEvent);
   } catch (err) {
