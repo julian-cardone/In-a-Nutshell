@@ -402,7 +402,7 @@ flex-direction: column;
   }
 
   .event-container-default-nav{
-    padding-bottom: 15px;
+    padding: 8px 8px 15px 8px;
     border-radius: 8px;
     transition: all .15s ease-in-out;
   }
@@ -428,4 +428,11 @@ flex-direction: column;
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
+    margin-right: 3px;
+  }
+
+  .task-input-text {
+    border: 0;
+    border-bottom: 1px solid rgba(38, 89, 7, 0.3);
+    outline: none;
   }
