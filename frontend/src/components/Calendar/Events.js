@@ -4,8 +4,9 @@ import { fetchEvents } from "../../store/events";
 import isSameDay from "date-fns/isSameDay";
 import { getTime, getHours, getMinutes, isBefore } from "date-fns";
 import { EventContext } from "../../App";
+import { useState } from "react";
 
-const Events = ({ day, events }) => {
+const Events = ({ day, events, setEventsInd }) => {
   //this script converts the backend format of the date to match the frontend format and turns it into a
   //date object. it then runs a comparison to see that the days are the same
   const eventInfo = useContext(EventContext);
@@ -84,6 +85,8 @@ const Events = ({ day, events }) => {
 
   const handleClick = (e, event) => {
     setCurrentEvent(event);
+    eventInfo.eventInfo[6](event.note);
+    setEventsInd("coolest!");
   };
 
   return (

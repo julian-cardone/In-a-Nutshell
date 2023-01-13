@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchEvents } from "../../store/events";
 import NavBarEventsItem from "./NavBarEventsItem";
 
-function NavBarEventsIndex() {
+function NavBarEventsIndex({ setEventsInd, setNewNote }) {
   //   const dispatch = useDispatch();
 
   //   useEffect(() => {
@@ -13,7 +13,7 @@ function NavBarEventsIndex() {
   return (
     <>
       <h2 className={`upcomingHeader`}>Upcoming Events</h2>
-      <NavBarEventsItem />
+      <NavBarEventsItem setEventsInd={setEventsInd}setNewNote={setNewNote}/>
     </>
   );
 }

@@ -5,7 +5,7 @@ import { addMinutes } from "date-fns";
 import { isBefore } from "date-fns";
 import { addYears } from "date-fns";
 
-function NavBarEventsItem() {
+function NavBarEventsItem({ setEventsInd, setNewNote }) {
   const eventInfo = useContext(EventContext);
   const events = eventInfo.eventInfo[2];
   console.log(events);
@@ -14,6 +14,9 @@ function NavBarEventsItem() {
   const handleClick = (event) => {
     // console.log(event);
     eventInfo.eventInfo[1](event);
+    eventInfo.eventInfo[6](event.note);
+    // console.log(event.note)
+    // setNewNote(event.note)
   };
 
   // console.log(

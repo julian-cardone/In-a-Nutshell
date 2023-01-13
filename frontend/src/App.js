@@ -102,6 +102,10 @@ const sortedEvents = sortEvents(userEvents);
 // console.log(sortedEvents);
 // console.log(isBefore(sortedEvents[1].eventDate, sortedEvents[2].eventDate));
 
+// const [newNote, setNewNote] = useState(currentEvent.note);
+// console.log(currentEvent);
+const [newNote, setNewNote] = useState("");
+
   return (
     <>
 
@@ -113,7 +117,7 @@ const sortedEvents = sortEvents(userEvents);
             <AuthRoute exact path="/login" component={LoginForm} />
             <AuthRoute exact path="/signup" component={SignupForm} />
             {eventsLoaded && (
-            <EventContext.Provider value={{eventInfo: [currentEvent, setCurrentEvent, sortedEvents, allTasks, currUser]}}>
+            <EventContext.Provider value={{eventInfo: [currentEvent, setCurrentEvent, sortedEvents, allTasks, currUser, newNote, setNewNote]}}>
               <Route exact path="/events" > 
               <NavBar setEventsInd={setEventsInd}/>
               <EventsIndex setEventsInd={setEventsInd}/>
