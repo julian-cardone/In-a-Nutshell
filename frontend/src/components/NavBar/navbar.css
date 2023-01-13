@@ -313,7 +313,7 @@ flex-direction: column;
 .delete {
     color: darkred;
     position: absolute;
-    top: 8px;
+    top: 4px;
     right: 28px;
     font-size: 1.2vh;
     opacity: 0;
