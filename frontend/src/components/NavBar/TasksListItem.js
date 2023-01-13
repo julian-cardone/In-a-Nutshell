@@ -124,7 +124,7 @@ function TasksListItem({ setEventsInd, eventsInd }) {
                           ...task,
                           status: newStatus,
                         };
-                        console.log(updatedTask);
+                        // console.log(updatedTask);
                         dispatch(updateTask(updatedTask));
                         setEventsInd("wow!");
                       }}
