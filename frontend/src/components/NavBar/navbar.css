@@ -44,6 +44,7 @@
     font-weight: 600;
     /* font-family: 'bitter'; */
     max-width: 240px;
+    overflow: auto;
 }
 
 .note-pad {
@@ -296,7 +297,7 @@ flex-direction: column;
 }
 
 .div-list-nav{
-    overflow: auto;
+    /* overflow: auto; */
 }
 
 .div-list-nav:hover{
@@ -433,6 +434,7 @@ flex-direction: column;
     margin-bottom: 5px;
     margin-right: 3px;
     margin-top: 10px;
+    text-overflow: ellipsis;
 }
 
 .task-input-text {
@@ -440,4 +442,6 @@ flex-direction: column;
     border-bottom: 1px solid rgba(38, 89, 7, 0.3);
     outline: none;
     width: 244px;
+    max-width: 244px;
+    overflow: auto;
   }
