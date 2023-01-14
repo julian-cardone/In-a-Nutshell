@@ -42,7 +42,8 @@
 
 #task-title {
     font-weight: 600;
-    font-family: 'bitter';
+    /* font-family: 'bitter'; */
+    max-width: 240px;
 }
 
 .note-pad {
