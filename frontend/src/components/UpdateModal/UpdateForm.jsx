@@ -94,9 +94,9 @@ function UpdateForm({ event, showModal, setShowModal, setEventsInd }) {
             rows="8"
             cols="33"
           ></textarea>
-          <div className={`timeMenu`}>
+          <div className="timeMenu">
             <p>Select Time</p>
-            <div className="date-picker-container" style={{width: "100px"}}>
+            <div className="date-picker-container">
               <DatePicker
                 className="date-picker"
                 selected={startDate}

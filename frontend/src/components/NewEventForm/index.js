@@ -104,7 +104,7 @@ function NewEventForm({
           ></textarea>
           <div className={`timeMenu`}>
             <p>Select Time</p>
-            <div className="date-picker-container" style={{width: "100px"}}>
+            <div className="date-picker-container">
               <DatePicker
                 className="date-picker"
                 selected={startDate}
