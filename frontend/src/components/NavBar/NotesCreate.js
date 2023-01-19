@@ -14,7 +14,7 @@ function NotesCreate({ eTitle, setEventsInd }){
   // const fetchedEvent = useSelector((state) => state.events.one) || "";
   // const [newNote, setNewNote] = useState(eTitle.note);
   const noteCon = useContext(EventContext);
-  console.log(noteCon.eventInfo[5]);
+  // console.log(noteCon.eventInfo[5]);
   const newNote = noteCon.eventInfo[5];
   const setNewNote = noteCon.eventInfo[6];
 
@@ -47,20 +47,24 @@ function NotesCreate({ eTitle, setEventsInd }){
     setEventsInd("cooler");
   };
 
-  const handleChange = (e) => {
+  const handleChange = async function(e){
     setSaved(false);
     setEdited(true);
-    const newValue = e.target.value;
-    setNewNote(newValue);
-    setNewEvent({
+    setNewNote(e.target.value);
+    await setNewEvent({
       id: eTitle._id,
       title: eTitle.title,
       description: eTitle.description,
       nyTime: addHours(new Date(eTitle.eventDate),5),
       authorId: eTitle.authorId,
-      note: newNote,
+      note: e.target.value,
     });
+    console.log(newEvent)
   };
+
+  // useEffect(()=>{
+  //   handleChange()
+  //   },[newNote])
 
 return (
 <>
