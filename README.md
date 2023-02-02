@@ -10,7 +10,7 @@ Nutshell uses the MERN stack.
 * React is an open-source frontend library.
 * Node.js is an open-source JavaScript runtime environment that is used to build backend applications.
 
-## Create, Read, Update, Delete Interviews
+## Create, Read, Update & Delete Interviews
 
 https://user-images.githubusercontent.com/112725448/212433287-eb780478-7ae7-4e44-a300-c3ee0bdc0a64.mp4
 
