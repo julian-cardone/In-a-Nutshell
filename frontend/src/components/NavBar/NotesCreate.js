@@ -59,7 +59,7 @@ function NotesCreate({ eTitle, setEventsInd }){
       authorId: eTitle.authorId,
       note: e.target.value,
     });
-    console.log(newEvent)
+    // console.log(newEvent)
   };
 
   // useEffect(()=>{
